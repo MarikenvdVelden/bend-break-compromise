@@ -1,2 +1,2 @@
-# MarikenvdVelden.github.io
+# Mariken van der Velden
 Welcome to my website!
