@@ -2950,7 +2950,7 @@
 				.wrapper.style1 input[type="button"]:hover,
 				.wrapper.style1 button:hover,
 				.wrapper.style1 .button:hover {
-					background-color: #4aa3df;
+					background-color: #2A52BE;
 				}
 
 				.wrapper.style1 input[type="submit"]:active,
@@ -2958,7 +2958,7 @@
 				.wrapper.style1 input[type="button"]:active,
 				.wrapper.style1 button:active,
 				.wrapper.style1 .button:active {
-					background-color: #258cd1;
+					background-color: #2A52BE;
 				}
 
 				.wrapper.style1 input[type="submit"].alt,
