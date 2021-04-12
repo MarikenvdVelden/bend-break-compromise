@@ -1,0 +1,188 @@
+---
+title: 'Prepare Data'
+author: 
+output: 
+  github_document:
+    toc: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r "setup", include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.align = "center",
+                      fig.path=('../../report/figures/'))
+library(printr)
+options(digits = 2)
+library(rmarkdown)
+```
+
+# Scripts
+- [Required Packages &amp; Reproducibility](#required-packages-&amp;-reproducibility)
+- [Tidy Data](#tidy-data)
+- [Save Data for Analysis](#save-data-for-analysis)
+- [Visualization of Data](#visualization-of-data)
+  - [Dependent Variable](#dependent-variable)
+  - [Independent Variable](#independent-variable)
+  - [Control Variables](#control-variables)
+  - [Correlations Matrix](#correlations-matrix)
+
+## Required Packages &amp; Reproducibility
+```{r "env", message=FALSE, warning=F}
+rm(list=ls())
+renv::snapshot()
+source(here::here("src/lib/functions.R"))
+```
+
+## Tidy Data
+
+```{r "get data from Qualtrics"}
+pret <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1)  %>%
+  select(matches("PreT\\d"), id = ResponseId) %>%
+  select(-matches("PreT[26]_NPS_GROUP")) %>%
+  unite(order_PreT5, matches("PreT5_DO_\\d+"), sep="|") %>%
+  unite(order_PreT7, matches("PreT7_DO_\\d+"), sep="|") %>%
+  unite(order_PreT, matches("Pre-Treatment_DO_PreT\\d+"), sep="|") %>%
+  select(id, PreT1:PreT5_4, PreT6:PreT7_5, 
+         order_PreT5, order_PreT7, order_PreT) %>%
+  mutate(across(matches("PreT5_\\d+"), 
+            ~recode(., `15` = 5, `14` = 4, `13` = 3,
+                    `12` = 2, `11` = 1))) 
+
+td <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1) %>%
+  select(matches("FL_32"), id = ResponseId) %>%
+  pivot_longer(cols = FL_32_DO_FL_104:FL_32_DO_FL_118,
+               names_to = "Def") %>%
+  drop_na(value) %>%
+  mutate(Def = recode(Def,
+                       `FL_32_DO_FL_104` = "Rachid Amezian + Compromis",
+                       `FL_32_DO_FL_106` = "Rachid Amezian + Geen compromis",
+                       `FL_32_DO_FL_108` = "Karel van der Kleijn + Compromis",
+                       `FL_32_DO_FL_110` = "Karel van der Kleijn + Geen compromis",
+                       `FL_32_DO_FL_112` = "Rachida Amezian + Compromis",
+                       `FL_32_DO_FL_114` = "Rachida Amezian + Geen compromis",
+                       `FL_32_DO_FL_116` = "Karin van der Kleijn + Compromis",
+                       `FL_32_DO_FL_118` = "Karin van der Kleijn + Geen compromis")) %>%
+  select(-value)
+
+ti <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1) %>%
+  select(matches("FL_78"), id = ResponseId) %>%
+  pivot_longer(cols = FL_78_DO_FL_123:FL_78_DO_FL_142,
+               names_to = "Imm") %>%
+  drop_na(value) %>%
+  mutate(Imm = recode(Imm,
+                       `FL_78_DO_FL_123` = "Rachid Amezian + Compromis",
+                       `FL_78_DO_FL_125` = "Rachid Amezian + Geen compromis",
+                       `FL_78_DO_FL_129` = "Karel van der Kleijn + Compromis",
+                       `FL_78_DO_FL_132` = "Karel van der Kleijn + Geen compromis",
+                       `FL_78_DO_FL_134` = "Rachida Amezian + Compromis",
+                       `FL_78_DO_FL_137` = "Rachida Amezian + Geen compromis",
+                       `FL_32_DO_FL_139` = "Karin van der Kleijn + Compromis",
+                       `FL_32_DO_FL_142` = "Karin van der Kleijn + Geen compromis"))  %>%
+  select(-value)
+
+te <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1) %>%
+  select(matches("FL_84"), id = ResponseId) %>%
+  pivot_longer(cols = FL_84_DO_FL_144:FL_84_DO_FL_161,
+               names_to = "Edu") %>%
+  drop_na(value) %>%
+  mutate(Edu = recode(Edu,
+                       `FL_84_DO_FL_144` = "Rachid Amezian + Compromis",
+                       `FL_84_DO_FL_145` = "Rachid Amezian + Geen compromis",
+                       `FL_84_DO_FL_148` = "Karel van der Kleijn + Compromis",
+                       `FL_84_DO_FL_151` = "Karel van der Kleijn + Geen compromis",
+                       `FL_84_DO_FL_153` = "Rachida Amezian + Compromis",
+                       `FL_84_DO_FL_157` = "Rachida Amezian + Geen compromis",
+                       `FL_84_DO_FL_159` = "Karin van der Kleijn + Compromis",
+                       `FL_84_DO_FL_161` = "Karin van der Kleijn + Geen compromis")) %>%
+  select(-value)
+
+tc <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1) %>%
+  select(matches("FL_101"), id = ResponseId) %>%
+  pivot_longer(cols = FL_101_DO_FL_163:FL_101_DO_FL_177,
+               names_to = "COVID") %>%
+  drop_na(value) %>%
+  mutate(COVID = recode(COVID,
+                       `FL_101_DO_FL_163` = "Rachid Amezian + Compromis",
+                       `FL_101_DO_FL_165` = "Rachid Amezian + Geen compromis",
+                       `FL_101_DO_FL_167` = "Karel van der Kleijn + Compromis",
+                       `FL_101_DO_FL_169` = "Karel van der Kleijn + Geen compromis",
+                       `FL_101_DO_FL_171` = "Rachida Amezian + Compromis",
+                       `FL_101_DO_FL_173` = "Rachida Amezian + Geen compromis",
+                       `FL_101_DO_FL_175` = "Karin van der Kleijn + Compromis",
+                       `FL_101_DO_FL_177` = "Karin van der Kleijn + Geen compromis")) %>%
+  select(-value) 
+
+pt <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1) %>%
+  select(matches("PT-[A-Z]\\d"), id = ResponseId) %>%
+  select(-matches("PT-[A-Z]\\d_NPS_GROUP")) %>%
+  unite(order_PT_D1, matches("PT-D1_DO_\\d+"), sep="|") %>%
+  unite(order_PT_D, matches("PostTreatment-Defense_DO_PT-D\\d+"), sep="|") %>%
+  unite(order_PT_E1, matches("PT-E1_DO_\\d+"), sep="|") %>%
+  unite(order_PT_E, matches("PostTreatment-Education_DO_PT-E\\d+"), sep="|") %>%
+  unite(order_PT_I1, matches("PT-I1_DO_\\d+"), sep="|") %>%
+  unite(order_PT_I, matches("PostTreatment-Immigration_DO_PT-I\\d+"), sep="|") %>%
+  unite(order_PT_C1, matches("PT-C1_DO_\\d+"), sep="|") %>%
+  unite(order_PT_C, matches("PostTreatment-Corona_DO_PT-C\\d+"), sep="|") %>%
+  select(id, `PT-D1_1`:`PT-D1_6`, `PT-D2`:`PT-I1_6`, `PT-I2`:`PT-E1_6`, 
+         `PT-E2`: `PT-C1_6`, `PT-C2`:`PT-C4`, order_PT_D1, order_PT_D,
+         order_PT_E1, order_PT_E, order_PT_I1, order_PT_I, 
+         order_PT_C1, order_PT_C)
+  
+
+bg <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
+                  force_request = TRUE, verbose = TRUE,
+                 label = FALSE, convert = FALSE) %>%
+  filter(Consent == 1) %>%
+  select(id = ResponseId, matches("F\\d"), etnicity) %>%
+  unite(order_F6, matches("F6_DO_\\d+"), sep="|") %>%
+  select(id, F1:F3, F4 = F4_1_TEXT, F5 = etnicity, F6, F7:F8, order_F6)
+
+d <- left_join(bg, pret, by = "id")
+d <- left_join(d, td, by = "id")
+d <- left_join(d, ti, by = "id")
+d <- left_join(d, te, by = "id")
+d <- left_join(d, tc, by = "id")
+d <- left_join(d, pt, by = "id")
+rm(bg, pret, td, ti, te, tc, pt)
+```
+
+## Save Data for Analysis
+```{r "save data"}
+save(d, file = here("data/intermediate/cleaned_data.RData"))
+```
+
+## Visualization of Data
+
+### Dependent Variable
+```{r "Dependent Variable", echo=F}
+```
+
+### Independent Variable
+```{r "Independent Variables", echo=F, message=FALSE, warning=FALSE,fig.width=10, fig.height=10}
+
+```
+
+
+### Correlations Matrix
+```{r "Correlations Matrix", echo=F, message=T, warning=T, fig.width=15, fig.height=15}
+
+```
