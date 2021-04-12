@@ -1,7 +1,7 @@
 # TITLE
 
 Data &amp; Analysis Compendium for the paper, entitled _title_. 
-**Ethical approval and pre-analysis plan**.
+This study has received [approval](docs/EthicalApproval.pdf) for the Vrije Universteit Amsterdam's Research Ethics Committee and is registered at [osf](https://osf.io/kvtzp/) -- see [here](docs/pap/doc.pdf) for the pre-analysis plan.
 
 ## Draft
 View the [draft of the paper here](report/draft.pdf).
@@ -38,4 +38,4 @@ doit
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+abide by its term.
