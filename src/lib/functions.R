@@ -1,3 +1,6 @@
 library(here)
 library(tidyverse)
 library(qualtRics)
+library(DeclareDesign)
+library(ggpubr)
+library(scales)

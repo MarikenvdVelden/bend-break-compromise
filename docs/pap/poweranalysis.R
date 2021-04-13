@@ -1,16 +1,10 @@
 # Power Analysis
-library(DeclareDesign)
-library(tidyverse)
-library(ggpubr)
-library(scales)
-
 rm(list = ls())
+source(here::here("src/lib/functions.R"))
 
 #H1 & H2
 N <- 100
-assignment_prob <- 0.25 
-# only 2 in 8 conditions is have women/migration background + compromise condition. 
-# So there is a 1/4 you are exposed to the full women/migration background compromise condition
+assignment_prob <- 0.25 # only 2 in 8 conditions is have women/migration background + compromise condition. 
 treatment_effect <- 0.1
 
 population <- declare_population(N = N, u = rnorm(N))
