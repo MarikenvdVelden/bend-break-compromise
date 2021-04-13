@@ -52,38 +52,11 @@ pret <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
             ~recode(., `15` = 5, `14` = 4, `13` = 3,
                     `12` = 2, `11` = 1))) 
 
-
 tr <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
                   force_request = TRUE, verbose = TRUE,
                   label = FALSE, convert = FALSE) %>%
   filter(Consent == 1) %>%
-  select(matches("C-[A-Z]\\d"), id = ResponseId) %>%
-  pivot_longer(cols = `C-D1`:`C-D8`,
-               names_to = "Def") %>%
-  drop_na(value) %>%
-  select(-value) %>%
-  pivot_longer(cols = `C-E1`:`C-E8`,
-               names_to = "Edu") %>%
-  drop_na(value) %>%
-  select(-value) %>%
-  pivot_longer(cols = `C-I1`:`C-I8`,
-               names_to = "Imm") %>%
-  drop_na(value) %>%
-  select(-value) %>%
-  pivot_longer(cols = `C-C1`:`C-C8`,
-               names_to = "COVID") %>%
-  drop_na(value) %>%
-  select(-value) %>%
-  mutate(across(-id, ~str_sub(., -1))) %>%
-  mutate(across(-id, ~recode(.,
-                       `1` = "Rachid Amezian + Compromis",
-                       `2` = "Rachid Amezian + Geen compromis",
-                       `3` = "Karel van der Kleijn + Compromis",
-                       `4` = "Karel van der Kleijn + Geen compromis",
-                       `5` = "Rachida Amezian + Compromis",
-                       `6` = "Rachida Amezian + Geen compromis",
-                       `7` = "Karin van der Kleijn + Compromis",
-                       `8` = "Karin van der Kleijn + Geen compromis")))
+  select(matches("name-[A-Z]"), compromis, id = ResponseId)
 
 pt <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
                   force_request = TRUE, verbose = TRUE,
