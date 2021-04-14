@@ -1,0 +1,77 @@
+---
+title: 'Pre-Analysis Plan'
+author: '16 April 2021'
+output: 
+  github_document:
+    toc: yes
+    number_sections: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Hypothesis
+
+# Research Desing and Protocol
+
+## Sample
+I will conduct this survey experiment in the Netherlands in April 2021.  
+Our sample, recruited through [KiesKompas](https://www.kieskompas.nl/en/), will consist of 2,000 participants (based on the power analysis presented below) of 18 years and older.  
+The study has been approved by the [Research Ethics Review Committee](https://fsw.vu.nl/nl/onderzoek/research-ethics-review/index.aspx) of the _Vrije Universiteit Amsterdam_ (see the approval [here](../EthicalApproval.pdf).  
+To ensure good quality of our data, two attention checks (discussed in more detail below) are included.  
+Each respondent failing the attention check will be excluded and replaced with another 'good' response.
+
+## Experimental Protocol
+The study is conducted online and in Dutch.  
+Participants are told that they are taking part in a survey to get an overview of how Dutch people form their views on politics. 
+After reading an informed consent message participants are forwarded to the main questionnaire (or
+the survey will be terminated if they do not agree to the consent form).
+
+First, participants complete a set of background variables on their stances on the political issues used in the experiment (i.e. corona-measures, defense, education, immigration) and on their attitude towards women in politics -- the full codeboek can be viewed [here](#).  
+The pre-treatment block ends with one of the two attention checks included in this survey. 
+When participants fail this attention check, a warning appears asking them to read the question again
+carefully  and  to  answer  again.   
+Only when they have answered it correctly, they enter the first round of the experiment. 
+After each round of the experiment, some filler questions are asked about the respondents demographics. 
+The stimuli in the experiment are news messages in the same style as the Dutch news website [nu.nl](https://www.nu.nl/).
+In these news messages, we manipulate: a) the _gender_ of the politician (male vs. female); b) the _migration background_ of the politician (based on a Arabic sounding name (Rachid(a) Amezian) or a native Dutch sounding name (Karel/Karin van der Kleijn)); and c) whether the politician _striked a compromise or not_.
+This creates a full `2*2*2` factorial experiment with four rounds.  
+Every round, the news message covers a new issue.  
+The issues are:  "defense" (increase cooperation of the defense units), "immigration" (immigration stop in western countries), "education" (expansion creative elementary school activities), "COVID-
+19" (emergency legislation to combat COVID-19).
+For every round, the politicians name, and thereby gender and immigration background, are manipulated in the text and in the picture as well as the decision to strike a compromise.
+For an illustration of the stimulus material, see the Figure below.
+All manipulated elements are within the blue boxes.
+
+<img src="FMPdefensie_annotated.png" style="display: block; margin: auto;" />
+
+The text is translated from ARTICLE, the original authors have done XXX. Justification names. Pictures come from ...
+
+## Power Analysis
+As we explain in detail in section 4, we use OLS regression with anger (H1-H2) or anx-
+iety  (H3-4)  as  dependent  variable  and  the  three  manipulations  (certainty,  control  and
+responsibility) as independent variables.  We will test each hypothesis separately for all
+four issues.  We used the R package "DeclareDesign" (Blair et al., 2019) for our power
+analysis 1, assuming a small effect of b= 0.2 (Figure 2, yellow line).  As our hypotheses are  directional,  we  will run  one-tailed  tests  with  an  alpha  of  .05.   Our  power  analysis shows that testing hypotheses 1 (a, b and c) and 3 (a and b), requires a sample size of 1,200 participants (x-axis) to reach power of 0.95 (black dashed line, Figure 2, panel A). Note that if the effect size b is bigger then .2 { i.e., .3, .4, .5 or .6 { smaller sample sizes
+are sufficient to reach power of 0.95. To test Hypotheses 2 (Anger frame) and 4 (Anxiety Frame), we can detect a small effect b = 0.2 (yellow line) with a power of .8 (gray dashed line) and a one-tailed test of signficance at alpha .05 with a sample of 1,500 participants (Figure 2, Panel B). At 1,800 participants, with a small effect and one-tailed test of significance at .05, we reach power of .88.  A sample of 1.800 participants therefore gives us suficient power to test Hypotheses 1 and 3 but a probability of 12% for a Type II error remains when testing
+Hypotheses 2 and 4.  We will therefore test Hypotheses 2 and 4 first by issue and second,
+by pooling our data across issues.  This will give us sufficient power to test H2 and 4.
+
+# Measures
+
+## Dependent Variables
+
+## Control Variables
+
+## Attention Checks
+
+## Exclusion Criteria
+
+# Analysis
+
+## Hypothesis 1
+
+## Hypothesis 2
+
+## Hypothesis 3
+
+# Stimulus Material
