@@ -8,13 +8,15 @@ output:
 editor_options: 
   chunk_output_type: console
 bibliography: references.bib
+urlcolor: blue
+linkcolor: blue
 header-includes:
    - \usepackage{floatrow}
    - \floatsetup[figure]{capposition=top}
 ---
 
 \newpage
-# Hypothesis
+# Hypotheses
 
 # Research Desing and Protocol
 
@@ -45,16 +47,16 @@ For every round, the politicians name, and thereby gender and immigration backgr
 For an illustration of the stimulus material, see Figure \ref{fig:treatment_example}.
 All manipulated elements are within the blue boxes.
 
-```{r ssa-logo, fig.align = 'center', out.width = "100%", fig.cap = "\\label{fig:treatment_example}Annotated Example of Stimulus Material", echo = FALSE, fig.topcaption=TRUE}
+```{r treatment-example, fig.align = 'center', out.width = "85%", fig.cap = "\\label{fig:treatment_example}Annotated Example of Stimulus Material", echo = FALSE, fig.topcaption=TRUE}
 knitr::include_graphics(here::here("docs/pap/FMPdefensie_annotated.png"))
 ```
 
-The text of the treatment is a Dutch translation of the stimulus material developed by @bauer2017punished. 
-The authors have pre-tested the text of the stimuli material several times [see the Web Appendix of @bauer2017punished].
+The text of the treatment is a Dutch translation of the stimulus material developed by @bauer2017punished.
+The authors have pre-tested the text of the stimuli material several times [see the [Web Appendix](https://static-content.springer.com/esm/art%3A10.1007%2Fs11109-016-9356-6/MediaObjects/11109_2016_9356_MOESM1_ESM.docx) of @bauer2017punished].
 The photo's of their stimuli material can unfortunately not be used, because a) @bauer2017punished only investigate the difference between men and women politicians, using solely photo''s of caucasians; and b) the American flag was present in their material.
 Instead, I have used photo's from local politicians of the city of The Hague that are not know to the general public. 
 The men politicians are in real life representatives of the [liberal-progressive party D66](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/boutkabout-a.-abid-fractievertegenwoordiger-d66.htm) (man with immigrant background) and of the [christian democratic party CDA](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/groot-de-d.p.-daniel-fractievertegenwoordiger-cda.htm) (man without immigrant background).
-The women politicians are in real life representatives of a [right-wing populist party _Hart voor Deen Haag/ Groep de Mos_](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/davituliani-n.-nino-raadslid-hart-voor-den-haaggroep-de-mos.htm) (woman with migration background) and of the [social democratic party PvdA](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/holman-j.-janneke-raadslid-pvda.htm) (woman without immigrant background).
+The women politicians are in real life representatives of a [right-wing populist party _Hart voor Den Haag/ Groep de Mos_](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/davituliani-n.-nino-raadslid-hart-voor-den-haaggroep-de-mos.htm) (woman with migration background) and of the [social democratic party PvdA](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/holman-j.-janneke-raadslid-pvda.htm) (woman without immigrant background).
 Thereby we have a spread over the ideological different parties present in Dutch politics.
 The names for the politicians without immigration background are _Karel_ (man) and _Karin_ (woman) _van der Kleijn_, which are typical native Dutch names.
 For the politicians with an immigration background, we picked _Rachid_ (man) and _Rachida_ (woman) _Amezian_.
@@ -62,14 +64,29 @@ For the politicians with an immigration background, we picked _Rachid_ (man) and
 ## Power Analysis
 As detailed in [Section 4](#analysis), I conduct an OLS regression within a multiverse approach [@simonsohn2019specification;@steegen2016increasing] using the four post-treatment questions on the politician's a) leadership evaluaton (scale); b) general favorability; c) representative quality; and d) career perspective as dependent variable and the three manipulations (gender, migration background and whether or not the politician is willing to strike a compromise ) as independent variables.
 Each hypothesis is tested separately for all four issues.
+To calculate power for the hypotheses, the R package `DeclareDesign` is used [@blair2019declaring].
+Based on the study of @bauer2017punished, the effect sizes are between `0.2` and `0.1` -- i.e. a small effect visualized by the purple lines in Figure \ref{fig:power1}.
+The hypothesis are directional, Figure \ref{fig:power1} therefore displays one-tailed tests with $\alpha$ `= 0.05`.
+The power analysis shows that testing hypotheses 1 and 2 requires a sample size of `1,800` participants (x-axis) to reach `95%` power (black dashed line, in the left-panel of Figure \ref{fig:power1}). 
+Note that if the effect size is bigger then `0.2` (i.e. `0.3`, `0.4`, `0.5`, or `0.6`) smaller sample sizes
+are sufficient to reach `95\%` power.
+To test H3, the combination of gender and migration background, we can detect a small effect `b = 0.2` (purple line) with a power of `80%` (gray dashed line) and a one-tailed test of signficance at $\alpha$ `=0.05` with a sample of `1,800` participants (Right-Panel of Figure \ref{fig:power1}). 
+At `2,000` participants, with a small effect and one-tailed test of significance at $\alpha$ `=0.05`, I reach power of `88%`.
+A sample of `2,000` participants therefore gives me suficient power to test Hypotheses 1 and 2, but a probability of `12%` for a Type II error remains when testing Hypotheses 3. 
+I will therefore test all hypotheses first by issue and second, by pooling our data across issues.
+As Figure \ref{fig:power2} demonstrates, this will give sufficient power even if we do two-tailed testing.
 
+```{r power-example, eval = FALSE}
+source(here::here("docs/pap/poweranalysis.R"))
+```
 
-We will test each hypothesis separately for all
-four issues.  We used the R package "DeclareDesign" (Blair et al., 2019) for our power
-analysis 1, assuming a small effect of b= 0.2 (Figure 2, yellow line).  As our hypotheses are  directional,  we  will run  one-tailed  tests  with  an  alpha  of  .05.   Our  power  analysis shows that testing hypotheses 1 (a, b and c) and 3 (a and b), requires a sample size of 1,200 participants (x-axis) to reach power of 0.95 (black dashed line, Figure 2, panel A). Note that if the effect size b is bigger then .2 { i.e., .3, .4, .5 or .6 { smaller sample sizes
-are sufficient to reach power of 0.95. To test Hypotheses 2 (Anger frame) and 4 (Anxiety Frame), we can detect a small effect b = 0.2 (yellow line) with a power of .8 (gray dashed line) and a one-tailed test of signficance at alpha .05 with a sample of 1,500 participants (Figure 2, Panel B). At 1,800 participants, with a small effect and one-tailed test of significance at .05, we reach power of .88.  A sample of 1.800 participants therefore gives us suficient power to test Hypotheses 1 and 3 but a probability of 12% for a Type II error remains when testing
-Hypotheses 2 and 4.  We will therefore test Hypotheses 2 and 4 first by issue and second,
-by pooling our data across issues.  This will give us sufficient power to test H2 and 4.
+```{r power, fig.align = 'center', out.width = "100%", fig.cap = "\\label{fig:power1}Power Analysis", echo = FALSE, fig.topcaption=TRUE}
+knitr::include_graphics(here::here("docs/pap/power_analysis.png"))
+```
+
+```{r power-pooled, fig.align = 'center', out.width = "100%", fig.cap = "\\label{fig:power2}Power Analysis - Pooled", echo = FALSE, fig.topcaption=TRUE}
+knitr::include_graphics(here::here("docs/pap/power_analysis-pooled.png"))
+```
 
 # Measures
 
@@ -90,3 +107,6 @@ by pooling our data across issues.  This will give us sufficient power to test H
 ## Hypothesis 3
 
 # Stimulus Material
+
+\newpage
+# References
