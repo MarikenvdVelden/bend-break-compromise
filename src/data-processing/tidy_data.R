@@ -46,7 +46,7 @@ bg <- fetch_survey(surveyID = "SV_7aEiPm6fLzSon4O",
   select(id = ResponseId, matches("F\\d"), etnicity) %>%
   unite(order_F6, matches("F6_DO_\\d+"), sep="|") %>%
   mutate(F1 = recode(F1, `1` = 0, `2` = 1, `3` = 2, `4` = 999)) %>%
-  select(id, F1:F3, F4 = F4_1_TEXT, F5 = etnicity, F6, F7:F8, order_F6)
+  select(id, F1:F3, F4 = F4_1_TEXT, F5 = etnicity, F6, F7:F8, F9, order_F6)
 
 d <- left_join(bg, pret, by = "id")
 d <- left_join(d, tr, by = "id")
