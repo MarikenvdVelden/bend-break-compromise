@@ -1,6 +1,6 @@
 ---
 title: "Pre-Analysis Plan: Who Bends and Who Breaks? Experimental Evidence for Conditions Affecting Voters' Evaluations of Politicians Striking Compromises"
-author: '16 April 2021'
+date: "`r format(Sys.time(), '%d %B, %Y - %X (%Z)')`"
 output: 
   pdf_document:
     toc: yes
@@ -110,7 +110,7 @@ A sample of `2,000` participants therefore gives me suficient power to test Hypo
 I will therefore test all hypotheses first by issue and second, by pooling our data across issues.
 As Figure \ref{fig:power2} demonstrates, this will give sufficient power even if we do two-tailed testing.
 
-```{r power-example, eval = FALSE}
+```{r power-example, eval = FALSE, echo = TRUE}
 source(here::here("docs/pap/poweranalysis.R"))
 ```
 
@@ -352,10 +352,16 @@ Participants are required to respond to each question.
 Participants who fail the second attention check will be excluded but replaced by another participant.
 
 # Analysis
+I test the hypotheses formulated in [Section 1](#expectations) by fitting linear multivariate regressions separately for the four issues.
+In each model, will estimate the coefficient for gender of the politician (H1), migration background of the politician (H2), and the interaction of gendere and migration background (H3).
+I will apply a multiverse approach [@steegen2016increasing;@simonsohn2019specification].
+Instead of running various models using the different dependent variables, I will estimate whether the treatment explains the different operationalizations of the dependent variable ([see Section 3.1](#dependent-variables)) in one go and present the estimates and confidence intervals for the several combinations.
+I will only add control variables in the analyses that are unbalanced, as explained in [Section 4.1](#balance-checks).
 
 ## Balance Checks
 I will conduct a balance test based on demographics (age, gender, education, geographical region, level of urbanness, migration background,  employment, and income), vote choice in the 2021 parliamentary elections, ideological self-placement, political efficacy, attitudes towards women in politics, and positions on the four issues, using the `cobalt` R package [@greifer2021]. 
 If the groups are unbalanced on one of these variables -- i.e. standardized mean differences `<0.05` -- I will add the covariates to the analyses.
+I will use the code below to conduct the balance tests (see [here](https://github.com/MarikenvdVelden/compromise-punish/tree/main/src/analysis/balance-test.R) for the R script).
 
 ```{r balance, eval=FALSE, echo = TRUE}
 covs <- d %>%
@@ -409,13 +415,145 @@ balanced <- balanced %>%
 ```
 
 ## Hypothesis 1
-I test the hypotheses formulated in [Section 1](#expectations) applying a multiverse approach [@steegen2016increasing;@simonsohn2019specification] using the `specr` R package [@masur2020specr].
-Instead of running various models using the different dependent variables
+I test the _gender hypothesis_ using Equation \ref{eq:h1} and the code chunk below.
+The coefficient of $\beta_{1}$ denotes the difference in the evaluation of female and male politicians.
+The coefficient of $\beta_{2}$ denotes the difference in the evaluation of politicians who do and do not strike a comprmise.
+The coefficient of $\beta_{3}$ is the interaction of the  $\beta_{1}$ and  $\beta_{2}$.
+If the Average Marginal Effect of $\beta_{1}$ is negative and statistically siginificant when $\beta_{2} = 1$ (i.e. politician stroke a compromise), the _gender hypothesis_ will be confirmed.
 
+\begin{equation}\label{eq:h1}
+  \hat{Y} = \beta_{0} + \beta_{1}Female  + \beta_{2}Compromise + \beta_{3}Compromise * Female + \varepsilon
+\end{equation}
+
+```{r h1, eval = FALSE, echo = TRUE}
+df <- d %>% select(PT1:PT4, gender, compromise)
+
+depVarList <- setdiff(colnames(df), c("gender", "compromise"))
+allModels <- lapply(depVarList, function(x){
+  lm(formula= paste0("`", x, "` ~ gender * compromise"), 
+     data= d, na.action = na.omit)})
+
+for(i in 1:length(depVarList)){
+  if(i==1){
+    m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
+      filter(factor=="gender") %>%
+      select(AME, lower, upper) %>%
+      mutate(y = depVarList[i])
+  }
+  else{
+    tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
+      filter(factor=="gender") %>%
+      select(AME, lower, upper) %>%
+      mutate(y = depVarList[i])
+    m <- m %>%
+      add_case(tmp)
+  }
+}
+```
 
 ## Hypothesis 2
 
+I test the _migration hypothesis_ using Equation \ref{eq:h2} and the code chunk below.
+The coefficient of $\beta_{1}$ denotes the difference in the evaluation of politicians with and without a migration background.
+If $\beta_{1}$ is negative and statistically siginificant, the _migration hypothesis_ will be confirmed.
+The coefficient of $\beta_{2}$ denotes the difference in the evaluation of politicians who do and do not strike a comprmise.
+The coefficient of $\beta_{3}$ is the interaction of the  $\beta_{1}$ and  $\beta_{2}$.
+If the Average Marginal Effect of $\beta_{1}$ is negative and statistically siginificant when $\beta_{2} = 1$ (i.e. politician stroke a compromise), the _migration hypothesis_ will be confirmed.
+
+
+\begin{equation}\label{eq:h2}
+  \hat{Y} = \beta_{0} + \beta_{1}Migration Background + \beta_{2}Compromise + \beta_{3}Compromise * Migration Background + \varepsilon
+\end{equation}
+
+```{r h2, eval = FALSE, echo = TRUE}
+df <- d %>%
+  mutate(migration = recode(name, 
+                         `Rachid Amezian` = 1,
+                         `Rachida Amezian` = 1,
+                         .default = 0)) %>%
+  select(PT1:PT4, migration, compromise)
+
+depVarList <- setdiff(colnames(df), c("migration", "compromise"))
+allModels <- lapply(depVarList, function(x){
+  lm(formula= paste0("`", x, "` ~ migration * compromise"), 
+     data= d, na.action = na.omit)})
+
+for(i in 1:length(depVarList)){
+  if(i==1){
+    m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
+      filter(factor=="migration") %>%
+      select(AME, lower, upper) %>%
+      mutate(y = depVarList[i])
+  }
+  else{
+    tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
+      filter(factor=="migration") %>%
+      select(AME, lower, upper) %>%
+      mutate(y = depVarList[i])
+    m <- m %>%
+      add_case(tmp)
+  }
+}
+```
+
+
 ## Hypothesis 3
+
+I test the _intersection hypothesis_ using Equation \ref{eq:h3} and the code chunk below.
+The coefficient of $\beta_{1}$ denotes the difference in the evaluation of female politicians with a migration background and the other politicians.
+If $\beta_{1}$ is negative and statistically siginificant, the _gender hypothesis_ will be confirmed.
+The coefficient of $\beta_{2}$ denotes the difference in the evaluation of politicians who do and do not strike a comprmise.
+The coefficient of $\beta_{3}$ is the interaction of the  $\beta_{1}$ and  $\beta_{2}$.
+If the Average Marginal Effect of $\beta_{1}$ is negative and statistically siginificant when $\beta_{2} = 1$ (i.e. politician stroke a compromise), the _intersection hypothesis_ will be confirmed.
+
+\begin{equation}\label{eq:h3}
+  \hat{Y} =\beta_{0} + \beta_{1}Intersection + \beta_{2}Compromise + \beta_{3}Compromise * Intersection + \varepsilon
+\end{equation}
+
+```{r h3, eval = FALSE, echo = TRUE}
+df <- d %>%
+  mutate(intersection = recode(name, 
+                         `Rachida Amezian` = 1,
+                         .default = 0)) %>%
+  select(PT1:PT4, intersection, compromise)
+
+depVarList <- setdiff(colnames(df), c("intersection", "compromise"))
+allModels <- lapply(depVarList, function(x){
+  lm(formula= paste0("`", x, "` ~ intersection * compromise"), 
+     data= d, na.action = na.omit)})
+
+for(i in 1:length(depVarList)){
+  if(i==1){
+    m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
+      filter(factor=="intersection") %>%
+      select(AME, lower, upper) %>%
+      mutate(y = depVarList[i])
+  }
+  else{
+    tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
+      filter(factor=="intersection") %>%
+      select(AME, lower, upper) %>%
+      mutate(y = depVarList[i])
+    m <- m %>%
+      add_case(tmp)
+  }
+}
+```
+
+## Pooled Data
+Using the pooled data we will estimate a within groups fixed effects model. 
+$Y\hat{Y}_{r, i, t}$ in Equation \ref{eq:pooled} denotes  the  evaluation  of  a politician of respondent $r$, during issue $i$ and at experimental round $t$ -- ranging from round 1 to round 4.
+$\alpha_{i}$ is the issue specific intercept, and $\gamma_{t}$ is the experimental round specific intercept.  
+The standard errors are clustered at the individual level.  
+If the Average Marginal Effect of $\beta_{1}$ is negative and statistically siginificant when $\beta_{2} = 1$ (i.e. politician stroke a compromise), the _intersection hypothesis_ will be confirmed.
+
+\begin{equation}\label{eq:pooled}
+    \hat{Y}_{r, i, t} =\beta_{0} + \beta_{1}Intersection_{r, i, t} + \beta_{2}Compromise + \beta_{3}Compromise * Intersection + \alpha_{i} + \gamma_{t} + \varepsilon_{r, i, t}
+\end{equation}
+
+## Statistical Significance
+All the hypotheses are directional, and therefore all of the tests will be one-tailed.
+I will use an $\alpha$-value of `0.05` as the value for statistical significance in all models above.
 
 # Stimulus Material
 
