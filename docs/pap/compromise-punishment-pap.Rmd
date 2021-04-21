@@ -374,44 +374,6 @@ balanced <-bal.tab(Treatment ~ PreT1 + PreT2 + PreT3 + PreT4 +
                      factor(F4) + factor(F5) + factor(F6) + F7 + F8,
                      Age + Education + factor(Sex_str), data = covs,
           thresholds = c(m = 0.05))[[1]] 
-
-balanced <- balanced %>%
-  mutate(variable = c("Immigration (%)", "Immigration", "Defense", "Education", "Sexism",
-                      "Ideology", "Poltical Efficacy", "COVID-19",
-                      "Gender: Male", "Age", "Education: Middle", "Education: High",
-                      "Region: West", "Region: North", "Region: East", "Region: South",
-                      "Little Urban", "Moderatly Urban", "Highly Urban", 
-                      "Very Highly Urban", "Migration Background", "Bij1","CDA",
-                      "ChristenUnie", "D66", "Denk", "Forum for Democracy",
-                      "GroenLinks", "JA21", "PvdA", "Animal Rights Party", "PVV", 
-                      "SGP", "SP", "VOLT","VVD", "50Plus Party", "Employment",
-                      "Income"),
-         variable = factor(variable,
-                           levels = c("Immigration (%)", "Immigration", "Defense",
-                                      "Education", "Sexism", "Ideology", 
-                                      "Poltical Efficacy","COVID-19", 
-                                      "Gender: Male", "Age", "Education: Middle",
-                                      "Education: High", "Region: West", "Region: North",
-                                      "Region: East", "Region: South",
-                                      "Little Urban", "Moderatly Urban", "Highly Urban",
-                                      "Very Highly Urban", "Migration Background",
-                                      "Bij1","CDA", "ChristenUnie", "D66", "Denk", 
-                                      "Forum for Democracy", "GroenLinks", "JA21", 
-                                      "PvdA", "Animal Rights Party", "PVV", 
-                                      "SGP", "SP", "VOLT","VVD", "50Plus Party",
-                                      "Employment", "Income")),
-         difference = Diff.Un,2) %>%
-  select(variable, difference) %>%
-  ggplot(aes(x = variable, y = difference)) +
-  geom_point(size = 3, colour = "gray55") +
-  theme_bw() +
-  labs(x="", y= "Standardized Mean Differences") +
-  ggtitle("Covariate Balance") +
-  theme(plot.title = element_text(hjust = 0.5)) +
-  geom_hline(yintercept = 0) +
-  geom_hline(yintercept = 0.05, linetype = "dashed") +
-  geom_hline(yintercept = -0.05, linetype = "dashed") +
-  coord_flip()
 ```
 
 ## Hypothesis 1
@@ -425,26 +387,42 @@ If the Average Marginal Effect of $\beta_{1}$ is negative and statistically sigi
   \hat{Y} = \beta_{0} + \beta_{1}Female  + \beta_{2}Compromise + \beta_{3}Compromise * Female + \varepsilon
 \end{equation}
 
+```{r fake-data, eval = FALSE}
+
+df <- tibble(gender = sample(c(0,1),100, replace = T),
+             compromise = sample(c(0,1),100, replace = T),
+             PT1 = sample(c(0,10),100, replace = T),
+             PT2 = sample(c(0,10),100, replace = T),
+             PT3 = sample(c(0,10),100, replace = T),
+             PT4 = sample(c(0,10),100, replace = T))
+```
+
 ```{r h1, eval = FALSE, echo = TRUE}
 df <- d %>% select(PT1:PT4, gender, compromise)
+
 
 depVarList <- setdiff(colnames(df), c("gender", "compromise"))
 allModels <- lapply(depVarList, function(x){
   lm(formula= paste0("`", x, "` ~ gender * compromise"), 
-     data= d, na.action = na.omit)})
+     data= df, na.action = na.omit)})
 
 for(i in 1:length(depVarList)){
   if(i==1){
     m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
       filter(factor=="gender") %>%
-      select(AME, lower, upper) %>%
-      mutate(y = depVarList[i])
+      mutate(y = depVarList[i],
+             lower = AME - (1.645 * SE),
+             upper = AME + (1.645 * SE)) %>%
+      select(AME, upper, lower, y)
+
   }
   else{
     tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
       filter(factor=="gender") %>%
-      select(AME, lower, upper) %>%
-      mutate(y = depVarList[i])
+      mutate(y = depVarList[i],
+             lower = AME - (1.645 * SE),
+             upper = AME + (1.645 * SE)) %>%
+      select(AME, upper, lower, y)
     m <- m %>%
       add_case(tmp)
   }
@@ -482,14 +460,18 @@ for(i in 1:length(depVarList)){
   if(i==1){
     m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
       filter(factor=="migration") %>%
-      select(AME, lower, upper) %>%
-      mutate(y = depVarList[i])
+      mutate(y = depVarList[i],
+             lower = AME - (1.645 * SE),
+             upper = AME + (1.645 * SE)) %>%
+      select(AME, upper, lower, y)
   }
   else{
     tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
       filter(factor=="migration") %>%
-      select(AME, lower, upper) %>%
-      mutate(y = depVarList[i])
+      mutate(y = depVarList[i],
+             lower = AME - (1.645 * SE),
+             upper = AME + (1.645 * SE)) %>%
+      select(AME, upper, lower, y)
     m <- m %>%
       add_case(tmp)
   }
@@ -526,14 +508,18 @@ for(i in 1:length(depVarList)){
   if(i==1){
     m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
       filter(factor=="intersection") %>%
-      select(AME, lower, upper) %>%
-      mutate(y = depVarList[i])
+      mutate(y = depVarList[i],
+             lower = AME - (1.645 * SE),
+             upper = AME + (1.645 * SE)) %>%
+      select(AME, upper, lower, y)
   }
   else{
     tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
       filter(factor=="intersection") %>%
-      select(AME, lower, upper) %>%
-      mutate(y = depVarList[i])
+      mutate(y = depVarList[i],
+             lower = AME - (1.645 * SE),
+             upper = AME + (1.645 * SE)) %>%
+      select(AME, upper, lower, y)
     m <- m %>%
       add_case(tmp)
   }
