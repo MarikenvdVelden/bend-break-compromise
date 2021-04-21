@@ -1,6 +1,6 @@
-# TITLE
+# Who Bends and Who Breaks? Experimental Evidence for Conditions Affecting Voters' Evaluations of Politicians
 
-Data &amp; Analysis Compendium for the paper, entitled _title_. 
+Data &amp; Analysis Compendium for the paper, entitled _Who Bends and Who Breaks? Experimental Evidence for Conditions Affecting Voters' Evaluations of Politicians_. 
 This study has received [approval](docs/EthicalApproval.pdf) for the Vrije Universteit Amsterdam's Research Ethics Committee and is registered at [osf](https://osf.io/kvtzp/) -- see [here](docs/pap/compromise-punishment-pap.pdf) for the pre-analysis plan.
 
 ## Draft
