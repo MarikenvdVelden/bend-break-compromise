@@ -1,6 +1,6 @@
-# Who Bends and Who Breaks? Experimental Evidence for Conditions Affecting Voters' Evaluations of Politicians
+# Bend or Break? Experimental Evidence of Voters' Punishment for Striking Political Compromises
 
-Data &amp; Analysis Compendium for the paper, entitled _Who Bends and Who Breaks? Experimental Evidence for Conditions Affecting Voters' Evaluations of Politicians_. 
+Data &amp; Analysis Compendium for the paper, entitled _Bend or Break? Experimental Evidence of Voters' Punishment for Striking Political Compromises_. 
 This study has received [approval](docs/EthicalApproval.pdf) from the Vrije Universteit Amsterdam's Research Ethics Committee and is registered at [osf](https://osf.io/kvtzp/) -- see also [here](docs/pap/compromise-punishment-pap.pdf) for the pre-analysis plan.
 
 ## Draft

@@ -1,5 +1,5 @@
 ---
-title: "Pre-Analysis Plan: Who Bends and Who Breaks? Experimental Evidence for Conditions Affecting Voters' Evaluations of Politicians Striking Compromises"
+title: "Pre-Analysis Plan: Bend or Break? Experimental Evidence of Voters' Punishment for Striking Political Compromises"
 date: "`r format(Sys.time(), '%d %B, %Y - %X (%Z)')`"
 output: 
   pdf_document:
@@ -398,35 +398,10 @@ df <- tibble(gender = sample(c(0,1),100, replace = T),
 ```
 
 ```{r h1, eval = FALSE, echo = TRUE}
+source(here::here("src/lib/functions.R"))
+
 df <- d %>% select(PT1:PT4, gender, compromise)
-
-
-depVarList <- setdiff(colnames(df), c("gender", "compromise"))
-allModels <- lapply(depVarList, function(x){
-  lm(formula= paste0("`", x, "` ~ gender * compromise"), 
-     data= df, na.action = na.omit)})
-
-for(i in 1:length(depVarList)){
-  if(i==1){
-    m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
-      filter(factor=="gender") %>%
-      mutate(y = depVarList[i],
-             lower = AME - (1.645 * SE),
-             upper = AME + (1.645 * SE)) %>%
-      select(AME, upper, lower, y)
-
-  }
-  else{
-    tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
-      filter(factor=="gender") %>%
-      mutate(y = depVarList[i],
-             lower = AME - (1.645 * SE),
-             upper = AME + (1.645 * SE)) %>%
-      select(AME, upper, lower, y)
-    m <- m %>%
-      add_case(tmp)
-  }
-}
+h1 <- regression(data = df, a = gender, b = compromise)
 ```
 
 ## Hypothesis 2
@@ -451,31 +426,7 @@ df <- d %>%
                          .default = 0)) %>%
   select(PT1:PT4, migration, compromise)
 
-depVarList <- setdiff(colnames(df), c("migration", "compromise"))
-allModels <- lapply(depVarList, function(x){
-  lm(formula= paste0("`", x, "` ~ migration * compromise"), 
-     data= d, na.action = na.omit)})
-
-for(i in 1:length(depVarList)){
-  if(i==1){
-    m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
-      filter(factor=="migration") %>%
-      mutate(y = depVarList[i],
-             lower = AME - (1.645 * SE),
-             upper = AME + (1.645 * SE)) %>%
-      select(AME, upper, lower, y)
-  }
-  else{
-    tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
-      filter(factor=="migration") %>%
-      mutate(y = depVarList[i],
-             lower = AME - (1.645 * SE),
-             upper = AME + (1.645 * SE)) %>%
-      select(AME, upper, lower, y)
-    m <- m %>%
-      add_case(tmp)
-  }
-}
+h2 <- regression(data = df, a = migration, b = compromise)
 ```
 
 
@@ -499,31 +450,7 @@ df <- d %>%
                          .default = 0)) %>%
   select(PT1:PT4, intersection, compromise)
 
-depVarList <- setdiff(colnames(df), c("intersection", "compromise"))
-allModels <- lapply(depVarList, function(x){
-  lm(formula= paste0("`", x, "` ~ intersection * compromise"), 
-     data= d, na.action = na.omit)})
-
-for(i in 1:length(depVarList)){
-  if(i==1){
-    m <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
-      filter(factor=="intersection") %>%
-      mutate(y = depVarList[i],
-             lower = AME - (1.645 * SE),
-             upper = AME + (1.645 * SE)) %>%
-      select(AME, upper, lower, y)
-  }
-  else{
-    tmp <- summary(margins(allModels[[i]]), at = list(compromise = 1)) %>%
-      filter(factor=="intersection") %>%
-      mutate(y = depVarList[i],
-             lower = AME - (1.645 * SE),
-             upper = AME + (1.645 * SE)) %>%
-      select(AME, upper, lower, y)
-    m <- m %>%
-      add_case(tmp)
-  }
-}
+h3 <- regression(data = df, a = intersection, b = compromise)
 ```
 
 ## Pooled Data
@@ -536,6 +463,10 @@ If the Average Marginal Effect of $\beta_{1}$ is negative and statistically sigi
 \begin{equation}\label{eq:pooled}
     \hat{Y}_{r, i, t} =\beta_{0} + \beta_{1}Intersection_{r, i, t} + \beta_{2}Compromise + \beta_{3}Compromise * Intersection + \alpha_{i} + \gamma_{t} + \varepsilon_{r, i, t}
 \end{equation}
+
+```{r pooled, echo = TRUE, eval = FALSE}
+h3_p <- pooled_regression(data = df, a = intersection, b = compromise, c = issues)
+```
 
 ## Statistical Significance
 All the hypotheses are directional, and therefore all of the tests will be one-tailed.
