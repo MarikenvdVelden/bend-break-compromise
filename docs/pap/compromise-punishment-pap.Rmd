@@ -43,11 +43,15 @@ options(kableExtra.latex.load_packages = FALSE)
 
 # Expectations
 
-**Gender hypothesis** (_H1_):  Women politicians are evaluated lower when striking a political compromise compared to men politicians.
+**Gender hypothesis** (_H1a_):  Women politicians are evaluated lower when striking a political compromise compared to men politicians.
+
+**Gender hypothesis** (_H1b_):  Women politicians are evaluated lower when not striking a political compromise compared to men politicians.
 
 **Migration hypothesis** (_H2_): Politicians with a migration background are evaluated lower when striking a political compromise compared to politicians without a migration background.
 
-**Intersection hypothesis** (_H3_): Women politician with a migration background are evaluated lower when striking a political compromise compared to men politicians without a migration background.
+**Intersection hypothesis** (_H3a_): Women politician with a migration background are evaluated lower when striking a political compromise compared to men politicians without a migration background.
+
+**Intersection hypothesis** (_H3b_): Women politician with a migration background are evaluated lower when not striking a political compromise compared to men politicians without a migration background.
 
 # Research Desing and Protocol
 
