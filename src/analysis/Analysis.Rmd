@@ -21,7 +21,11 @@ library(here)
 # Scripts
 - [Required Packages &amp; Reproducibility](#required-packages-&amp;-reproducibility)
 - [Analyses](#analyses)
-
+  - [Balance Checks](#balance-checks)
+  - [Gender Hypothesis](#gender-hypothesis)
+  - [Migration Hypothesis](#migration-hypothesis)
+  - [Intersection Hypothesis](#intersection-hypothesis)
+  - [Intersection Hypothesis -- Pooled](#intersection-hypothesis--pooled)
 
 # Required Packages &amp; Reproducibility
 ```{r "env", message=FALSE, warning=F}
@@ -30,7 +34,6 @@ source(here("src/lib/functions.R"))
 ```
 
 # Analyses
-
 ```{r "data for analyses"}
 load(here("data/intermediate/cleaned_data.RData"))
 source(here("src/analysis/data-for-analyses.R"))
@@ -50,6 +53,11 @@ cat(table2, file=fn, sep="\n", append=T)
 methodnames <- setNames(as.list(descr$name), descr$name)
 table <- purrr::map(descr, .f= ".") 
 #render_j2("src/analysis/table_descriptives.tex.j2", "report/figures/table_descriptives.tex", data=list(data=table, methods=methodnames))
+```
+
+## Balance Checks
+```{r "balance-checks", eval = F}
+source(here("src/analysis/balance-test.R"))
 ```
 
 ## Gender Hypothesis 

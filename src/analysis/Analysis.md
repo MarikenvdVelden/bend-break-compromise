@@ -6,6 +6,12 @@ Analyses
   - [Required Packages &
     Reproducibility](#required-packages-&-reproducibility)
   - [Analyses](#analyses)
+      - [Balance Checks](#balance-checks)
+      - [Gender Hypothesis](#gender-hypothesis)
+      - [Migration Hypothesis](#migration-hypothesis)
+      - [Intersection Hypothesis](#intersection-hypothesis)
+      - [Intersection Hypothesis –
+        Pooled](#intersection-hypothesis--pooled)
 
 # Required Packages & Reproducibility
 
@@ -37,6 +43,12 @@ cat(table2, file=fn, sep="\n", append=T)
 methodnames <- setNames(as.list(descr$name), descr$name)
 table <- purrr::map(descr, .f= ".") 
 #render_j2("src/analysis/table_descriptives.tex.j2", "report/figures/table_descriptives.tex", data=list(data=table, methods=methodnames))
+```
+
+## Balance Checks
+
+``` r
+source(here("src/analysis/balance-test.R"))
 ```
 
 ## Gender Hypothesis
