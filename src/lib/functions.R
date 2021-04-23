@@ -7,27 +7,29 @@ library(scales)
 library(margins)
 library(lme4)
 
-regression <- function(data, a, b){
+regression <- function(df, a, compromise, n){
   
-  depVarList <- data %>% select(matches("PT[0-9]"))
-  indepVarList <- data %>% select(a, b) 
-  allModels <- apply(depVarList,2,function(xl)lm(xl ~ a*b, data= indepVarList))
-  depVarList <- data %>% select(matches("PT[0-9]")) %>% colnames()
+  depVarList <- df %>% select(matches("PT[0-9]"))
+  indepVarList <- df %>% select(a, compromise) 
+  allModels <- apply(depVarList,2,function(xl)lm(xl ~ a * compromise, data= indepVarList))
+  depVarList <- df %>% select(matches("PT[0-9]")) %>% colnames()
   
   for(i in 1:length(depVarList)){
     if(i==1){
-      m <- summary(margins(allModels[[i]]), at = list(b = 1))[2,] %>%
+      m <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
         mutate(y = depVarList[i],
+               n = n,
                lower = AME - (1.645 * SE),
                upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y)
+        select(AME, upper, lower, y, n)
     }
     else{
-      tmp <- summary(margins(allModels[[i]]), at = list(b = 1))[2,] %>%
+      tmp <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
         mutate(y = depVarList[i],
+               n = n,
                lower = AME - (1.645 * SE),
                upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y)
+        select(AME, upper, lower, y, n)
       m <- m %>%
         add_case(tmp)
       
@@ -35,28 +37,30 @@ regression <- function(data, a, b){
   }
   return(m)
 }
-pooled_regression <- function(data, a, b, c){
+
+pooled_regression <- function(df, a, compromise, issue, n){
   
-  depVarList <- data %>% select(matches("PT[0-9]"))
-  indepVarList <- data %>% select(a, b, c)
-  allModels <- apply(depVarList,2,function(xl)lmer(xl ~ a * b + (1 | c),data= indepVarList))
-  
-  depVarList <- data %>% select(matches("PT[0-9]")) %>% colnames()
+  depVarList <- df %>% select(matches("PT[0-9]"))
+  indepVarList <- df %>% select(a, compromise, issue)
+  allModels <- apply(depVarList,2,function(xl)lmer(xl ~ a * compromise + (1 | issue),data= indepVarList))
+  depVarList <- df %>% select(matches("PT[0-9]")) %>% colnames()
   
   for(i in 1:length(depVarList)){
     if(i==1){
-      m <- summary(margins(allModels[[i]]), at = list(b = 1))[2,] %>%
+      m <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
         mutate(y = depVarList[i],
+               n = n,
                lower = AME - (1.645 * SE),
                upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y)
+        select(AME, upper, lower, y, n)
     }
     else{
-      tmp <- summary(margins(allModels[[i]]), at = list(b = 1))[2,] %>%
+      tmp <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
         mutate(y = depVarList[i],
+               n = n,
                lower = AME - (1.645 * SE),
                upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y)
+        select(AME, upper, lower, y, n)
       m <- m %>%
         add_case(tmp)
       

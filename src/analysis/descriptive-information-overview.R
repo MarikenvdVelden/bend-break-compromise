@@ -1,0 +1,50 @@
+descr <- d %>%
+  select(-id, -issue) %>%
+  mutate(F1 = recode(F1, `999` = 0, `2` = 0)) %>%
+  pivot_longer(cols = everything()) %>%
+  group_by(name) %>%
+  summarise(means = mean(value, na.rm = T),
+            stdev = sd(value, na.rm = T),
+            minvalue = min(value, na.rm = T),
+            maxvalue = max(value, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(name = recode(name,
+                       `F1` = "Gender",
+                       `F2` = "Age",
+                       `F3` = "Education",
+                       `F4` = "Urbanness",
+                       `F5` = "Migration Background",
+                       `F6`  = "Party Preference",
+                       `F7`  = "Employment",
+                       `F8`  = "Income",
+                       `PreT1`  = "Immigration (%)",
+                       `PreT2`  = "Position: Immigration",
+                       `PreT3`  = "Position: Defense",
+                       `PreT4`  = "Position: Education",
+                       `PreT5`  = "Attitude: Women in Politics",
+                       `PreT6`  = "Ideology",
+                       `PreT7` = "Political Efficacy",
+                       `PreT8` = "Position: COVID-19",
+                       `gender` = "Treatment: Gender Politician",
+                       `immigration` = "Treatment: Immigration Background Politician",
+                       `intersection` = "Treatment: Women Politician with Immigration Background",
+                       `compromise` = "Treatment: Striking Compromise",
+                       `PT1` = "DV: Trait Evaluation",
+                       `PT2` = "DV: Favorability",
+                       `PT3` = "DV: Representation",
+                       `PT4` = "DV: Career Prospects"),
+         name = factor(name,
+                         levels = c("DV: Trait Evaluation","DV: Favorability",
+                                   "DV: Representation", "DV: Career Prospects",
+                                   "Treatment: Gender Politician",
+                                   "Treatment: Immigration Background Politician",
+                                   "Treatment: Women Politician with Immigration Background",
+                                   "Treatment: Striking Compromise",
+                                   "Immigration (%)","Position: Immigration",
+                                   "Position: Defense", "Position: Education",
+                                   "Position: COVID-19", "Attitude: Women in Politics",
+                                   "Ideology","Political Efficacy",
+                                   "Gender","Age","Education","Urbanness",
+                                   "Migration Background","Party Preference",
+                                   "Employment", "Income")))
+
