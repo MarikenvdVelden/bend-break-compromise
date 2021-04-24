@@ -24,7 +24,7 @@ h2 %>%
          n = recode(n,
                     `1` = "Compromise (H2)",
                     `0` = "No Compromise (H1b)"),
-         id = 1:(dim(h1a)[1]+dim(h1b)[1])) %>%
+         id = 1:(dim(h2)[1])) %>%
   ggplot(aes(x = reorder(id, AME), 
              y = AME,
              color = y,
