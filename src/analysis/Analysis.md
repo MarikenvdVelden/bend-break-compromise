@@ -36,7 +36,7 @@ with a json string containing the data. To replicate, make sure
 ``` r
 source(here("src/analysis/descriptive-information-overview.R"))
 table2 <- knitr::kable(descr, digits=2)
-fn <- here("report/figures/table_descriptives.md")
+fn <- here("report/figures/table_descriptives.tex")
 cat("# Table: Descriptive Information of Variables under Study \n\n", file=fn)
 cat(table2, file=fn, sep="\n", append=T)
 
@@ -74,3 +74,5 @@ source(here("src/analysis/h3.R"))
 ``` r
 source(here("src/analysis/h3-pooled.R"))
 ```
+
+## Exploration
