@@ -20,7 +20,7 @@ The following data files might be of interest:
 
 ## Results
 
-The main code to conduct the multiverse analyses is combined in the [src/analysis/analysis.md](src/Analysis/analysis.md). 
+The main code to conduct the multiverse analyses is combined in the [src/analysis/analysis.md](src/analysis/Analysis.md). 
 Of interest might be:
 * [Code](src/analysis/) to conduct the separate multiverse analyses
 * [Figures](report/figures) visualising the descriptives and the results of the analyses 
