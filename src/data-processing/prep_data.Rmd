@@ -24,8 +24,7 @@ library(rmarkdown)
 - [Check Missing Values](#check-missing-values)
 - [Visualization of Data](#visualization-of-data)
   - [Dependent Variable](#dependent-variable)
-  - [Independent Variable](#independent-variable)
-  - [Control Variables](#control-variables)
+  - [Treatment Conditions](#treatment-conditions)
   - [Correlations Matrix](#correlations-matrix)
 
 ## Required Packages &amp; Reproducibility
@@ -42,11 +41,6 @@ This code chuck downloads the data from Qualtrics using the API and cleans the r
 source(here("src/data-processing/tidy_data.R"))
 ```
 
-## Save Data for Analysis
-```{r "save data"}
-save(d, file = here("data/intermediate/cleaned_data.RData"))
-```
-
 ## Check Missing Values
 
 We employ the following criteria:
@@ -58,10 +52,16 @@ We employ the following criteria:
 
 ```
 
+## Save Data for Analysis
+```{r "save data",eval=FALSE}
+save(d, file = here("data/intermediate/cleaned_data.RData"))
+```
+
 ## Visualization of Data
 
 ### Dependent Variable
 ```{r "Dependent Variable", echo=F}
+load(here("data/intermediate/cleaned_data.RData"))
 d %>%
   mutate(`PT-D1` = round((`PT-D1_1` + `PT-D1_2` + `PT-D1_3` + `PT-D1_4` + `PT-D1_5` + `PT-D1_6`)/6, 0),
          `PT-E1` = round((`PT-E1_1` + `PT-E1_2` + `PT-E1_3` + `PT-E1_4` + `PT-E1_5` + `PT-E1_6`)/6, 0),
@@ -133,7 +133,7 @@ d %>%
        x = "", title = "Evaluation of Politicians") +
   geom_hline(yintercept = 5, linetype = "dotted", color = "darkgrey") +
   theme_minimal() +
-  scale_color_manual(values = c("#0C5BB0CC", "#15983DCC", "#FA6B09CC", "#A1C720CC" )) +
+  scale_color_manual(values = fig_cols) +
   coord_flip() +
   theme(plot.title = element_text(hjust = 0.5),
         #axis.text.x = element_text(angle=45),
@@ -225,7 +225,7 @@ d %>%
        x = "", title = "Distribution of Treatments") +
   scale_x_continuous(labels=scales::percent) +
   theme_minimal() +
-  scale_fill_manual(values = c("#0C5BB0CC", "#EE0011CC", "#15983DCC", "#EC579ACC", "#FA6B09CC", "#149BEDCC", "#A1C720CC", "#FEC10BCC" )) +
+  scale_fill_manual(values = fig_cols) +
   theme(plot.title = element_text(hjust = 0.5),
         legend.position="bottom",
         legend.title = element_blank()) +
@@ -293,7 +293,6 @@ d %>%
          `Region`  = F3,
          `Urbanness`  = F4,
          `Migration Background`  = F5,
-         `Vote Recall`  = F6,
          `Job`  = F7,
          `Income`  = F8,
          `Percentage - Immigration`  = PreT1,
@@ -311,7 +310,7 @@ d %>%
   ggcorrmat(
   type = "robust", # correlation method
   cor.vars = c(everything()), # a range of variables can be selected
-  colors = c("#0C5BB0CC", "#EC579ACC", "#EE0011CC"),
+  colors = c(fig_cols),
   title = "Correlalogram for Variables under Study"
 )
 ```

@@ -11,6 +11,7 @@ library(ggstatsplot)
 
 fig_cols <- piratepal(palette = "basel", 
              trans = .2)
+fig_cols <- as.character(fig_cols)
 
 regression <- function(df, a, compromise, n){
   
