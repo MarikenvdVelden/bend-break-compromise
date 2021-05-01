@@ -62,15 +62,256 @@ We employ the following criteria:
 
 ### Dependent Variable
 ```{r "Dependent Variable", echo=F}
+d %>%
+  mutate(`PT-D1` = round((`PT-D1_1` + `PT-D1_2` + `PT-D1_3` + `PT-D1_4` + `PT-D1_5` + `PT-D1_6`)/6, 0),
+         `PT-E1` = round((`PT-E1_1` + `PT-E1_2` + `PT-E1_3` + `PT-E1_4` + `PT-E1_5` + `PT-E1_6`)/6, 0),
+         `PT-C1` = round((`PT-C1_1` + `PT-C1_2` + `PT-C1_3` + `PT-C1_4` + `PT-C1_5` + `PT-C1_6`)/6, 0),
+         `PT-I1` = round((`PT-I1_1` + `PT-I1_2` + `PT-I1_3` + `PT-I1_4` + `PT-I1_5` + `PT-I1_6`)/6, 0),
+         PreT5 = round((PreT5_1 + PreT5_2 + PreT5_3 + PreT5_4)/4,0),
+         PreT7 = round((PreT7_1 + PreT7_2 + PreT7_3 + PreT7_4 + PreT7_5 + PreT7_6 + PreT7_7)/7,0)) %>%
+  pivot_longer(cols = c(`name-D`, `name-I`, `name-E`, `name-C`),
+               values_to = "name",
+               names_to = "issue") %>%
+  drop_na(name) %>%
+  mutate(issue = recode(issue, 
+                        `name-C` = "COVID-19",
+                        `name-D` = "Defense",
+                        `name-E` = "Education",
+                        `name-I` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D1`, `PT-E1`, `PT-C1`, `PT-I1`),
+               values_to = "PT1",
+               names_to = "issue1") %>%
+  drop_na(PT1) %>%
+  mutate(issue1 = recode(issue1, 
+                        `PT-C1` = "COVID-19",
+                        `PT-D1` = "Defense",
+                        `PT-E1` = "Education",
+                        `PT-I1` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D2`, `PT-E2`, `PT-C2`, `PT-I2`),
+               values_to = "PT2",
+               names_to = "issue2") %>%
+  mutate(issue2 = recode(issue2, 
+                        `PT-C2` = "COVID-19",
+                        `PT-D2` = "Defense",
+                        `PT-E2` = "Education",
+                        `PT-I2` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D3`, `PT-E3`, `PT-C3`, `PT-I3`),
+               values_to = "PT3",
+               names_to = "issue3") %>%
+  mutate(issue3 = recode(issue3, 
+                         `PT-C3` = "COVID-19",
+                         `PT-D3` = "Defense",
+                         `PT-E3` = "Education",
+                         `PT-I3` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D4`, `PT-E4`, `PT-C4`, `PT-I4`),
+               values_to = "PT4",
+               names_to = "issue4") %>%
+  mutate(issue4 = recode(issue4, 
+                         `PT-C4` = "COVID-19",
+                         `PT-D4` = "Defense",
+                         `PT-E4` = "Education",
+                         `PT-I4` = "Immigration"),
+        check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
+  filter(check == 1) %>%
+  select(PT1, PT2, PT3, PT4, issue = issue1) %>%
+  pivot_longer(cols = PT1:PT4) %>%
+  mutate(name = recode(name,
+                       `PT1` = "DV: Trait Evaluation",
+                       `PT2` = "DV: Favorability",
+                       `PT3` = "DV: Representation",
+                       `PT4` = "DV: Career Prospects")) %>%
+  group_by(issue, name) %>%
+  summarise(means = mean(value, na.rm=T),
+            stdev = sd(value, na.rm=T)) %>%
+  mutate(lower = means - (1.56 * stdev),
+         upper = means + (1.56 * stdev)) %>%
+  ggplot(aes(x = name, y = means, colour = issue,
+             ymin = lower, ymax = upper)) +
+  geom_point(position = position_dodge(.2)) + 
+  geom_errorbar(position = position_dodge(.2), width = 0) +
+  labs(y = "0 (negative) - 10 (positive)", 
+       x = "", title = "Evaluation of Politicians") +
+  geom_hline(yintercept = 5, linetype = "dotted", color = "darkgrey") +
+  theme_minimal() +
+  scale_color_manual(values = c("#0C5BB0CC", "#15983DCC", "#FA6B09CC", "#A1C720CC" )) +
+  coord_flip() +
+  theme(plot.title = element_text(hjust = 0.5),
+        #axis.text.x = element_text(angle=45),
+        legend.position="bottom",
+        legend.title = element_blank()) 
 ```
 
-### Independent Variable
+### Treatment Conditions
 ```{r "Independent Variables", echo=F, message=FALSE, warning=FALSE,fig.width=10, fig.height=10}
 
+d %>%
+  mutate(`PT-D1` = round((`PT-D1_1` + `PT-D1_2` + `PT-D1_3` + `PT-D1_4` + `PT-D1_5` + `PT-D1_6`)/6, 0),
+         `PT-E1` = round((`PT-E1_1` + `PT-E1_2` + `PT-E1_3` + `PT-E1_4` + `PT-E1_5` + `PT-E1_6`)/6, 0),
+         `PT-C1` = round((`PT-C1_1` + `PT-C1_2` + `PT-C1_3` + `PT-C1_4` + `PT-C1_5` + `PT-C1_6`)/6, 0),
+         `PT-I1` = round((`PT-I1_1` + `PT-I1_2` + `PT-I1_3` + `PT-I1_4` + `PT-I1_5` + `PT-I1_6`)/6, 0),
+         PreT5 = round((PreT5_1 + PreT5_2 + PreT5_3 + PreT5_4)/4,0),
+         PreT7 = round((PreT7_1 + PreT7_2 + PreT7_3 + PreT7_4 + PreT7_5 + PreT7_6 + PreT7_7)/7,0)) %>%
+  pivot_longer(cols = c(`name-D`, `name-I`, `name-E`, `name-C`),
+               values_to = "name",
+               names_to = "issue") %>%
+  drop_na(name) %>%
+  mutate(issue = recode(issue, 
+                        `name-C` = "COVID-19",
+                        `name-D` = "Defense",
+                        `name-E` = "Education",
+                        `name-I` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D1`, `PT-E1`, `PT-C1`, `PT-I1`),
+               values_to = "PT1",
+               names_to = "issue1") %>%
+  drop_na(PT1) %>%
+  mutate(issue1 = recode(issue1, 
+                        `PT-C1` = "COVID-19",
+                        `PT-D1` = "Defense",
+                        `PT-E1` = "Education",
+                        `PT-I1` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D2`, `PT-E2`, `PT-C2`, `PT-I2`),
+               values_to = "PT2",
+               names_to = "issue2") %>%
+  mutate(issue2 = recode(issue2, 
+                        `PT-C2` = "COVID-19",
+                        `PT-D2` = "Defense",
+                        `PT-E2` = "Education",
+                        `PT-I2` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D3`, `PT-E3`, `PT-C3`, `PT-I3`),
+               values_to = "PT3",
+               names_to = "issue3") %>%
+  mutate(issue3 = recode(issue3, 
+                         `PT-C3` = "COVID-19",
+                         `PT-D3` = "Defense",
+                         `PT-E3` = "Education",
+                         `PT-I3` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D4`, `PT-E4`, `PT-C4`, `PT-I4`),
+               values_to = "PT4",
+               names_to = "issue4") %>%
+  mutate(issue4 = recode(issue4, 
+                         `PT-C4` = "COVID-19",
+                         `PT-D4` = "Defense",
+                         `PT-E4` = "Education",
+                         `PT-I4` = "Immigration"),
+        check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
+  filter(check == 1) %>%
+  mutate(gender = recode(name,
+                         `Karel van der Kleijn` = 0,
+                         `Karin van der Kleijn` = 1,
+                         `Rachid Amezian` = 0,
+                         `Rachida Amezian` = 1),
+         immigration = recode(name,
+                              `Karel van der Kleijn` = 0,
+                              `Karin van der Kleijn` = 0,
+                              `Rachid Amezian` = 1,
+                              `Rachida Amezian` = 1),
+         intersection = recode(name,
+                               `Karel van der Kleijn` = 0,
+                               `Karin van der Kleijn` = 0,
+                               `Rachid Amezian` = 0,
+                               `Rachida Amezian` = 1),
+         compromise = if_else(compromis == "een compromis", "Compromise", "No Compromise"))%>%
+  unite("treatment", c("name", "compromise"), sep = ": ") %>%
+  select(treatment, issue) %>%
+  group_by(issue, treatment) %>%
+  summarise(n = n()) %>%
+  mutate(perc = round(n/sum(n),2),
+         perc2 = paste0(perc*100, "%")) %>%
+  ggplot(aes(x = perc, y = issue, fill = treatment, label = perc2)) +
+  geom_col(position = 'fill') + 
+  geom_text(aes(label=perc2), position = position_fill(vjust=0.5),
+            color = "white", fontface = "bold") +
+  labs(y = "", 
+       x = "", title = "Distribution of Treatments") +
+  scale_x_continuous(labels=scales::percent) +
+  theme_minimal() +
+  scale_fill_manual(values = c("#0C5BB0CC", "#EE0011CC", "#15983DCC", "#EC579ACC", "#FA6B09CC", "#149BEDCC", "#A1C720CC", "#FEC10BCC" )) +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="bottom",
+        legend.title = element_blank()) +
+  guides(fill=guide_legend(ncol=2,byrow=TRUE))
 ```
 
 
 ### Correlations Matrix
 ```{r "Correlations Matrix", echo=F, message=T, warning=T, fig.width=15, fig.height=15}
 
+d %>%
+  mutate(`PT-D1` = round((`PT-D1_1` + `PT-D1_2` + `PT-D1_3` + `PT-D1_4` + `PT-D1_5` + `PT-D1_6`)/6, 0),
+         `PT-E1` = round((`PT-E1_1` + `PT-E1_2` + `PT-E1_3` + `PT-E1_4` + `PT-E1_5` + `PT-E1_6`)/6, 0),
+         `PT-C1` = round((`PT-C1_1` + `PT-C1_2` + `PT-C1_3` + `PT-C1_4` + `PT-C1_5` + `PT-C1_6`)/6, 0),
+         `PT-I1` = round((`PT-I1_1` + `PT-I1_2` + `PT-I1_3` + `PT-I1_4` + `PT-I1_5` + `PT-I1_6`)/6, 0),
+         PreT5 = round((PreT5_1 + PreT5_2 + PreT5_3 + PreT5_4)/4,0),
+         PreT7 = round((PreT7_1 + PreT7_2 + PreT7_3 + PreT7_4 + PreT7_5 + PreT7_6 + PreT7_7)/7,0)) %>%
+  pivot_longer(cols = c(`name-D`, `name-I`, `name-E`, `name-C`),
+               values_to = "name",
+               names_to = "issue") %>%
+  drop_na(name) %>%
+  mutate(issue = recode(issue, 
+                        `name-C` = "COVID-19",
+                        `name-D` = "Defense",
+                        `name-E` = "Education",
+                        `name-I` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D1`, `PT-E1`, `PT-C1`, `PT-I1`),
+               values_to = "PT1",
+               names_to = "issue1") %>%
+  drop_na(PT1) %>%
+  mutate(issue1 = recode(issue1, 
+                        `PT-C1` = "COVID-19",
+                        `PT-D1` = "Defense",
+                        `PT-E1` = "Education",
+                        `PT-I1` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D2`, `PT-E2`, `PT-C2`, `PT-I2`),
+               values_to = "PT2",
+               names_to = "issue2") %>%
+  mutate(issue2 = recode(issue2, 
+                        `PT-C2` = "COVID-19",
+                        `PT-D2` = "Defense",
+                        `PT-E2` = "Education",
+                        `PT-I2` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D3`, `PT-E3`, `PT-C3`, `PT-I3`),
+               values_to = "PT3",
+               names_to = "issue3") %>%
+  mutate(issue3 = recode(issue3, 
+                         `PT-C3` = "COVID-19",
+                         `PT-D3` = "Defense",
+                         `PT-E3` = "Education",
+                         `PT-I3` = "Immigration")) %>%
+  pivot_longer(cols = c(`PT-D4`, `PT-E4`, `PT-C4`, `PT-I4`),
+               values_to = "PT4",
+               names_to = "issue4") %>%
+  mutate(issue4 = recode(issue4, 
+                         `PT-C4` = "COVID-19",
+                         `PT-D4` = "Defense",
+                         `PT-E4` = "Education",
+                         `PT-I4` = "Immigration"),
+        check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
+  filter(check == 1) %>%
+  select(`Gender` = F1,
+         `Age` = F2,
+         #`Education` = F9,
+         `Region`  = F3,
+         `Urbanness`  = F4,
+         `Migration Background`  = F5,
+         `Vote Recall`  = F6,
+         `Job`  = F7,
+         `Income`  = F8,
+         `Percentage - Immigration`  = PreT1,
+         `Position - Immigration`  = PreT2,
+         `Position - Defense`  = PreT3,
+         `Position - Education`  = PreT4,
+         `Attitudes towards Women in Politics`  = PreT5,
+         `Ideology`  = PreT6,
+         `Political Efficacy` = PreT7, 
+         `Position - COVID-19 Policy` = PreT8,
+         `DV: Trait Evaluation` = PT1,
+         `DV: Favorability` = PT2,
+         `DV: Representation` = PT3,
+         `DV: Career Prospects` = PT4) %>%
+  ggcorrmat(
+  type = "robust", # correlation method
+  cor.vars = c(everything()), # a range of variables can be selected
+  colors = c("#0C5BB0CC", "#EC579ACC", "#EE0011CC"),
+  title = "Correlalogram for Variables under Study"
+)
 ```

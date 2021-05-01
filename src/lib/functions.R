@@ -6,6 +6,11 @@ library(ggpubr)
 library(scales)
 library(margins)
 library(lme4)
+library(yarrr)
+library(ggstatsplot)
+
+fig_cols <- piratepal(palette = "basel", 
+             trans = .2)
 
 regression <- function(df, a, compromise, n){
   
