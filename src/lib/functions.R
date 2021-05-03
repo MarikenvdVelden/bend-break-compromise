@@ -8,10 +8,11 @@ library(margins)
 library(lme4)
 library(yarrr)
 library(ggstatsplot)
+library(ggrepel)
 
 fig_cols <- piratepal(palette = "basel", 
              trans = .2)
-fig_cols <- as.character(fig_cols)
+fig_cols <- as.character(fig_cols[1:8])
 
 regression <- function(df, a, compromise, n){
   

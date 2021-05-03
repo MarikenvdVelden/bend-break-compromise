@@ -65,6 +65,6 @@ d <- d %>%
                                `Rachid Amezian` = 0,
                                `Rachida Amezian` = 1),
          compromise = if_else(compromis == "een compromis",1, 0)) %>%
-  select(id:F8, PreT1:PreT4, PreT5, PreT6, PreT7, PreT8, gender, immigration, intersection, compromise,
-         issue, PT1, PT2, PT3, PT4)
-  
+  select(id:F8, PreT1:PreT4, PreT5, PreT6, PreT7, PreT8, name, gender, immigration, intersection, compromise,
+         issue, PT1, PT2, PT3, PT4) %>%
+  distinct(id, .keep_all = TRUE)

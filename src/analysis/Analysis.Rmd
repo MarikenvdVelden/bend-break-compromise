@@ -55,6 +55,39 @@ table <- purrr::map(descr, .f= ".")
 #render_j2("src/analysis/table_descriptives.tex.j2", "report/figures/table_descriptives.tex", data=list(data=table, methods=methodnames))
 ```
 
+## Descriptive Results
+```{r "descriptive-results", echo=FALSE}
+d %>%
+  select(PT1, PT2, PT3, PT4, issue, name, compromise) %>%
+  pivot_longer(cols = PT1:PT4,
+               names_to = "dvs") %>%
+  mutate(dvs = recode(dvs,
+                      `PT1` = "DV: Trait Evaluation",
+                      `PT2` = "DV: Favorability",
+                      `PT3` = "DV: Representation",
+                      `PT4` = "DV: Career Prospects"),
+         compromise = if_else(compromise==1, "Compromise", "No Compromise")) %>%
+  group_by(issue, dvs, name, compromise) %>%
+  summarise(means = mean(value, na.rm=T),
+            stdev = sd(value, na.rm=T)) %>%
+  mutate(lower = means - (1.56 * stdev),
+         upper = means + (1.56 * stdev)) %>%
+  ggplot(aes(x = reorder(dvs, means), y = means, colour = issue,
+             ymin = lower, ymax = upper, label = issue)) +
+  geom_point(position = position_dodge(.2)) + 
+  geom_errorbar(position = position_dodge(.2), width = 0) +
+  labs(y = "0 (negative) - 10 (positive)", 
+       x = "", title = "Bend or Break?") +
+  geom_hline(yintercept = 5, linetype = "dotted", color = "darkgrey") +
+  theme_minimal() +
+  facet_grid(name~compromise, scales = "free") +
+  scale_color_manual(values = fig_cols) +
+  coord_flip() +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="bottom",
+        legend.title = element_blank()) 
+```
+
 ## Balance Checks
 ```{r "balance-checks", eval = F}
 source(here("src/analysis/balance-test.R"))

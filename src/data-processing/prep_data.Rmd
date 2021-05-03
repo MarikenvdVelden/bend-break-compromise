@@ -114,21 +114,23 @@ d %>%
         check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
   filter(check == 1) %>%
   select(PT1, PT2, PT3, PT4, issue = issue1) %>%
-  pivot_longer(cols = PT1:PT4) %>%
-  mutate(name = recode(name,
+  pivot_longer(cols = PT1:PT4,
+               names_to = "dvs") %>%
+  mutate(dvs = recode(dvs,
                        `PT1` = "DV: Trait Evaluation",
                        `PT2` = "DV: Favorability",
                        `PT3` = "DV: Representation",
                        `PT4` = "DV: Career Prospects")) %>%
-  group_by(issue, name) %>%
+  group_by(issue, dvs) %>%
   summarise(means = mean(value, na.rm=T),
             stdev = sd(value, na.rm=T)) %>%
   mutate(lower = means - (1.56 * stdev),
          upper = means + (1.56 * stdev)) %>%
-  ggplot(aes(x = name, y = means, colour = issue,
-             ymin = lower, ymax = upper)) +
+  ggplot(aes(x = dvs, y = means, colour = issue,
+             ymin = lower, ymax = upper, label = issue)) +
   geom_point(position = position_dodge(.2)) + 
   geom_errorbar(position = position_dodge(.2), width = 0) +
+  geom_label_repel(nudge_x = 0.35,nudge_y = 0.5, size = 4) + 
   labs(y = "0 (negative) - 10 (positive)", 
        x = "", title = "Evaluation of Politicians") +
   geom_hline(yintercept = 5, linetype = "dotted", color = "darkgrey") +
@@ -136,8 +138,7 @@ d %>%
   scale_color_manual(values = fig_cols) +
   coord_flip() +
   theme(plot.title = element_text(hjust = 0.5),
-        #axis.text.x = element_text(angle=45),
-        legend.position="bottom",
+        legend.position="none",
         legend.title = element_blank()) 
 ```
 
@@ -210,32 +211,29 @@ d %>%
                                `Karin van der Kleijn` = 0,
                                `Rachid Amezian` = 0,
                                `Rachida Amezian` = 1),
-         compromise = if_else(compromis == "een compromis", "Compromise", "No Compromise"))%>%
-  unite("treatment", c("name", "compromise"), sep = ": ") %>%
+         compromise = if_else(compromis == "geen compromis", "Compromise", "No Compromise"))%>%
+  unite("treatment", c("name", "compromise"), sep = "\n ") %>%
   select(treatment, issue) %>%
   group_by(issue, treatment) %>%
   summarise(n = n()) %>%
   mutate(perc = round(n/sum(n),2),
          perc2 = paste0(perc*100, "%")) %>%
   ggplot(aes(x = perc, y = issue, fill = treatment, label = perc2)) +
-  geom_col(position = 'fill') + 
-  geom_text(aes(label=perc2), position = position_fill(vjust=0.5),
-            color = "white", fontface = "bold") +
-  labs(y = "", 
-       x = "", title = "Distribution of Treatments") +
+  geom_col(position = 'fill', width=0.75) + 
+  geom_text(position = position_fill(vjust=0.5), color = "white", fontface = "bold") +
+  labs(y = "", x = "", title = "Distribution of Treatments") +
   scale_x_continuous(labels=scales::percent) +
   theme_minimal() +
   scale_fill_manual(values = fig_cols) +
   theme(plot.title = element_text(hjust = 0.5),
         legend.position="bottom",
         legend.title = element_blank()) +
-  guides(fill=guide_legend(ncol=2,byrow=TRUE))
+  guides(fill=guide_legend(ncol=4,byrow=TRUE))
 ```
 
 
 ### Correlations Matrix
 ```{r "Correlations Matrix", echo=F, message=T, warning=T, fig.width=15, fig.height=15}
-
 d %>%
   mutate(`PT-D1` = round((`PT-D1_1` + `PT-D1_2` + `PT-D1_3` + `PT-D1_4` + `PT-D1_5` + `PT-D1_6`)/6, 0),
          `PT-E1` = round((`PT-E1_1` + `PT-E1_2` + `PT-E1_3` + `PT-E1_4` + `PT-E1_5` + `PT-E1_6`)/6, 0),
@@ -289,20 +287,20 @@ d %>%
   filter(check == 1) %>%
   select(`Gender` = F1,
          `Age` = F2,
-         #`Education` = F9,
+         `Education` = F9,
          `Region`  = F3,
          `Urbanness`  = F4,
          `Migration Background`  = F5,
          `Job`  = F7,
          `Income`  = F8,
-         `Percentage - Immigration`  = PreT1,
-         `Position - Immigration`  = PreT2,
-         `Position - Defense`  = PreT3,
-         `Position - Education`  = PreT4,
-         `Attitudes towards Women in Politics`  = PreT5,
+         `Position: Immigration (%)`  = PreT1,
+         `Position: Immigration`  = PreT2,
+         `Position: Defense`  = PreT3,
+         `Position: Education`  = PreT4,
+         `Position: Attitude Women in Politics`  = PreT5,
          `Ideology`  = PreT6,
          `Political Efficacy` = PreT7, 
-         `Position - COVID-19 Policy` = PreT8,
+         `Position: COVID-19 Policy` = PreT8,
          `DV: Trait Evaluation` = PT1,
          `DV: Favorability` = PT2,
          `DV: Representation` = PT3,
@@ -310,7 +308,7 @@ d %>%
   ggcorrmat(
   type = "robust", # correlation method
   cor.vars = c(everything()), # a range of variables can be selected
-  colors = c(fig_cols),
+  colors = c(fig_cols[1], fig_cols[4], fig_cols[8]),
   title = "Correlalogram for Variables under Study"
 )
 ```
