@@ -14,9 +14,7 @@ Of interest might be:
 
 ## Data
 
-The cleaned data file might be of interest.
-
-* [cleaned_data.RData](data/intermediate/cleaned_data.RData) This file contains demographic information as well as position on political issues (COVID-19, Defence, Education, Immigration), vote choice, ideological position, political efficacy, and attitudes towards women in politics. 
+The [cleaned data file](data/intermediate/cleaned_data.RData) might be of interest.  This file contains demographic information as well as position on political issues (COVID-19, Defence, Education, Immigration), vote choice, ideological position, political efficacy, and attitudes towards women in politics. 
 
 ## Results
 
