@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  6 MAY 2021 11:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  6 MAY 2021 15:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -494,6 +494,8 @@ Package grffile Info: Option `multidot' is set to `true'.
 Package grffile Info: Option `extendedchars' is set to `false'.
 Package grffile Info: Option `space' is set to `true'.
 Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/floatrow/floatrow.sty
 Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
 (/usr/local/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
@@ -606,9 +608,6 @@ Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
 \minrowclearance=\skip70
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
@@ -674,34 +673,33 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 ) (./draft.aux)
 \openout1 = `draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 108.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 108.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 97.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 108.
-LaTeX Font Info:    ... okay on input line 108.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 108.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 97.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 108.
+LaTeX Info: Redefining \microtypecontext on input line 97.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -743,7 +741,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring ON on input line 108.
+Package hyperref Info: Link coloring ON on input line 97.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -751,9 +749,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count149
 )
-LaTeX Info: Redefining \ref on input line 108.
-LaTeX Info: Redefining \pageref on input line 108.
-LaTeX Info: Redefining \nameref on input line 108.
+LaTeX Info: Redefining \ref on input line 97.
+LaTeX Info: Redefining \pageref on input line 97.
+LaTeX Info: Redefining \nameref on input line 97.
 (./draft.out) (./draft.out)
 \@outlinefile=\write3
 \openout3 = `draft.out'.
@@ -801,39 +799,37 @@ Package: fr-longtable 2007/11/28 v0.1b (beta) floatrow: additions for longtable
 \flrow@LT@prelastfoot=\box51
 \c@FBLTpage=\count150
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 110.
-
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 99.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 110.
-
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 99.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 110
-.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 99.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 110
-.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 99.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 110.
+(Font)              <12> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 110.
+(Font)              <8> on input line 99.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 110.
-LaTeX Font Info:    Try loading font information for U+msa on input line 110.
+(Font)              <6> on input line 99.
+LaTeX Font Info:    Try loading font information for U+msa on input line 99.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 110.
+LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -848,102 +844,68 @@ s/Dependent Variable-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /Dependent Variable-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/Dependent Variable-1.png  used on input line 128.
+unish/report/figures/Dependent Variable-1.png  used on input line 117.
 (pdftex.def)             Requested size: 352.31685pt x 251.65489pt.
-</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/Ind
-ependent Variables-1.png, id=40, 963.6pt x 963.6pt>
-File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
-s/Independent Variables-1.png Graphic file (type png)
-<use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/Independent Variables-1.png>
-Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/Independent Variables-1.png  used on input line 137.
-(pdftex.def)             Requested size: 352.30656pt x 352.30656pt.
-</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/bal
-ance-checks-1.png, id=41, 770.88pt x 770.88pt>
-File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
-s/balance-checks-1.png Graphic file (type png)
-<use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/balance-checks-1.png>
-Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/balance-checks-1.png  used on input line 146.
-(pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 157.
+(Font)              <10> on input line 128.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 157.
+(Font)              <7> on input line 128.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 157.
+(Font)              <5> on input line 128.
 
-Overfull \hbox (42.68907pt too wide) in paragraph at lines 157--198
+Overfull \hbox (42.68907pt too wide) in paragraph at lines 128--169
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h1-
-1.png, id=42, 770.88pt x 770.88pt>
+</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/bal
+ance-checks-1.png, id=40, 963.6pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
-s/h1-1.png Graphic file (type png)
+s/balance-checks-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/h1-1.png>
+/balance-checks-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h1-1.png  used on input line 205.
-(pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
-</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h2-
-1.png, id=43, 770.88pt x 770.88pt>
-File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
-s/h2-1.png Graphic file (type png)
-<use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/h2-1.png>
-Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h2-1.png  used on input line 214.
-(pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
-</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h3-
-1.png, id=44, 770.88pt x 770.88pt>
-File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
-s/h3-1.png Graphic file (type png)
-<use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/h3-1.png>
-Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h3-1.png  used on input line 223.
-(pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
-</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h3-
-pooled-1.png, id=45, 481.8pt x 481.8pt>
-File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
-s/h3-pooled-1.png Graphic file (type png)
-<use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/h3-pooled-1.png>
-Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h3-pooled-1.png  used on input line 232.
-(pdftex.def)             Requested size: 352.32861pt x 352.32861pt.
+unish/report/figures/balance-checks-1.png  used on input line 173.
+(pdftex.def)             Requested size: 352.30656pt x 352.30656pt.
 [2 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
 Dependent Variable-1.png>] [3 </Users/marikenvandervelden/Dropbox/Papers/compro
-mise-punish/report/figures/Independent Variables-1.png>] [4 </Users/marikenvand
-ervelden/Dropbox/Papers/compromise-punish/report/figures/balance-checks-1.png>]
+mise-punish/report/figures/balance-checks-1.png>] [4]
+</Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/sav
+e-patchwork-results-1.png, id=63, 1445.4pt x 1445.4pt>
+File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
+s/save-patchwork-results-1.png Graphic file (type png)
+<use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
+/save-patchwork-results-1.png>
+Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
+unish/report/figures/save-patchwork-results-1.png  used on input line 187.
+(pdftex.def)             Requested size: 469.74944pt x 469.74944pt.
+
+LaTeX Warning: Float too large for page by 18.82759pt on input line 192.
+
 [5 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
-h1-1.png>] [6 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/repo
-rt/figures/h2-1.png>] [7 </Users/marikenvandervelden/Dropbox/Papers/compromise-
-punish/report/figures/h3-1.png>] [8 </Users/marikenvandervelden/Dropbox/Papers/
-compromise-punish/report/figures/h3-pooled-1.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
-[9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
+save-patchwork-results-1.png>] [6
+
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
 (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 247.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 247.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
 Package rerunfilecheck Info: File `draft.out' has not changed.
 (rerunfilecheck)             Checksum: B7595CBCBD78FC1810BCF17D3213B491;820.
  ) 
 Here is how much of TeX's memory you used:
- 15412 strings out of 492616
- 228033 string characters out of 6129481
- 375409 words of memory out of 5000000
- 19026 multiletter control sequences out of 15000+600000
+ 15388 strings out of 492616
+ 226533 string characters out of 6129481
+ 373318 words of memory out of 5000000
+ 19008 multiletter control sequences out of 15000+600000
  55345 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,9n,38p,811b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,9n,38p,811b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/20
 19/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2019/texmf-di
@@ -951,10 +913,10 @@ st/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
 pe1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
 lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri9.pf
 b>
-Output written on draft.pdf (9 pages, 550387 bytes).
+Output written on draft.pdf (7 pages, 546036 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
- 30 named destinations out of 1000 (max. 500000)
- 14420 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
+ 14400 words of extra memory for PDF output out of 14400 (max. 10000000)
 

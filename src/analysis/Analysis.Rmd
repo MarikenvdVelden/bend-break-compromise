@@ -128,7 +128,7 @@ rm(descr, methodnames, table, fn, table2)
 ```
 
 ## Descriptive Results
-```{r "descriptive-results", echo=FALSE, fig.height=10, fig.width=8}
+```{r "descriptive-results", echo=FALSE, fig.height=15, fig.width=10}
 d %>%
   select(PT1, PT2, PT3, PT4, issue, name, compromise) %>%
   mutate(PT1 = PT1 * 2) %>%
@@ -175,9 +175,16 @@ d %>%
 The figure below shows that the data is unbalanced for the variables: `Income`, `Employment`, `Urbaness`, `Age`, `Position: COVID`, `Political Efficacy`, `Ideology`,
 `Attitudes: Women in Politics`, `Position: Education`, `Position: Defense`, `Position: Immigration`.
 As described in the Pre-Analysis Plan (p.10), I will add these covariates to the analyses as controls.
-```{r "balance-checks", fig.height=8, fig.width=8}
+
+```{r "balance-checks", fig.height=10, fig.width=10}
 source(here("src/analysis/balance-test.R"))
 df
+```
+
+```{r "visualize-unbalanced-vars", fig.height=10, fig.width=10}
+source(here("src/analysis/distribution_unbalanced_vars.R"))
+
+p1 + p2 + p3 + p4 + plot_layout(ncol=2)
 ```
 
 ## Gender Hypothesis 
@@ -199,9 +206,13 @@ h3
 ```
 
 ## Intersection Hypothesis -- Pooled
-```{r "h3-pooled", fig.align="center", fig.height=5, fig.width=5}
+```{r "h3-pooled", fig.align="center", fig.height=6, fig.width=6}
 source(here("src/analysis/h3-pooled.R"))
 h3p
+```
+
+```{r "save-patchwork-results", echo = F, fig.show="hide", fig.height= 15, fig.width=15}
+h1 + h2 + h3 + h3p + plot_layout(ncol=2)
 ```
 
 ## Exploration

@@ -11,7 +11,7 @@ library(ggstatsplot)
 library(ggrepel)
 library(haven)
 library(sjlabelled)
-
+library(patchwork)
 fig_cols <- yarrr::piratepal(palette = "basel", 
              trans = .2)
 fig_cols <- as.character(fig_cols[1:8])

@@ -364,6 +364,14 @@ df
 
 <img src="../../report/figures/balance-checks-1.png" style="display: block; margin: auto;" />
 
+``` r
+source(here("src/analysis/distribution_unbalanced_vars.R"))
+
+p1 + p2 + p3 + p4 + plot_layout(ncol=2)
+```
+
+<img src="../../report/figures/visualize-unbalanced-vars-1.png" style="display: block; margin: auto;" />
+
 ## Gender Hypothesis
 
 ``` r

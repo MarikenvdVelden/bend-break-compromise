@@ -16,10 +16,7 @@ for(i in 1:length(issues)){
 }
 
 h3 <- h3 %>%
-  mutate(id = if_else(y == "PT1", 1,
-              if_else(y == "PT2", 2,
-              if_else(y == "PT4", 3, 4))),
-         y = recode(y,
+  mutate(y = recode(y,
                     `PT1` = "DV: Trait Evaluation",
                     `PT2` = "DV: Favorability",
                     `PT3` = "DV: Representation",
@@ -27,26 +24,22 @@ h3 <- h3 %>%
          compromise = recode(compromise,
                              `1` = "Compromise (H3a)",
                              `0` = "No Compromise (H3b)")) %>%
-  ggplot(aes(x = reorder(id, AME), 
+  ggplot(aes(x = y, 
              y = AME,
-             color = y,
+             color = issue,
              ymin = lower,
              ymax = upper,
-             label = y)) +
-  geom_point(position = ) + geom_errorbar(width = 0) +
-  geom_label_repel(nudge_y = 0.5, size = 2) + 
-  theme_bw() +
+             label = issue)) +
+  geom_point(position = position_dodge(.2)) + 
+  geom_errorbar(position = position_dodge(.2), width = 0) +
+  geom_label_repel(nudge_x = 0.2,  nudge_y = 0.0, size = 4) + 
+  theme_minimal() +
   labs(x = "", y = "Average Marginal Effects of Being a Women Politician with a Migration Background") +
-  facet_grid(issue~compromise, scales = "free") +
+  facet_grid(.~compromise, scales = "free") +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5),
-        axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        legend.position="bottom",
-        legend.title = element_blank(),
-        axis.ticks.x=element_blank(),
-        axis.ticks.y = element_blank()) +
+        legend.position="none",
+        legend.title = element_blank()) +
   scale_color_manual(values = fig_cols) +
   geom_hline(yintercept = 0, size = .2, linetype = "dashed") +
-  guides(color=guide_legend(nrow=1,byrow=TRUE)) +
   coord_flip()

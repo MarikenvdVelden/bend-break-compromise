@@ -3,7 +3,9 @@ title: "Bend or Break? Experimental Evidence of Voters' Punishment for Striking 
 date: "`r format(Sys.time(), '%d %B, %Y - %X (%Z)')`"
 output: 
   pdf_document:
-    number_sections: true
+   number_sections: true
+   includes:
+      in_header: header.tex
 editor_options: 
   chunk_output_type: console
 bibliography: references.bib
@@ -34,10 +36,8 @@ header-includes:
 ## make sure to have the printr package installed: install.packages('printr')
 library(knitr)
 opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
-library(tidyverse)
-library(kableExtra)
 options(kableExtra.latex.load_packages = FALSE)
-library(here)
+source(here::here("src/lib/functions.R"))
 ```
 
 \newpage
@@ -48,20 +48,12 @@ library(here)
 
 # Data, Measurement & Method
 
+
 ```{r dv, fig.align = 'center', out.width = "75%", fig.cap = "Descriptive Overview Dependent Variable"}
 include_graphics(here("report/figures", "Dependent Variable-1.png"))
 ```
 
-```{r treatment, fig.align = 'center', out.width = "75%", fig.cap = "Treatment Distribution"}
-include_graphics(here("report/figures", "Independent Variables-1.png"))
-```
-
-```{r balance, fig.align = 'center', out.width = "75%", fig.cap = "Balance Checks"}
-include_graphics(here("report/figures", "balance-checks-1.png"))
-```
-
 ```{r descriptive-table, echo = FALSE}
-library(tidyverse)
 load(here("data/intermediate/cleaned_data.RData"))
 source(here("src/analysis/data-for-analyses.R"))
 means <- d %>%
@@ -85,26 +77,25 @@ kbl(descr, booktabs =T, caption = "\\label{tab:descr}Descriptive Information",
     digits = 2) %>%
   kable_styling(latex_options = c("striped", "hold_position"),
                 full_width = F, fixed_thead = T, position = "center")
-rm(descr, d, means)  
+rm(descr, means)  
 ```
+
+
+```{r balance, fig.align = 'center', out.width = "75%", fig.cap = "Balance Checks"}
+include_graphics(here("report/figures", "balance-checks-1.png"))
+```
+
 
 # Bend or Break?
 
-```{r h1, fig.align = 'center', out.width = "75%", fig.cap = "H1"}
-include_graphics(here("report/figures", "h1-1.png"))
+\newpage 
+\blandscape 
+```{r results-hs, fig.align = 'center', fig.cap = "Results"}
+include_graphics(here("report/figures", "save-patchwork-results-1.png"))
 ```
+\elandscape 
 
-```{r h2, fig.align = 'center', out.width = "75%", fig.cap = "H2"}
-include_graphics(here("report/figures", "h2-1.png"))
-```
 
-```{r h3, fig.align = 'center', out.width = "75%", fig.cap = "H3"}
-include_graphics(here("report/figures", "h3-1.png"))
-```
-
-```{r h3p, fig.align = 'center', out.width = "75%", fig.cap = "H13 Pooled"}
-include_graphics(here("report/figures", "h3-pooled-1.png"))
-```
 
 # Discussion
 
