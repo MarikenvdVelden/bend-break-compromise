@@ -1,42 +1,48 @@
 library(here)
+library(kableExtra)
 library(tidyverse)
-library(qualtRics)
 library(DeclareDesign)
 library(ggpubr)
 library(scales)
+library(cobalt)
 library(margins)
 library(lme4)
-library(yarrr)
 library(ggstatsplot)
 library(ggrepel)
+library(haven)
+library(sjlabelled)
 
-fig_cols <- piratepal(palette = "basel", 
+fig_cols <- yarrr::piratepal(palette = "basel", 
              trans = .2)
 fig_cols <- as.character(fig_cols[1:8])
 
 regression <- function(df, a, compromise, n){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
-  indepVarList <- df %>% select(a, compromise) 
-  allModels <- apply(depVarList,2,function(xl)lm(xl ~ a * compromise, data= indepVarList))
+  indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, PreT2:PreT8) 
+  allModels <- apply(depVarList,2,function(xl)lm(xl ~ a * compromise +
+                                                   factor(F2) + F4 + F7 + F8 +
+                                                   PreT2 + PreT3 + PreT4 + PreT5 +
+                                                   PreT6 + PreT7_1 + PreT7_2 +
+                                                   PreT7_3 + PreT7_4 + PreT7_5 + 
+                                                   PreT7_6 + PreT7_7 + PreT8, 
+                                                 data= indepVarList))
   depVarList <- df %>% select(matches("PT[0-9]")) %>% colnames()
   
   for(i in 1:length(depVarList)){
     if(i==1){
-      m <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
+      m <- summary(margins(allModels[[i]], variables = "a", at = list(compromise = 0:1))) %>%
         mutate(y = depVarList[i],
-               n = n,
-               lower = AME - (1.645 * SE),
-               upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y, n)
+               lower = AME - (1.56 * SE),
+               upper = AME + (1.56 * SE)) %>%
+        select(AME, upper, lower, y, compromise)
     }
     else{
-      tmp <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
+      tmp <- summary(margins(allModels[[i]], variables = "a", at = list(compromise = 0:1))) %>%
         mutate(y = depVarList[i],
-               n = n,
-               lower = AME - (1.645 * SE),
-               upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y, n)
+               lower = AME - (1.56 * SE),
+               upper = AME + (1.56 * SE)) %>%
+        select(AME, upper, lower, y, compromise)
       m <- m %>%
         add_case(tmp)
       
@@ -48,26 +54,30 @@ regression <- function(df, a, compromise, n){
 pooled_regression <- function(df, a, compromise, issue, n){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
-  indepVarList <- df %>% select(a, compromise, issue)
-  allModels <- apply(depVarList,2,function(xl)lmer(xl ~ a * compromise + (1 | issue),data= indepVarList))
+  indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, PreT2:PreT8, issue) 
+  allModels <- apply(depVarList,2,function(xl)lmer(xl ~ a * compromise +
+                                                     F2 + F4 + F7 + F8 +
+                                                     PreT2 + PreT3 + PreT4 + PreT5 +
+                                                     PreT6 + PreT7_1 + PreT7_2 +
+                                                     PreT7_3 + PreT7_4 + PreT7_5 + 
+                                                     PreT7_6 + PreT7_7 + PreT8 +
+                                                     (1 | issue),data= indepVarList))
   depVarList <- df %>% select(matches("PT[0-9]")) %>% colnames()
   
   for(i in 1:length(depVarList)){
     if(i==1){
-      m <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
+      m <- summary(margins(allModels[[i]], variables = "a", at = list(compromise = 0:1))) %>%
         mutate(y = depVarList[i],
-               n = n,
-               lower = AME - (1.645 * SE),
-               upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y, n)
+               lower = AME - (1.56 * SE),
+               upper = AME + (1.56 * SE)) %>%
+        select(AME, upper, lower, y, compromise)
     }
     else{
-      tmp <- summary(margins(allModels[[i]]), at = list(compromise = n))[2,] %>%
+      tmp <- summary(margins(allModels[[i]], variables = "a", at = list(compromise = 0:1))) %>%
         mutate(y = depVarList[i],
-               n = n,
-               lower = AME - (1.645 * SE),
-               upper = AME + (1.645 * SE)) %>%
-        select(AME, upper, lower, y, n)
+               lower = AME - (1.56 * SE),
+               upper = AME + (1.56 * SE)) %>%
+        select(AME, upper, lower, y, compromise)
       m <- m %>%
         add_case(tmp)
       
