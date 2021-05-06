@@ -1,0 +1,112 @@
+---
+title: "Bend or Break? Experimental Evidence of Voters' Punishment for Striking Political Compromises"
+date: "`r format(Sys.time(), '%d %B, %Y - %X (%Z)')`"
+output: 
+  pdf_document:
+    number_sections: true
+editor_options: 
+  chunk_output_type: console
+bibliography: references.bib
+urlcolor: blue
+linkcolor: blue
+header-includes:
+   - \usepackage{floatrow}
+   - \floatsetup[figure]{capposition=top}
+   - \floatsetup[table]{capposition=top}
+   - \usepackage{booktabs}
+   - \usepackage{longtable}
+   - \usepackage{array}
+   - \usepackage{multirow}
+   - \usepackage{wrapfig}
+   - \usepackage{float}
+   - \usepackage{colortbl}
+   - \usepackage{pdflscape}
+   - \usepackage{tabu}
+   - \usepackage{threeparttable}
+   - \usepackage{threeparttablex}
+   - \usepackage[normalem]{ulem}
+   - \usepackage{makecell}
+   - \usepackage{xcolor}
+---
+```{r setup, include=FALSE}
+## include this at top of your RMarkdown file for pretty output
+## make sure to have the printr package installed: install.packages('printr')
+library(knitr)
+opts_chunk$set(message = FALSE, warning = FALSE, echo = FALSE)
+library(tidyverse)
+library(kableExtra)
+options(kableExtra.latex.load_packages = FALSE)
+library(here)
+```
+
+\newpage
+
+# Introduction
+
+# Acceptance of Political Compromises
+
+# Data, Measurement & Method
+
+```{r dv, fig.align = 'center', out.width = "75%", fig.cap = "Descriptive Overview Dependent Variable"}
+include_graphics(here("report/figures", "Dependent Variable-1.png"))
+```
+
+```{r treatment, fig.align = 'center', out.width = "75%", fig.cap = "Treatment Distribution"}
+include_graphics(here("report/figures", "Independent Variables-1.png"))
+```
+
+```{r balance, fig.align = 'center', out.width = "75%", fig.cap = "Balance Checks"}
+include_graphics(here("report/figures", "balance-checks-1.png"))
+```
+
+```{r descriptive-table, echo = FALSE}
+library(tidyverse)
+load(here("data/intermediate/cleaned_data.RData"))
+source(here("src/analysis/data-for-analyses.R"))
+means <- d %>%
+  summarise(F4 = round(mean(F4, na.rm = T),0),
+            F5 = round(mean(F5, na.rm = T), 0),
+            F6 = max(names(table(F6))),
+            F7 = round(mean(F7, na.rm = T),0),
+            F8 = round(mean(F8, na.rm = T),0),
+            F9 = round(mean(F9, na.rm = T),0))
+
+d <- d %>%
+  mutate(F4 = replace_na(F4, means$F4),
+         F5 = replace_na(F5, means$F5),
+         F6 = replace_na(F6, means$F6),
+         F7 = replace_na(F7, means$F7),
+         missing_F8 = if_else(is.na(F8), 1, 0),
+         F8 = replace_na(F8, means$F8),
+         F9 = replace_na(F9, means$F9))
+source(here("src/analysis/descriptive-information-overview.R"))
+kbl(descr, booktabs =T, caption = "\\label{tab:descr}Descriptive Information",
+    digits = 2) %>%
+  kable_styling(latex_options = c("striped", "hold_position"),
+                full_width = F, fixed_thead = T, position = "center")
+rm(descr, d, means)  
+```
+
+# Bend or Break?
+
+```{r h1, fig.align = 'center', out.width = "75%", fig.cap = "H1"}
+include_graphics(here("report/figures", "h1-1.png"))
+```
+
+```{r h2, fig.align = 'center', out.width = "75%", fig.cap = "H2"}
+include_graphics(here("report/figures", "h2-1.png"))
+```
+
+```{r h3, fig.align = 'center', out.width = "75%", fig.cap = "H3"}
+include_graphics(here("report/figures", "h3-1.png"))
+```
+
+```{r h3p, fig.align = 'center', out.width = "75%", fig.cap = "H13 Pooled"}
+include_graphics(here("report/figures", "h3-pooled-1.png"))
+```
+
+# Discussion
+
+
+\newpage
+# References
