@@ -4,7 +4,7 @@ Data &amp; Analysis Compendium for the paper, entitled _Bend or Break? Experimen
 This study has received [approval](docs/EthicalApproval.pdf) from the _Vrije Universteit Amsterdam_'s Research Ethics Committee and is registered at [osf](https://osf.io/kvtzp/) -- see also [here](docs/pap/compromise-punishment-pap.pdf) for the pre-analysis plan.
 
 ## Draft
-View the [draft of the paper here](#).
+View the [draft of the paper here](report/draft.pdf).
 
 ## Code
 The main code to prepare the data is located in the [src/data-processing](src/data-processing/). 
