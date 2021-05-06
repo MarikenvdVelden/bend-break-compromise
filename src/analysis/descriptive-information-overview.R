@@ -2,14 +2,15 @@ descr <- d %>%
   select(-id, -issue, -name, -F6, -missing_F8) %>%
   mutate(F1 = recode(F1, `999` = 0, `2` = 0),
          F5 = as.numeric(F5)) %>%
-  pivot_longer(cols = everything()) %>%
-  group_by(name) %>%
+  pivot_longer(cols = everything(),
+               names_to = "Variables") %>%
+  group_by(Variables) %>%
   summarise(`Mean Value` = mean(value, na.rm = T),
             `St. Dev` = sd(value, na.rm = T),
             `Min. Value` = min(value, na.rm = T),
             `Max. Value` = max(value, na.rm = T)) %>%
   ungroup() %>%
-  mutate(name = recode(name,
+  mutate(Variables = recode(Variables,
                        `F1` = "Gender",
                        `F2` = "Age",
                        `F3` = "Region",
@@ -41,7 +42,7 @@ descr <- d %>%
                        `PT2` = "DV: Favorability",
                        `PT3` = "DV: Representation",
                        `PT4` = "DV: Career Prospects"),
-         name = factor(name,
+         Variables = factor(Variables,
                          levels = c("DV: Trait Evaluation","DV: Favorability",
                                    "DV: Representation", "DV: Career Prospects",
                                    "Treatment: Gender Politician",

@@ -19,8 +19,10 @@ h3p <- h3p %>%
              y = AME,
              color = y,
              ymin = lower,
-             ymax = upper)) +
+             ymax = upper,
+             label = y)) +
   geom_point(position = ) + geom_errorbar(width = 0) +
+  geom_label_repel(nudge_y = 0.5, size = 2) + 
   theme_bw() +
   labs(x = "", y = "Average Marginal Effects of Being a Women Politician with a Migration Background") +
   facet_grid(.~compromise, scales = "free") +
