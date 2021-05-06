@@ -9,6 +9,7 @@ editor_options:
 bibliography: references.bib
 urlcolor: blue
 linkcolor: blue
+abstract: "_ADD Abstract_"
 header-includes:
    - \usepackage{floatrow}
    - \floatsetup[figure]{capposition=top}

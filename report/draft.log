@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  6 MAY 2021 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  6 MAY 2021 11:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,40 +842,40 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/Dep
-endent Variable-1.png, id=36, 674.52pt x 481.8pt>
+endent Variable-1.png, id=38, 674.52pt x 481.8pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/Dependent Variable-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /Dependent Variable-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/Dependent Variable-1.png  used on input line 125.
+unish/report/figures/Dependent Variable-1.png  used on input line 128.
 (pdftex.def)             Requested size: 352.31685pt x 251.65489pt.
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/Ind
-ependent Variables-1.png, id=38, 963.6pt x 963.6pt>
+ependent Variables-1.png, id=40, 963.6pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/Independent Variables-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /Independent Variables-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/Independent Variables-1.png  used on input line 134.
+unish/report/figures/Independent Variables-1.png  used on input line 137.
 (pdftex.def)             Requested size: 352.30656pt x 352.30656pt.
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/bal
-ance-checks-1.png, id=39, 770.88pt x 770.88pt>
+ance-checks-1.png, id=41, 770.88pt x 770.88pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/balance-checks-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /balance-checks-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/balance-checks-1.png  used on input line 143.
+unish/report/figures/balance-checks-1.png  used on input line 146.
 (pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 154.
+(Font)              <10> on input line 157.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 154.
+(Font)              <7> on input line 157.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 154.
+(Font)              <5> on input line 157.
 
-Overfull \hbox (42.68907pt too wide) in paragraph at lines 154--195
+Overfull \hbox (42.68907pt too wide) in paragraph at lines 157--198
  [][] 
  []
 
@@ -883,40 +883,40 @@ Overfull \hbox (42.68907pt too wide) in paragraph at lines 154--195
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h1-
-1.png, id=40, 770.88pt x 770.88pt>
+1.png, id=42, 770.88pt x 770.88pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/h1-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /h1-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h1-1.png  used on input line 202.
+unish/report/figures/h1-1.png  used on input line 205.
 (pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h2-
-1.png, id=41, 770.88pt x 770.88pt>
+1.png, id=43, 770.88pt x 770.88pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/h2-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /h2-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h2-1.png  used on input line 211.
+unish/report/figures/h2-1.png  used on input line 214.
 (pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h3-
-1.png, id=42, 770.88pt x 770.88pt>
+1.png, id=44, 770.88pt x 770.88pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/h3-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /h3-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h3-1.png  used on input line 220.
+unish/report/figures/h3-1.png  used on input line 223.
 (pdftex.def)             Requested size: 352.31538pt x 352.31538pt.
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/h3-
-pooled-1.png, id=43, 481.8pt x 481.8pt>
+pooled-1.png, id=45, 481.8pt x 481.8pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/h3-pooled-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /h3-pooled-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/h3-pooled-1.png  used on input line 229.
+unish/report/figures/h3-pooled-1.png  used on input line 232.
 (pdftex.def)             Requested size: 352.32861pt x 352.32861pt.
 [2 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
 Dependent Variable-1.png>] [3 </Users/marikenvandervelden/Dropbox/Papers/compro
@@ -927,32 +927,34 @@ h1-1.png>] [6 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/repo
 rt/figures/h2-1.png>] [7 </Users/marikenvandervelden/Dropbox/Papers/compromise-
 punish/report/figures/h3-1.png>] [8 </Users/marikenvandervelden/Dropbox/Papers/
 compromise-punish/report/figures/h3-pooled-1.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
 [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
 (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 244.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 244.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 247.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 247.
 Package rerunfilecheck Info: File `draft.out' has not changed.
 (rerunfilecheck)             Checksum: B7595CBCBD78FC1810BCF17D3213B491;820.
  ) 
 Here is how much of TeX's memory you used:
- 15394 strings out of 492616
- 227804 string characters out of 6129481
+ 15412 strings out of 492616
+ 228033 string characters out of 6129481
  375409 words of memory out of 5000000
- 19019 multiletter control sequences out of 15000+600000
- 44651 words of font info for 62 fonts, out of 8000000 for 9000
+ 19026 multiletter control sequences out of 15000+600000
+ 55345 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,9n,38p,811b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/20
-19/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/lm/lmr17.pfb>
-Output written on draft.pdf (9 pages, 517086 bytes).
+19/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
+lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri9.pf
+b>
+Output written on draft.pdf (9 pages, 550387 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  30 named destinations out of 1000 (max. 500000)
- 10324 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 14420 words of extra memory for PDF output out of 17280 (max. 10000000)
 
