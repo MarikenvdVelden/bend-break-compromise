@@ -1,29 +1,37 @@
 descr <- d %>%
-  select(-id, -issue) %>%
-  mutate(F1 = recode(F1, `999` = 0, `2` = 0)) %>%
+  select(-id, -issue, -name, -F6, -missing_F8) %>%
+  mutate(F1 = recode(F1, `999` = 0, `2` = 0),
+         F5 = as.numeric(F5)) %>%
   pivot_longer(cols = everything()) %>%
   group_by(name) %>%
-  summarise(means = mean(value, na.rm = T),
-            stdev = sd(value, na.rm = T),
-            minvalue = min(value, na.rm = T),
-            maxvalue = max(value, na.rm = T)) %>%
+  summarise(`Mean Value` = mean(value, na.rm = T),
+            `St. Dev` = sd(value, na.rm = T),
+            `Min. Value` = min(value, na.rm = T),
+            `Max. Value` = max(value, na.rm = T)) %>%
   ungroup() %>%
   mutate(name = recode(name,
                        `F1` = "Gender",
                        `F2` = "Age",
-                       `F3` = "Education",
+                       `F3` = "Region",
                        `F4` = "Urbanness",
                        `F5` = "Migration Background",
-                       `F6`  = "Party Preference",
+                       #`F6`  = "Party Preference",
                        `F7`  = "Employment",
                        `F8`  = "Income",
+                       `F9` = "Education",
                        `PreT1`  = "Immigration (%)",
                        `PreT2`  = "Position: Immigration",
                        `PreT3`  = "Position: Defense",
                        `PreT4`  = "Position: Education",
                        `PreT5`  = "Attitude: Women in Politics",
                        `PreT6`  = "Ideology",
-                       `PreT7` = "Political Efficacy",
+                       `PreT7_1` = "Political Efficacy (1)",
+                       `PreT7_2` = "Political Efficacy (2)",
+                       `PreT7_3` = "Political Efficacy (3)",
+                       `PreT7_4` = "Political Efficacy (4)",
+                       `PreT7_5` = "Political Efficacy (5)",
+                       `PreT7_6` = "Political Efficacy (6)",
+                       `PreT7_7` = "Political Efficacy (7)",
                        `PreT8` = "Position: COVID-19",
                        `gender` = "Treatment: Gender Politician",
                        `immigration` = "Treatment: Immigration Background Politician",
@@ -43,8 +51,11 @@ descr <- d %>%
                                    "Immigration (%)","Position: Immigration",
                                    "Position: Defense", "Position: Education",
                                    "Position: COVID-19", "Attitude: Women in Politics",
-                                   "Ideology","Political Efficacy",
-                                   "Gender","Age","Education","Urbanness",
+                                   "Ideology","Political Efficacy (1)",
+                                   "Political Efficacy (2)", "Political Efficacy (3)",
+                                   "Political Efficacy (4)", "Political Efficacy (5)",
+                                   "Political Efficacy (6)", "Political Efficacy (7)",
+                                   "Gender","Age","Region","Urbanness",
                                    "Migration Background","Party Preference",
-                                   "Employment", "Income")))
+                                   "Employment", "Income", "Education")))
 
