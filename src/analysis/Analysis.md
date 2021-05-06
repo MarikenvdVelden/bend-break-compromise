@@ -26,9 +26,133 @@ source(here::here("src/lib/functions.R"))
 ``` r
 load(here("data/intermediate/cleaned_data.RData"))
 source(here("src/analysis/scales.R"))
-#kable(scales, digits = 2) %>%
-#  kable_styling(full_width = F, position = "center")
+kable(scales, digits = 2) %>%
+  kable_styling(full_width = F, position = "center")
 ```
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Variable
+
+</th>
+
+<th style="text-align:right;">
+
+Cronbach’s Alpha
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+DV: Trait Evaluation (Corona)
+
+</td>
+
+<td style="text-align:right;">
+
+0.82
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+DV: Trait Evaluation (Defense)
+
+</td>
+
+<td style="text-align:right;">
+
+0.82
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+DV: Trait Evaluation (Education)
+
+</td>
+
+<td style="text-align:right;">
+
+0.84
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+DV: Trait Evaluation (Immigration)
+
+</td>
+
+<td style="text-align:right;">
+
+0.83
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Attitudes: Women in Politics
+
+</td>
+
+<td style="text-align:right;">
+
+0.86
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Political Efficacy
+
+</td>
+
+<td style="text-align:right;">
+
+0.23
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 ``` r
 source(here("src/analysis/data-for-analyses.R"))
@@ -80,9 +204,101 @@ descr <- d %>%
               names_to = "Variables", values_to = "% Missing Values") %>%
   filter(`% Missing Values` > 0) 
 
-#kable(descr) %>%
-#  kable_styling(full_width = F, position = "center")
+kable(descr) %>%
+  kable_styling(full_width = F, position = "center")
 ```
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Variables
+
+</th>
+
+<th style="text-align:right;">
+
+% Missing Values
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+Urbaness
+
+</td>
+
+<td style="text-align:right;">
+
+0.10
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Party Preference
+
+</td>
+
+<td style="text-align:right;">
+
+0.04
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Employment
+
+</td>
+
+<td style="text-align:right;">
+
+0.04
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Income
+
+</td>
+
+<td style="text-align:right;">
+
+0.12
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 I recode the missing values of the variables `Urbaness`, `Party
 Preference`, `Employment`, and `Income` to the mean value of the
