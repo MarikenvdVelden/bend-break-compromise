@@ -1,7 +1,7 @@
 # Bend or Break? Experimental Evidence of Voters' Punishment for Striking Political Compromises
 
 Data &amp; Analysis Compendium for the paper, entitled _Bend or Break? Experimental Evidence of Voters' Punishment for Striking Political Compromises_. 
-This study has received [approval](docs/EthicalApproval.pdf) from the Vrije Universteit Amsterdam's Research Ethics Committee and is registered at [osf](https://osf.io/kvtzp/) -- see also [here](docs/pap/compromise-punishment-pap.pdf) for the pre-analysis plan.
+This study has received [approval](docs/EthicalApproval.pdf) from the _Vrije Universteit Amsterdam_'s Research Ethics Committee and is registered at [osf](https://osf.io/kvtzp/) -- see also [here](docs/pap/compromise-punishment-pap.pdf) for the pre-analysis plan.
 
 ## Draft
 View the [draft of the paper here](#).
@@ -10,13 +10,13 @@ View the [draft of the paper here](#).
 The main code to prepare the data is located in the [src/data-processing](src/data-processing/). 
 Of interest might be:
 
-* [Prepare Data](src/data-processing/prep_data.md) This file combines ... and creates the variables for the [analysis](src/analysis/Analysis.md).
+* [Prepare Data](src/data-processing/prep_data.md) This file cleans the data gathered with Qualtrics by [KiesKompas Amsterdam](https://www.kieskompas.nl/en/) and creates the raw variables for the [analysis](src/analysis/Analysis.md).
 
 ## Data
 
-The following data files might be of interest:
+The cleaned data file might be of interest.
 
-* [NAME](#) 
+* [cleaned_data.RData](data/intermediate/cleaned_data.RData) This file contains demographic information as well as position on political issues (COVID-19, Defence, Education, Immigration), vote choice, ideological position, political efficacy, and attitudes towards women in politics. 
 
 ## Results
 
