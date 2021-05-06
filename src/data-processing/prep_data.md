@@ -30,19 +30,8 @@ cleans the raw data.
 
 ``` r
 source(here("src/data-processing/tidy_data.R"))
+source(here("src/data-processing/Urbaness.R"))
 ```
-
-## Check Missing Values
-
-We employ the following criteria:
-
-  - If 10% or less of the values on the dimension are missing, then we
-    re-code the missing values to the overall mean.
-  - If 11% or more of the values on the dimension are missing, then we
-    re-code the missing values to a constant (for instance 0) and
-    include a dummy variable indicating whether the response on the
-    covariate was missing or
-not.
 
 ## Save Data for Analysis
 
