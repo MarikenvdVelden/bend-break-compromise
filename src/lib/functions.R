@@ -16,7 +16,7 @@ fig_cols <- yarrr::piratepal(palette = "basel",
              trans = .2)
 fig_cols <- as.character(fig_cols[1:8])
 
-regression <- function(df, a, compromise, n){
+regression <- function(df, a, compromise){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
   indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, PreT2:PreT8) 
@@ -51,7 +51,7 @@ regression <- function(df, a, compromise, n){
   return(m)
 }
 
-pooled_regression <- function(df, a, compromise, issue, n){
+pooled_regression <- function(df, a, compromise, issue){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
   indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, PreT2:PreT8, issue) 

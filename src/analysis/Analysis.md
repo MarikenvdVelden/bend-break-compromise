@@ -366,7 +366,6 @@ df
 
 ``` r
 source(here("src/analysis/distribution_unbalanced_vars.R"))
-
 p1 + p2 + p3 + p4 + plot_layout(ncol=2)
 ```
 
@@ -409,3 +408,31 @@ p3p
 <img src="../../report/figures/h3-pooled-1.png" style="display: block; margin: auto;" />
 
 ## Exploration
+
+### Ideology
+
+<img src="../../report/figures/explore-ideology-1.png" style="display: block; margin: auto;" />
+
+### Willingness to Accept Compromise
+
+<img src="../../report/figures/explore-wtac-1.png" style="display: block; margin: auto;" />
+
+### Attitude towards Women in Politics
+
+<img src="../../report/figures/explore-women-politics-1.png" style="display: block; margin: auto;" />
+
+### Position on COVID-19
+
+<img src="../../report/figures/explore-covid-1.png" style="display: block; margin: auto;" />
+
+### Position on Defense
+
+<img src="../../report/figures/explore-defense-1.png" style="display: block; margin: auto;" />
+
+### Position on Education
+
+<img src="../../report/figures/explore-education-1.png" style="display: block; margin: auto;" />
+
+### Position on Immigration
+
+<img src="../../report/figures/explore-immigration-1.png" style="display: block; margin: auto;" />

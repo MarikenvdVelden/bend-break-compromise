@@ -215,3 +215,45 @@ p1 + p2 + p3 + p3p + plot_layout(ncol=2)
 ```
 
 ## Exploration
+
+### Ideology
+```{r "explore-ideology", echo = F, fig.height= 10, fig.width=20}
+source(here("src/analysis/explore_ideology.R"))
+p1e + p2e + p3e + plot_layout(ncol=3)
+```
+
+### Willingness to Accept Compromise
+```{r "explore-wtac", echo = F, fig.height= 10, fig.width=20}
+source(here("src/analysis/explore_wtac.R"))
+p1e + p2e + p3e + plot_layout(ncol=3)
+```
+
+### Attitude towards Women in Politics
+```{r "explore-women-politics", echo = F, fig.height= 10, fig.width=20}
+source(here("src/analysis/explore_women_politics.R"))
+p1e + p2e + p3e + plot_layout(ncol=3)
+```
+
+### Position on COVID-19
+```{r "explore-covid", echo = F, fig.height= 10, fig.width=20}
+source(here("src/analysis/explore_position_covid.R"))
+p1e + p2e + p3e + plot_layout(ncol=3)
+```
+
+### Position on Defense
+```{r "explore-defense", echo = F, fig.height= 10, fig.width=20}
+source(here("src/analysis/explore_position_defense.R"))
+p1e + p2e + p3e + plot_layout(ncol=3)
+```
+
+### Position on Education
+```{r "explore-education", echo = F, fig.height= 10, fig.width=20}
+source(here("src/analysis/explore_position_education.R"))
+p1e + p2e + p3e + plot_layout(ncol=3)
+```
+
+### Position on Immigration
+```{r "explore-immigration", echo = F, fig.height= 20, fig.width=20}
+source(here("src/analysis/explore_position_immigration.R"))
+p1e + p2e + p3e + p4e + p5e + p6e + plot_layout(ncol=3)
+```

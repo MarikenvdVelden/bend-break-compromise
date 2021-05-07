@@ -1,6 +1,6 @@
 ## H3
 df <- d %>% select(a = intersection, compromise, PT1:PT4,issue, F2, F4, F7, F8, PreT2:PreT8)
-h3p <- pooled_regression(df, a, compromise, issue, 1)
+h3p <- pooled_regression(df, a, compromise, issue)
 
 p3p <- h3p %>%
   mutate(y = recode(y,

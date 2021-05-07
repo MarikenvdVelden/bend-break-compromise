@@ -5,11 +5,11 @@ for(i in 1:length(issues)){
     filter(issue == issues[i]) %>%
     select(-issue)
   if(i==1){
-    h1 <- regression(df, a, compromise, 1) %>%
+    h1 <- regression(df, a, compromise) %>%
     mutate(issue = issues[i])
   }  
   else{
-    tmp <- regression(df, a, compromise, 1) %>%
+    tmp <- regression(df, a, compromise) %>%
       mutate(issue = issues[i])
     h1 <- h1 %>% add_case(tmp)
   }

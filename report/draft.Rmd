@@ -164,12 +164,67 @@ include_graphics(here("report/figures", "balance-checks-1.png"))
 ## Pre-Registered Hypotheses
 \newpage 
 \blandscape 
-```{r results-hs, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results}Results"}
+```{r results-main, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results}Results"}
 include_graphics(here("report/figures", "save-patchwork-results-1.png"))
 ```
 \elandscape 
 
 ## Exploration
+
+**_Ideology_**
+\newpage 
+\blandscape 
+```{r results-ideology, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-ideology}Results: Interaction with Ideology"}
+include_graphics(here("report/figures", "explore-ideology-1.png"))
+```
+\elandscape 
+
+
+**_Willingness to Accept Compromises_**
+\newpage 
+\blandscape 
+```{r results-wtac, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-wtac}Results: Interaction with Willingness to Accept Compromise"}
+include_graphics(here("report/figures", "explore-wtac-1.png"))
+```
+\elandscape 
+
+**_Attitude towards Women in Politics_**
+\newpage 
+\blandscape 
+```{r results-women-politics, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-women-politics}Results: Interaction with Attitudes towards Women in Politics"}
+include_graphics(here("report/figures", "explore-women-politics-1.png"))
+```
+\elandscape 
+
+
+**_Position on Political Issues_**
+\newpage 
+\blandscape 
+```{r results-covid, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-covid}Results: Interaction with Position on COVID-19"}
+include_graphics(here("report/figures", "explore-covid-1.png"))
+```
+\elandscape 
+
+\newpage 
+\blandscape 
+```{r results-defense, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-defense}Results: Interaction with Position on Defense"}
+include_graphics(here("report/figures", "explore-defense-1.png"))
+```
+\elandscape 
+
+\newpage 
+\blandscape 
+```{r results-education, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-education}Results: Interaction with Position on Education"}
+include_graphics(here("report/figures", "explore-education-1.png"))
+```
+\elandscape 
+
+\newpage 
+\blandscape 
+```{r results-immigration, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-immigration}Results: Interaction with Position on Immigration"}
+include_graphics(here("report/figures", "explore-immigration-1.png"))
+```
+\elandscape 
 
 
 # Discussion
