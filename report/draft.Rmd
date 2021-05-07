@@ -79,10 +79,6 @@ The evaluation of politicians' character traits are statements deriving from @aa
 The other three neasures to evaluate the politician of the treatment are translated from @bauer2017punished -- i.e. favorability, representation, and career perspectives.
 General favorability is shown to be related to vote choice [@elis2010dynamics], perceptions of represenation are related to legislative compromise and cooperation [@doherty2013whom], and career perspective is included because critiques of women are typically manifested in their leadership skills [@eagly2007female].
 
-```{r dv, fig.align = 'center', out.width = "90%", fig.cap = "\\label{fig:descr_dv}Descriptive Overview Dependent Variable"}
-include_graphics(here("report/figures", "Dependent Variable-1.png"))
-```
-
 **_Experimental Conditions_**
 The stimuli in the experiment are news messages in the same style as the Dutch news website [nu.nl](https://www.nu.nl/).
 In these news messages, we manipulate: a) the _gender_ of the politician (male vs. female); b) the _migration background_ of the politician (based on a Arabic sounding name (Rachid(a) Amezian) or a native Dutch sounding name (Karel/Karin van der Kleijn)); and c) whether the politician _striked a compromise or not_.
@@ -162,12 +158,57 @@ include_graphics(here("report/figures", "balance-checks-1.png"))
 # Bend or Break?
 
 ## Pre-Registered Hypotheses
+
+**_Gender Hypothesis_**
+H1a states that women politicians are evaluated lower when striking a political compromise compared to men politicians. 
+I inspect this using four different measures of how people can judge the quality of a political representative. 
+The upper-left panel of Figure \ref{fig:results} demonstrates that people's evaluations of women politicians compared to men politicians differ between measures -- displayed on the y-axis of the figure -- and between issue areas -- displayed with different colors in the figure.
+
+- Looking at trait evaluation, only women who compromise on the issue migration are evaluated more negatively then men, yet the coefficient is not statistically significant. For the other three issues -- COVID, defense, and education -- the coefficients are positive, yet not statistically significant.
+- The same pattern is shown for how well people feel represented by the politician. Women, compared to men, are lower evaluated for the issue migration, but higher evaluated for the other three issues. Only the effect of education is statistically significant. This indicates that if female polticians compromise and vote in favor of the bill on extending extra-curricular activities at elementary schools, people feel better represented by this politician compared to if the same compromise was made by a male politician.
+- Regarding feelings of favorability towards the politician, there is no statistical significant difference between male or female politicians who strike a compromise. The same holds for the politicians' career prospects.
+
+H1b states that women politicians are evaluated lower when not striking a political compromise compared to men politicians. 
+The upper-center-left panel of Figure \ref{fig:results} demonstrates that almost all coefficients are positive -- i.e. going against the hypothesized directions.
+
+- When women politicians stand their grounds, they are evaluated higher on their leadership skills than their male counterparts. This finding holds accross issues, but is not statistically significant for the issue immigration.
+- In addition, compared to male politicians, female politicians that stand their ground make people feel better represented, except when this is about an education-related policy. This finding is statistically significant for the issues immigration and defense. 
+- Moreover, female politicians are more favourable when standing their grounds. This finding is only statistically significant when women, compared to men, vote against a bill on intensifying cooperation of the army services.
+- Also, not striking a compromise is considered good for a women's career prospects, yet these findings are not statistically significant.
+
+**_Migration Hypothesis_**
+This hypothesis states that politicians with a migration background are evaluated lower when striking a political compromise compared to politicians without a migration background. 
+The upper-center-right panel of Figure \ref{fig:results} demonstrates that politicians with a migration background compared to politicians without a migration background are more positively evaluated on some measures, but more negatively evaluated on other measures.
+
+- Looking at their leadership skills (trait evaluation), we see that for the issues COVID-19, defense, and education, there is no difference between politicians with or without a migration background. However, for the issue of migration, we see that if politicians with a migration background compromise -- i.e. voting in favor of the bill proposing to put a stop to migration to Western countries -- they are considered better political leaders compared to politicians without a migration background.
+- Regarding how well people feel represented, there is no difference between politicians with and without a migration background.
+- Looking at how favorable people feel towards a politcian, we see that people feel more favorable towards politician with a migration background when they compromise on issues related to immigration and education compared to politicians without a migration background, but not for issues related to COVID-19 and defense.
+- For career perspectives, people rate the career prospects more negative when a politician with a migration background compromises on the issue migration. For the other issues, there is no difference between politicians with and without a migration background.
+
 \newpage 
 \blandscape 
 ```{r results-main, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results}Results"}
 include_graphics(here("report/figures", "save-patchwork-results-1.png"))
 ```
 \elandscape 
+
+**_Intersection Hypothesis_** Hypothesis 3a states that women politician with a migration background are evaluated lower when striking a political compromise compared to men politicians without a migration background.
+This hypothesis is tested in the lower-left panel of Figure \ref{fig:results} for the separate issues, and in the lower-center-right panel of Figure \ref{fig:results} pooling the issues.
+
+- Trait: no differences for COVID-19 and immigration, insignificant positive effects for defense and education, pooling significant positive effect
+- Representation: Positive and signicant for education, nothing for the other issues, pooling significant positive effect
+- Favorability:  Positive and signicant for education, nothing for the other issues, pooling significant positive effect
+- Career prospects: negative and significant for immigration, nothing for the other issues or in the pooled analysis.
+
+Hypothesis 3b states that women politician with a migration background are evaluated lower when not striking a political compromise compared to men politicians without a migration background.
+This hypothesis is tested in the lower-center-left panel of Figure \ref{fig:results} for the separate issues, and in the lower-right panel of Figure \ref{fig:results} pooling the issues.
+
+- Trait: positive and significant for COVID-19, nothing for the other issues or in the pooled analysis.
+- Representation: no differences
+- Favorability: positive and significant for COVID-19, nothing for the other issues or in the pooled analysis.
+- Career prospects:negative and significant for defense,  nothing for the other issues or in the pooled analysis.
+
+Paragraph on what it means for theory, and justification for explorations (below).
 
 ## Exploration
 
