@@ -15,7 +15,7 @@ for(i in 1:length(issues)){
   }
 }
 
-h1 <- h1 %>%
+p1 <- h1 %>%
   mutate(y = recode(y,
                     `PT1` = "DV: Trait Evaluation",
                     `PT2` = "DV: Favorability",
@@ -30,12 +30,14 @@ h1 <- h1 %>%
              ymin = lower,
              ymax = upper,
              label = issue)) +
-  geom_point(position = position_dodge(.2)) + 
-  geom_errorbar(position = position_dodge(.2), width = 0) +
-  geom_label_repel(nudge_x = 0.2,  nudge_y = 0.0, size = 4) + 
+  geom_point(position = position_dodge(.5)) + 
+  geom_errorbar(position = position_dodge(.5), width = 0) +
+  geom_text(aes(y = upper +.12), position = position_dodge(.5),na.rm = TRUE) + 
   theme_minimal() +
-  labs(x = "", y = "Average Marginal Effects of Being a Women Politician") +
-  facet_grid(.~compromise, scales = "free") +
+  labs(x = "", y = "Average Marginal Effects of Being a Women Politician",
+       title = "Gender Hypothesis") +
+  facet_grid(.~compromise) +
+  ylim(c(-.3, .7)) +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5),
         legend.position="none",

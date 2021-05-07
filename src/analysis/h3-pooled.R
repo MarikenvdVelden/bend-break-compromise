@@ -2,7 +2,7 @@
 df <- d %>% select(a = intersection, compromise, PT1:PT4,issue, F2, F4, F7, F8, PreT2:PreT8)
 h3p <- pooled_regression(df, a, compromise, issue, 1)
 
-h3p <- h3p %>%
+p3p <- h3p %>%
   mutate(y = recode(y,
                     `PT1` = "DV: Trait Evaluation",
                     `PT2` = "DV: Favorability",
@@ -19,8 +19,9 @@ h3p <- h3p %>%
              label = y)) +
   geom_point() + geom_errorbar(width = 0) +
   theme_minimal() +
-  labs(x = "", y = "Average Marginal Effects of Being a Women Politician with a Migration Background") +
-  facet_grid(.~compromise, scales = "free") +
+  labs(x = "", y = "Average Marginal Effects of Being a Women Politician with a Migration Background",
+       title = "Intersection Hypothesis (Pooled)") +
+  facet_grid(.~compromise) +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5),
         legend.position="none",

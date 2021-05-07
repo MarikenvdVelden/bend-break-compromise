@@ -1,5 +1,5 @@
 # Tidy Qualtrics Data
-pret <- read_sav(here("data/raw-private-encrypted/experiment.sav")) %>%
+pret <- read_sav(here("data/raw-private/experiment.sav")) %>%
   remove_all_labels() %>%
   filter(Consent == 1, Attention2_3 ==1, Attention2_5==1) %>%
   select(matches("PreT\\d"), id = ResponseId) %>%
@@ -14,13 +14,13 @@ pret <- read_sav(here("data/raw-private-encrypted/experiment.sav")) %>%
                         `12` = 2, `11` = 1))) %>%
   drop_na()
 
-tr <- read_sav(here("data/raw-private-encrypted/experiment.sav")) %>%
+tr <- read_sav(here("data/raw-private/experiment.sav")) %>%
   remove_all_labels() %>%
   filter(Consent == 1, Attention2_3 ==1, Attention2_5==1) %>%
   select(matches("name_[A-Z]"), compromis, id = ResponseId) %>%
   drop_na(name_I, name_E)
 
-pt <- read_sav(here("data/raw-private-encrypted/experiment.sav")) %>%
+pt <- read_sav(here("data/raw-private/experiment.sav")) %>%
   remove_all_labels() %>%
   filter(Consent == 1, Attention2_3 ==1, Attention2_5==1) %>%
   select(matches("PT_[A-Z]\\d"), id = ResponseId) %>%
@@ -38,7 +38,7 @@ pt <- read_sav(here("data/raw-private-encrypted/experiment.sav")) %>%
          order_PT_C1, order_PT_C, order_PT_D1, order_PT_D,
          order_PT_E1, order_PT_E, order_PT_I1, order_PT_I)
 
-bg <- read_sav(here("data/raw-private-encrypted/experiment.sav")) %>%
+bg <- read_sav(here("data/raw-private/experiment.sav")) %>%
   remove_all_labels() %>%
   filter(Consent == 1, Attention2_3 ==1, Attention2_5==1) %>%
   select(id = ResponseId, matches("F\\d"), etnicity) %>%

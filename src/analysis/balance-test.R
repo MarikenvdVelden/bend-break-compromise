@@ -86,12 +86,17 @@ df <- df %>%
                                       "Income",  "Education: High", "Education: Middle", "Education: Low")),
          difference = Diff.Un,2) %>%
   select(variable, difference) %>%
-  ggplot(aes(x = variable, y = difference)) +
-  geom_point(size = 3, colour = "gray55") +
+  mutate(type = if_else(difference <= -.05, "below",
+                if_else(difference >= .05, "below", "above"))) %>%
+  ggplot(aes(x = variable, y = difference, color = type)) +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("above"=fig_cols[3],
+                                "below"=fig_cols[2])) +
+  
   theme_bw() +
   labs(x="", y= "Standardized Mean Differences") +
-  ggtitle("Covariate Balance") +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(hjust = 0.5),
+        legend.position="none",) +
   geom_hline(yintercept = 0) +
   geom_hline(yintercept = 0.05, linetype = "dashed") +
   geom_hline(yintercept = -0.05, linetype = "dashed") +

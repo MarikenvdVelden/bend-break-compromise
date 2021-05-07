@@ -376,7 +376,7 @@ p1 + p2 + p3 + p4 + plot_layout(ncol=2)
 
 ``` r
 source(here("src/analysis/h1.R"))
-h1
+p1
 ```
 
 <img src="../../report/figures/h1-1.png" style="display: block; margin: auto;" />
@@ -385,7 +385,7 @@ h1
 
 ``` r
 source(here("src/analysis/h2.R"))
-h2
+p2
 ```
 
 <img src="../../report/figures/h2-1.png" style="display: block; margin: auto;" />
@@ -394,7 +394,7 @@ h2
 
 ``` r
 source(here("src/analysis/h3.R"))
-h3
+p3
 ```
 
 <img src="../../report/figures/h3-1.png" style="display: block; margin: auto;" />
@@ -403,7 +403,7 @@ h3
 
 ``` r
 source(here("src/analysis/h3-pooled.R"))
-h3p
+p3p
 ```
 
 <img src="../../report/figures/h3-pooled-1.png" style="display: block; margin: auto;" />

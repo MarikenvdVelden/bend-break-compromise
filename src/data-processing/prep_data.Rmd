@@ -50,7 +50,7 @@ save(d, file = here("data/intermediate/cleaned_data.RData"))
 ## Visualization of Data
 
 ### Dependent Variable
-```{r "Dependent Variable", echo=F}
+```{r "Dependent Variable", echo=F, fig.width=10, fig.height=8}
 d %>%
   mutate(PT_D1 = round((PT_D1_1 + PT_D1_2 + PT_D1_3 + PT_D1_4 + PT_D1_5 + PT_D1_6)/6, 0),
          PT_E1 = round((PT_E1_1 + PT_E1_2 + PT_E1_3 + PT_E1_4 + PT_E1_5 + PT_E1_6)/6, 0),
@@ -63,7 +63,7 @@ d %>%
                names_to = "issue") %>%
   drop_na(name) %>%
   mutate(issue = recode(issue, 
-                        name_C = "COVID_19",
+                        name_C = "COVID",
                         name_D = "Defense",
                         name_E = "Education",
                         name_I = "Immigration")) %>%
@@ -72,7 +72,7 @@ d %>%
                names_to = "issue1") %>%
   drop_na(PT1) %>%
   mutate(issue1 = recode(issue1, 
-                        PT_C1 = "COVID_19",
+                        PT_C1 = "COVID",
                         PT_D1 = "Defense",
                         PT_E1 = "Education",
                         PT_I1 = "Immigration")) %>%
@@ -80,7 +80,7 @@ d %>%
                values_to = "PT2",
                names_to = "issue2") %>%
   mutate(issue2 = recode(issue2, 
-                        PT_C2 = "COVID_19",
+                        PT_C2 = "COVID",
                         PT_D2 = "Defense",
                         PT_E2 = "Education",
                         PT_I2 = "Immigration")) %>%
@@ -88,7 +88,7 @@ d %>%
                values_to = "PT3",
                names_to = "issue3") %>%
   mutate(issue3 = recode(issue3, 
-                         PT_C3 = "COVID_19",
+                         PT_C3 = "COVID",
                          PT_D3 = "Defense",
                          PT_E3 = "Education",
                          PT_I3 = "Immigration")) %>%
@@ -96,13 +96,15 @@ d %>%
                values_to = "PT4",
                names_to = "issue4") %>%
   mutate(issue4 = recode(issue4, 
-                         PT_C4 = "COVID_19",
+                         PT_C4 = "COVID",
                          PT_D4 = "Defense",
                          PT_E4 = "Education",
                          PT_I4 = "Immigration"),
         check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
   filter(check == 1) %>%
   select(PT1, PT2, PT3, PT4, issue = issue1) %>%
+  mutate(PT1 = PT1 * 2) %>%
+  #mutate_at(c("PT1", "PT2", "PT3", "PT4"), ~(scale(.) %>% as.vector)) %>%
   pivot_longer(cols = PT1:PT4,
                names_to = "dvs") %>%
   mutate(dvs = recode(dvs,
@@ -117,11 +119,12 @@ d %>%
          upper = means + (1.56 * stdev)) %>%
   ggplot(aes(x = dvs, y = means, colour = issue,
              ymin = lower, ymax = upper, label = issue)) +
-  geom_point(position = position_dodge(.2)) + 
-  geom_errorbar(position = position_dodge(.2), width = 0) +
-  geom_label_repel(nudge_x = 0.35,nudge_y = 0.5, size = 4) + 
+  geom_point(position = position_dodge(.5)) + 
+  geom_errorbar(position = position_dodge(.5), width = 0) +
+  geom_text(aes(y = upper +.5), 
+            position = position_dodge(.5),na.rm = TRUE) + 
   labs(y = "0 (negative) - 10 (positive)", 
-       x = "", title = "Evaluation of Politicians") +
+       x = "") +
   geom_hline(yintercept = 5, linetype = "dotted", color = "darkgrey") +
   theme_minimal() +
   scale_color_manual(values = fig_cols) +

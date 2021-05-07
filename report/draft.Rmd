@@ -46,12 +46,84 @@ source(here::here("src/lib/functions.R"))
 
 # Acceptance of Political Compromises
 
+**Gender hypothesis** (_H1a_):  Women politicians are evaluated lower when striking a political compromise compared to men politicians.
+
+**Gender hypothesis** (_H1b_):  Women politicians are evaluated lower when not striking a political compromise compared to men politicians.
+
+**Migration hypothesis** (_H2_): Politicians with a migration background are evaluated lower when striking a political compromise compared to politicians without a migration background.
+
+**Intersection hypothesis** (_H3a_): Women politician with a migration background are evaluated lower when striking a political compromise compared to men politicians without a migration background.
+
+**Intersection hypothesis** (_H3b_): Women politician with a migration background are evaluated lower when not striking a political compromise compared to men politicians without a migration background.
+
 # Data, Measurement & Method
+The survey experiment is conducted in the Netherlands between the 21st of April 2021 and the 4th of May 2021.
+**WHY NL**
 
+## Data
+Participants were told that they are taking part in a survey to get an overview of how Dutch people form their views on politics.
+The sample, recruited through [KiesKompas](https://www.kieskompas.nl/en/),  consists of 2,004 participants of 18 years and older.[^1]
+Because Kieskompas works with non-random opt-in respondents, I have measured many demographic and political background variables (described in [Section 3.2](#measurement) under _Covariates_).
+Balance checks are conducted to demonstrate whether certain categories are over represented in a certain experimental group (see [Section 3.3](#method), Figure \ref{fig:balance}).
+The study has been approved by the [Research Ethics Review Committee](https://fsw.vu.nl/nl/onderzoek/research-ethics-review/index.aspx) of the _Vrije Universiteit Amsterdam_ (see the approval [here](https://github.com/MarikenvdVelden/compromise-punish/blob/main/docs/EthicalApproval.pdf)).
+To ensure good quality of our data, two attention checks (discussed in more detail in [Section 3.3 of the Pre-Analysis Plan](https://github.com/MarikenvdVelden/bend-break-compromise/blob/main/docs/pap/compromise-punishment-pap.pdf)) are included.
+All respondents included in the analyses passed both attention checks.
 
-```{r dv, fig.align = 'center', out.width = "75%", fig.cap = "Descriptive Overview Dependent Variable"}
+[^1]: The sample is calculated based on a power analysis presented in the [Pre-Analysis Plan](https://github.com/MarikenvdVelden/bend-break-compromise/blob/main/docs/pap/compromise-punishment-pap.pdf).
+
+## Measurement
+
+**_Dependent Variables_**
+I rely on four measures reflecting different aspects of how people judge politicians.
+The evaluation of politicians' character traits are statements deriving from @aaldering2016political.
+The other three neasures to evaluate the politician of the treatment are translated from @bauer2017punished -- i.e. favorability, representation, and career perspectives.
+General favorability is shown to be related to vote choice [@elis2010dynamics], perceptions of represenation are related to legislative compromise and cooperation [@doherty2013whom], and career perspective is included because critiques of women are typically manifested in their leadership skills [@eagly2007female].
+
+```{r dv, fig.align = 'center', out.width = "90%", fig.cap = "\\label{fig:descr_dv}Descriptive Overview Dependent Variable"}
 include_graphics(here("report/figures", "Dependent Variable-1.png"))
 ```
+
+**_Experimental Conditions_**
+The stimuli in the experiment are news messages in the same style as the Dutch news website [nu.nl](https://www.nu.nl/).
+In these news messages, we manipulate: a) the _gender_ of the politician (male vs. female); b) the _migration background_ of the politician (based on a Arabic sounding name (Rachid(a) Amezian) or a native Dutch sounding name (Karel/Karin van der Kleijn)); and c) whether the politician _striked a compromise or not_.
+This creates a full `2*2*2` factorial experiment with four rounds (see Table \ref{tab:treat}).
+Every round, the news message covers a new issue.
+The issues are: "defense" (increase cooperation of the defense units), "immigration" (immigration stop in western countries), "education" (expansion creative elementary school activities), "COVID-19" (emergency legislation to combat the COVID-19 pandemic).
+For every round, the politicians' name, and thereby gender and immigration background, are manipulated in the text and in the picture, as well as the decision to strike a compromise.
+
+```{r stimulus, topcaption=TRUE}
+d <- tibble(` ` = c(1:8),
+            `Name Politician` = c(rep("Rachid Amezian", 2), rep("Karel van der Kleijn", 2),
+                                  rep("Rachida Amezian", 2), rep("Karin van der Kleijn", 2)),
+            Gender = c(rep("Men",4), rep("Women", 4)),
+            `Migration Background` = c(rep("Yes", 2), rep("No", 2),
+                                  rep("Yes", 2), rep("No", 2)),
+            Compromise = c("Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No"))
+
+kbl(d, booktabs =T, caption = "\\label{tab:treat}Experimental Conditions",
+    align = c("l", "l", "c", "c", "c")) %>%
+  kable_styling(latex_options = c("striped", "hold_position"),
+                full_width = F, fixed_thead = T, position = "center") %>%
+  column_spec(1, width = ".5cm") %>%
+  column_spec(2, width = "3.2cm") %>%
+  column_spec(3, width = "2.5cm")%>%
+  column_spec(4, width = "3.5cm")%>%
+  column_spec(5, width = "2.5cm")
+
+```
+
+The text of the treatment is a Dutch translation of the stimulus material developed by @bauer2017punished.
+The authors have pre-tested the text of the stimuli material several times [see the [Web Appendix](https://static-content.springer.com/esm/art%3A10.1007%2Fs11109-016-9356-6/MediaObjects/11109_2016_9356_MOESM1_ESM.docx) of @bauer2017punished].
+The photo's of their stimuli material can unfortunately not be used, because a) @bauer2017punished only investigate the difference between men and women politicians, using solely photo''s of caucasians; and b) the American flag was present in their material.
+Instead, I have used photo's from local politicians of the city of The Hague that are not know to the general public. 
+The men politicians are in real life representatives of the [liberal-progressive party D66](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/boutkabout-a.-abid-fractievertegenwoordiger-d66.htm) (man with immigrant background) and of the [christian democratic party CDA](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/groot-de-d.p.-daniel-fractievertegenwoordiger-cda.htm) (man without immigrant background).
+The women politicians are in real life representatives of a [right-wing populist party _Hart voor Den Haag/ Groep de Mos_](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/davituliani-n.-nino-raadslid-hart-voor-den-haaggroep-de-mos.htm) (woman with migration background) and of the [social democratic party PvdA](https://www.denhaag.nl/nl/bestuur-en-organisatie/gemeenteraad/raadsleden-en-fractievertegenwoordigers/holman-j.-janneke-raadslid-pvda.htm) (woman without immigrant background).
+Thereby we have a spread over the ideological different parties present in Dutch politics.
+The names for the politicians without immigration background are _Karel_ (man) and _Karin_ (woman) _van der Kleijn_, which are typical native Dutch names.
+For the politicians with an immigration background, we picked _Rachid_ (man) and _Rachida_ (woman) _Amezian_.
+All stimulus material is developed by the [Network Institute of the _Vrije Universiteit Amsterdam_](https://networkinstitute.org/) and can be accessed [here](https://github.com/MarikenvdVelden/compromise-punish/tree/main/docs/pap/treatments). 
+
+**_Covariates_**
 
 ```{r descriptive-table, echo = FALSE}
 load(here("data/intermediate/cleaned_data.RData"))
@@ -80,21 +152,24 @@ kbl(descr, booktabs =T, caption = "\\label{tab:descr}Descriptive Information",
 rm(descr, means)  
 ```
 
+## Method
 
-```{r balance, fig.align = 'center', out.width = "75%", fig.cap = "Balance Checks"}
+```{r balance, fig.align = 'center', out.width = "95%", fig.cap = "\\label{fig:balance}Balance Checks"}
 include_graphics(here("report/figures", "balance-checks-1.png"))
 ```
 
 
 # Bend or Break?
 
+## Pre-Registered Hypotheses
 \newpage 
 \blandscape 
-```{r results-hs, fig.align = 'center', fig.cap = "Results"}
+```{r results-hs, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results}Results"}
 include_graphics(here("report/figures", "save-patchwork-results-1.png"))
 ```
 \elandscape 
 
+## Exploration
 
 
 # Discussion

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  6 MAY 2021 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  7 MAY 2021 11:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -670,7 +670,11 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen171
 \c@nlinenum=\count142
 \TeXr@lab=\toks35
-) (./draft.aux)
+) (./draft.aux
+
+LaTeX Warning: Label `fig:balance' multiply defined.
+
+)
 \openout1 = `draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
@@ -837,23 +841,28 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 143.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 143.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 143.
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/Dep
-endent Variable-1.png, id=38, 674.52pt x 481.8pt>
+endent Variable-1.png, id=67, 963.6pt x 770.88pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/Dependent Variable-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /Dependent Variable-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/Dependent Variable-1.png  used on input line 117.
-(pdftex.def)             Requested size: 352.31685pt x 251.65489pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 128.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 128.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 128.
+unish/report/figures/Dependent Variable-1.png  used on input line 180.
+(pdftex.def)             Requested size: 422.76494pt x 338.21194pt.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 194.
 
-Overfull \hbox (42.68907pt too wide) in paragraph at lines 128--169
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [2] [3 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/fi
+gures/Dependent Variable-1.png>]
+Overfull \hbox (42.68907pt too wide) in paragraph at lines 264--305
  [][] 
  []
 
@@ -861,62 +870,70 @@ Overfull \hbox (42.68907pt too wide) in paragraph at lines 128--169
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/bal
-ance-checks-1.png, id=40, 963.6pt x 963.6pt>
+ance-checks-1.png, id=105, 963.6pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/balance-checks-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /balance-checks-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/balance-checks-1.png  used on input line 173.
-(pdftex.def)             Requested size: 352.30656pt x 352.30656pt.
-[2 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
-Dependent Variable-1.png>] [3 </Users/marikenvandervelden/Dropbox/Papers/compro
-mise-punish/report/figures/balance-checks-1.png>] [4]
+unish/report/figures/balance-checks-1.png  used on input line 312.
+(pdftex.def)             Requested size: 446.26086pt x 446.26086pt.
+[4] [5 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figu
+res/balance-checks-1.png>] [6]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/sav
-e-patchwork-results-1.png, id=63, 1445.4pt x 1445.4pt>
+e-patchwork-results-1.png, id=125, 1927.2pt x 1445.4pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/save-patchwork-results-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /save-patchwork-results-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/save-patchwork-results-1.png  used on input line 187.
-(pdftex.def)             Requested size: 469.74944pt x 469.74944pt.
+unish/report/figures/save-patchwork-results-1.png  used on input line 329.
+(pdftex.def)             Requested size: 617.89288pt x 463.41965pt.
 
-LaTeX Warning: Float too large for page by 18.82759pt on input line 192.
+LaTeX Warning: Float too large for page by 12.4978pt on input line 334.
 
-[5 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
-save-patchwork-results-1.png>] [6
+[7 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
+save-patchwork-results-1.png>] [8
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 203.
-[7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 203.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 381.
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 381.
 (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 203.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 203.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 381.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 381.
 Package rerunfilecheck Info: File `draft.out' has not changed.
-(rerunfilecheck)             Checksum: B7595CBCBD78FC1810BCF17D3213B491;820.
+(rerunfilecheck)             Checksum: D91182DF27C581967A14B2BB7342248E;1396.
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 15388 strings out of 492616
- 226533 string characters out of 6129481
- 373318 words of memory out of 5000000
- 19008 multiletter control sequences out of 15000+600000
- 55345 words of font info for 69 fonts, out of 8000000 for 9000
+ 15546 strings out of 492616
+ 228647 string characters out of 6129481
+ 381743 words of memory out of 5000000
+ 19073 multiletter control sequences out of 15000+600000
+ 82208 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,9n,38p,811b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,11n,38p,811b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/20
-19/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
-lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri9.pf
-b>
-Output written on draft.pdf (7 pages, 546036 bytes).
+texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/lm/lmbxi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr12
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/lm/lmri10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmri9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt1
+0.pfb>
+Output written on draft.pdf (9 pages, 760117 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
- 24 named destinations out of 1000 (max. 500000)
- 14400 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 18536 words of extra memory for PDF output out of 20736 (max. 10000000)
 

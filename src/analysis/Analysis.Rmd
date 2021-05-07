@@ -181,38 +181,37 @@ source(here("src/analysis/balance-test.R"))
 df
 ```
 
-```{r "visualize-unbalanced-vars", fig.height=10, fig.width=10}
+```{r "visualize-unbalanced-vars", fig.height=15, fig.width=20}
 source(here("src/analysis/distribution_unbalanced_vars.R"))
-
 p1 + p2 + p3 + p4 + plot_layout(ncol=2)
 ```
 
 ## Gender Hypothesis 
 ```{r "h1", fig.align="center", fig.height=8, fig.width=8}
 source(here("src/analysis/h1.R"))
-h1
+p1
 ```
 
 ## Migration Hypothesis
 ```{r "h2", fig.align="center", fig.height=8, fig.width=8}
 source(here("src/analysis/h2.R"))
-h2
+p2
 ```
 
 ## Intersection Hypothesis
 ```{r "h3", fig.align="center", fig.height=8, fig.width=8}
 source(here("src/analysis/h3.R"))
-h3
+p3
 ```
 
 ## Intersection Hypothesis -- Pooled
 ```{r "h3-pooled", fig.align="center", fig.height=6, fig.width=6}
 source(here("src/analysis/h3-pooled.R"))
-h3p
+p3p
 ```
 
-```{r "save-patchwork-results", echo = F, fig.show="hide", fig.height= 15, fig.width=15}
-h1 + h2 + h3 + h3p + plot_layout(ncol=2)
+```{r "save-patchwork-results", echo = F, fig.show="hide", fig.height= 15, fig.width=20}
+p1 + p2 + p3 + p3p + plot_layout(ncol=2)
 ```
 
 ## Exploration
