@@ -6,7 +6,8 @@ d <- d %>%
          PreT5 = round((PreT5_1 + PreT5_2 + PreT5_3 + PreT5_4)/4,0),
          PreT7_2 = 6 - PreT7_2,
          PreT7_6 = 6 - PreT7_6,
-         PreT7_7 = 6 - PreT7_7) %>%
+         PreT7_7 = 6 - PreT7_7,
+         PreT2 = 10 - PreT2) %>%
   pivot_longer(cols = c(`name_D`, `name_I`, `name_E`, `name_C`),
                values_to = "name",
                names_to = "issue") %>%

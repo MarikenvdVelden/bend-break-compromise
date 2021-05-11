@@ -332,26 +332,26 @@ include_graphics(here("report/figures", "explore-women-politics-1.png"))
 - H1b: 
    - COVID-19: People who are negative towards COVID-19 policies find female politicians who stick to their guns better representatives and evaluate their leadership skills hiigher compared to male politicians who compromise. People who are positive towards COVID-19 politicies find female politicians who stick to their guns more likeable.
    - Defense: People who are negative towards defense policies find female politicians who stick to their guns more favorable, and think they have better career prospects. People who are positive towards defense politicies find female politicians who stick to their guns better representatives.
-   - Education: Position on education has no effect for favorability and leadershipskills. For both hold that women sticking to their guns are higher evaluated than male politicians doing the same. If you're negative towards education, you rate the career prospects of women sticking to their guns higher, and when you're positive towards education, you find women sticking to their guns better representatives. 
-   - Immigration: Positive on immigration coincides with 
+   - Education: Position on education has no effect for favorability and leadershipskills. For both hold that women sticking to their guns are higher evaluated than male politicians doing the same. If you're negative towards education, you rate the career prospects of women sticking to their guns higher, and when you're positive towards education, you find women sticking to their guns better representatives.
+   - Immigration: Positive on immigration find compromising female politicians more favorable.
 
 - H2: 
-   - COVID-19:
-   - Defense:
-   - Education:
-   - Immigration:
+   - COVID-19: No differences between people pro- or con COVID-19 policies for the evaluation of compromising politicians with or without migratiton background. When politicians with a migration background do not compromise, however, people pro-COVID foresee a more negative career for them.
+   - Defense: Con-defense position rate compromising politicians with a migration background negatively regarding their career prospects -- they also do that when not compromising (same holds for pro-defense), yet positively in terms of favorability. Pro-defense, no differences are found in their evaluations. When politicians with a migration-background stick to their guns, people con-defense find them more favorable and peoeple pro-defense the opposite.
+   - Education: When politicians with a migration background compromise, they are seen as having worse career prospects, less favorable, being worse representatives, and have worse leadershipskills by people con-education. No differences for people pro-education. When sticking to their guns, they politicians are seen as less favorable by con-education, and worse career prospects by people pro-education.
+   - Immigration: Once you think that the population of people with an immigrant background in the Netherlands is bigger than 25%, you're more negative about the career prospects, the favorability and the leadership skills of a compromising politician with a migration background (compared to politicians without a migration background). Yet, when you're positive on migration, you're more likey to rate a compromising politician with a migration background as more favorable and better representative. When politicians with a migration background do not comrpomise, people who think that the population of people with an immigrant background in the Netherlands is smaller than 25% are more negative about their career prospects -- similar to people that are negative about immigration. Moreover, when people negative on immigration, they find them less favorable. 
 
 - H3a: 
-   - COVID-19:
-   - Defense:
-   - Education:
-   - Immigration:
-
+   - COVID-19: No differences
+   - Defense: When female politicians with a migration background compromise, they're seen as better representatives by people con-defense
+   - Education: No differences
+   - Immigration: Once you think that the population of people with an immigrant background in the Netherlands is bigger than 25%, you're more negative about the career prospects, the favorability, representativeness, and the leadership skills of a compromising female politician with a migration background (compared to politicians without a migration background), yet when you think the population of people with an immigrant background in the Netherlands is smaller than 25%, you find compromising female politicians more favorable and better representatives. Moreover, having a positive attitude on migration leads to evaluating female politicians with a migration background who compromise higher in terms of career prospects, favorability and representativeness. 
+   
 - H3b: 
-   - COVID-19:
-   - Defense:
-   - Education:
-   - Immigration:
+   - COVID-19: No differences
+   - Defense: When female politicians with a migration background stick to their guns, they're seen as more favorable by people con-defense.
+   - Education: When female politicians with a migration background stick to their guns, they're evaluated to have better career-prospects by people con-education.
+   - Immigration: No differences
    
 \newpage 
 \blandscape 
