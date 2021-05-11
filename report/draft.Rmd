@@ -144,7 +144,12 @@ source(here("src/analysis/descriptive-information-overview.R"))
 kbl(descr, booktabs =T, caption = "\\label{tab:descr}Descriptive Information",
     digits = 2) %>%
   kable_styling(latex_options = c("striped", "hold_position"),
-                full_width = F, fixed_thead = T, position = "center")
+                full_width = F, fixed_thead = T, position = "center")  %>%
+   column_spec(1, width = "5.5cm") %>%
+   column_spec(2, width = "2cm") %>%
+   column_spec(3, width = "1.5cm") %>%
+   column_spec(4, width = "2cm") %>%
+   column_spec(5, width = "2cm")
 rm(descr, means)  
 ```
 
@@ -211,58 +216,167 @@ This hypothesis is tested in the lower-center-left panel of Figure \ref{fig:resu
 Paragraph on what it means for theory, and justification for explorations (below).
 
 ## Exploration
+To explore hetereogeneous effects, I conduct pooled analyses.
 
 **_Ideology_**
+
+- H1a: People with left-wing ideological position (i.e. `value rile-self $<5$`) have higher evaluations for female politicians who compromise compared to male politicians who compromise. Compared to male politicians, they find women politicians who compromise more favorable, feel better represented and evaluate their leadershipskills higher (yet very small effect). For people with a right-wing ideological position (i.e. `value rile-self $>5$`), there is no statistical significant difference between female and male politicians who compromise.
+- H1b: The opposite holds for people with a right-wing ideological position when evaluating women who do not compromise, compared to male politicians: women who stick to their guns are considered more favorable and better leaders than men who stick to their guns. For people with a left-wing ideological position, there is no statistical significant difference between female and male politicians who do not compromise.
+- H2: Left-wing more favorable to people politicians with a migration background who compromise than towards politicians without a migration backgroound -- no effect for other three measures. For people with a right-wing ideological position, there is no statistical significant difference between politicians with and without a migration background who compromise. Looking at NOT compromising, we see remarkable differences between people with a left-wing and right-wing ideology. When politicians with a migration background not compromise, they're considered more favorable to left-wingers, but less favorable to right-wingers. Also, not compromising makes them have better leaders according to the left, and worse leaders according to the right.
+- H3a: Women with a migration background (compared to women without, and compared to men with and without) who compromise are considered more favorable, better representatives, and to have better career prospects by the left. No statistical difference for the right.
+- H3b: No statistical difference for the left of the right 
+
+CHECK for DISCUSSION: left-wing over all more agreeable?
+```{r "ideology-agree",echo=FALSE}
+d %>% 
+   select(PreT6, PreT7_2, PreT7_6, PreT7_7) %>%
+   mutate(`Ideological Position` = if_else(PreT6>5, 
+                                           "Right-Wing", 
+                                           "Left-Wing")) %>%
+   group_by(`Ideological Position`) %>%
+   summarise(c1 = cor(PreT6,PreT7_2),
+             c2 = cor(PreT6,PreT7_6),
+             c3 = cor(PreT6,PreT7_7)) %>% 
+   pivot_longer(cols = c1:c3,
+                names_to = "Correlation with",
+                values_to = "Pearson's R") %>%
+   mutate(`Correlation with` = recode(`Correlation with`,
+                                      `c1` = "Against their better judgment, politicians promise more than they can deliver.",
+                                      `c2` = "What in politics is called `making compromises' is actually just betraying your principles.",
+                                      `c3` = "A strong head of government is good for the Netherlands, even if he stretches the rules a bit to get things done.")) %>%
+   kbl(booktabs =T, caption = "\\label{tab:cor_agree}Correlation ideology and agreebleness",
+    digits = 2) %>%
+  kable_styling(latex_options = c("striped", "hold_position"),
+                full_width = F, fixed_thead = T, position = "center") %>%
+   column_spec(1, width = "3cm") %>%
+   column_spec(2, width = "10cm") %>%
+   column_spec(3, width = "3cm")
+```
+
+
 \newpage 
 \blandscape 
-```{r results-ideology, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-ideology}Results: Interaction with Ideology"}
+```{r results-ideology, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-ideology}Results: Interaction with Ideology"}
 include_graphics(here("report/figures", "explore-ideology-1.png"))
 ```
 \elandscape 
 
 
 **_Willingness to Accept Compromises_**
+
+- H1a: people with low scores on WTAC, i.e. those who consider political compromise betraying your principles (`scores of 1-3` (inversly coded)), are more likely to consider female politicians who compromise favorable (compared to male politicians who compromise). Both people with high and low scores on WTAC consider female politcians who compromise to be better representatives than male politicians who compromise. People willing to accept compromise consider the career prosects of women who compromise more positive compared to male politicians who compromise.
+- H1b: People who are against political compromise rate female politicians who stick to their guns higher in terms of favorability than male politicians who do so. Both people with high and low scores on WTAC consider female politcians who compromise to be better representatives than male politicians who compromise. People willing to accept compromise consider the career prosects of women who compromise more positive compared to male politicians who compromise, also they consider female politicians who do not compromise less favorable, but better leaders.
+- H2: People who are against political compromise rate the career prospects of politicians with a migration background who compromise way more negative compared to politicians without a migration background, they are also slightly more negative about the represenation oof politicians with a migration background compared to those without that background. When you are willing to accept political compromises, you are more positive about politicians with a migration background in terms of career prospects, favorability, representatiion and leadership traits. When politicians with a migration background stick to their guns, both people who are and are not willing to accept compromise evaluate them lower compared to politicians without a migration bachground. Moreover, people against political compromises also find politicians with a migration background who stick to their guns less favorable than politicians without a migration background.
+- H3a: Female politicians with a migration background are considered more favorable by people who are willing to accept political compromises.
+- H3b: Female politicians with a migration background are considered more favorable by people who are not willing to accept political compromises, and less favorable by those who are willing to acceptt compromise. Also, people against political compromisee evaluate the prospects of female politicians with a migration backgound lower than the prospects of the other groups.
+
+CHECK: do people who are willing to accept compromise have higher trust in poltics?
+
+```{r "wtac-trust", echo=FALSE}
+d %>% 
+   select(PreT7_6, PreT7_1, PreT7_3, PreT7_4, PreT7_5) %>%
+   mutate(`Attitude towards Compromise` = if_else(PreT7_6>3, "Positive", 
+                         "Negative")) %>%
+   group_by(`Attitude towards Compromise`) %>%
+   summarise(c1 = cor(PreT7_6,PreT7_1),
+             c2 = cor(PreT7_6,PreT7_3),
+             c3 = cor(PreT7_6,PreT7_4),
+             c4 = cor(PreT7_6,PreT7_5)) %>% 
+   pivot_longer(cols = c1:c4,
+                names_to = "Correlation with",
+                values_to = "Pearson's R") %>%
+   mutate(`Correlation with` = recode(`Correlation with`,
+                                      `c1` = "The political parties are only interested in my vote and not in my opinion.",
+                                      `c2` = "Most politicians are skilled people who know what they are doing.",
+                                      `c3` = "Politicians are able to solve the most important problems.",
+                                      `c4` = "I feel well represented by Dutch politicians.")) %>%
+   kbl(booktabs =T, caption = "\\label{tab:cor_trust}Correlation WtAC and Other measures of Pol. Eff",
+    digits = 2) %>%
+  kable_styling(latex_options = c("striped", "hold_position"),
+                full_width = F, fixed_thead = T, position = "center") %>%
+   column_spec(1, width = "3cm") %>%
+   column_spec(2, width = "10cm") %>%
+   column_spec(3, width = "3cm")
+```
+
 \newpage 
 \blandscape 
-```{r results-wtac, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-wtac}Results: Interaction with Willingness to Accept Compromise"}
+```{r results-wtac, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-wtac}Results: Interaction with Willingness to Accept Compromise"}
 include_graphics(here("report/figures", "explore-wtac-1.png"))
 ```
 \elandscape 
 
 **_Attitude towards Women in Politics_**
+
+- H1a: Whether or not you're positive towards women in politics, female politicians who compromise are considered more favorable than male politicians -- the same holds for women who do not compromise. For those negative towards women in politics, they evaluate women politicians who compromise as having better career perspectives, being better representatives, yet having lower leadership skills. For those positive about women in politics, female politicians who compromise are seen as worse representatives than males who compromise. The opposte holds for leadership skills. 
+- H1b: For those negative towards women in politics, they evaluate women politicians who do not compromise as having better career perspectives, yet being worse representatives. There is no difference in their leadership skills (effect of 0). For those positive about women in politics, female politicians who do not compromise are seen as better representatives than males who do not compromise. The same holds for leadership skills. 
+- H3a: People who have a negative attitude towards women in politics evaluate female polticians with a migration background lower. They rate their career perspectives  and leadershipskills more negative. People with positive attitudes towards women in politics rate female politicians with a migration background who compromise -- relative to other groups -- higher in terms of career prospects, favorability and leadership skills.
+- H3b: When female politicians with a migration background do not compromise, they are lower evaluated on their career prospects, but are considered to be better representatives by those with a positive attitude towards women in politics. When female politicians with a migration background do not comprimse, their career perspectives are evaluated lower, but they are considered better representatives by people with positive attitudes towards women in politics.
+
 \newpage 
 \blandscape 
-```{r results-women-politics, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-women-politics}Results: Interaction with Attitudes towards Women in Politics"}
+```{r results-women-politics, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-women-politics}Results: Interaction with Attitudes towards Women in Politics"}
 include_graphics(here("report/figures", "explore-women-politics-1.png"))
 ```
 \elandscape 
 
 
 **_Position on Political Issues_**
+
+- H1a:
+   - COVID-19: When opposing COVID-19 policies, people rare female politicians who compromise as more favorable than male politicans who compromise. People who are infacor of the COVID-19 policies do not evaluate male and female politicians who compromise differently
+   - Defense: No difference between positive or negative towards defense, people always rate compromising female politicians as more favorable. When you are negative towards defense policies: find women who compromise better representatives, when positive about defense policies, you evaluate their career prosects more positive.
+   - Education: When negative position on education, you rate compromising female politicians higher than compromising male politicians in terms of favorability, as representatives, and in terms of their leadership skills. 
+   - Immigratin: When estimaing low percentagees of immigration in the Netherlands, you're more positive towards compromising female politicians in terms of career prospects, favorability and representation.
+
+- H1b: 
+   - COVID-19: People who are negative towards COVID-19 policies find female politicians who stick to their guns better representatives and evaluate their leadership skills hiigher compared to male politicians who compromise. People who are positive towards COVID-19 politicies find female politicians who stick to their guns more likeable.
+   - Defense: People who are negative towards defense policies find female politicians who stick to their guns more favorable, and think they have better career prospects. People who are positive towards defense politicies find female politicians who stick to their guns better representatives.
+   - Education: Position on education has no effect for favorability and leadershipskills. For both hold that women sticking to their guns are higher evaluated than male politicians doing the same. If you're negative towards education, you rate the career prospects of women sticking to their guns higher, and when you're positive towards education, you find women sticking to their guns better representatives. 
+   - Immigration: Positive on immigration coincides with 
+
+- H2: 
+   - COVID-19:
+   - Defense:
+   - Education:
+   - Immigration:
+
+- H3a: 
+   - COVID-19:
+   - Defense:
+   - Education:
+   - Immigration:
+
+- H3b: 
+   - COVID-19:
+   - Defense:
+   - Education:
+   - Immigration:
+   
 \newpage 
 \blandscape 
-```{r results-covid, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-covid}Results: Interaction with Position on COVID-19"}
+```{r results-covid, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-covid}Results: Interaction with Position on COVID-19"}
 include_graphics(here("report/figures", "explore-covid-1.png"))
 ```
 \elandscape 
 
 \newpage 
 \blandscape 
-```{r results-defense, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-defense}Results: Interaction with Position on Defense"}
+```{r results-defense, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-defense}Results: Interaction with Position on Defense"}
 include_graphics(here("report/figures", "explore-defense-1.png"))
 ```
 \elandscape 
 
 \newpage 
 \blandscape 
-```{r results-education, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-education}Results: Interaction with Position on Education"}
+```{r results-education, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-education}Results: Interaction with Position on Education"}
 include_graphics(here("report/figures", "explore-education-1.png"))
 ```
 \elandscape 
 
 \newpage 
 \blandscape 
-```{r results-immigration, out.width = "95%", fig.align = 'center', fig.cap = "\\label{fig:results-immigration}Results: Interaction with Position on Immigration"}
+```{r results-immigration, out.width = "100%", fig.align = 'center', fig.cap = "\\label{fig:results-immigration}Results: Interaction with Position on Immigration"}
 include_graphics(here("report/figures", "explore-immigration-1.png"))
 ```
 \elandscape 

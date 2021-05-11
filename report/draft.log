@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  7 MAY 2021 20:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.3.20)  11 MAY 2021 09:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -873,10 +873,6 @@ LaTeX Font Info:    Try loading font information for T1+lmtt on input line 185.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [2]
-Overfull \hbox (42.68907pt too wide) in paragraph at lines 255--296
- [][] 
- []
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -908,120 +904,130 @@ unish/report/figures/save-patchwork-results-1.png  used on input line 418.
 LaTeX Warning: Float too large for page by 12.4978pt on input line 423.
 
 [7 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/
-save-patchwork-results-1.png>] [8
+save-patchwork-results-1.png>]
+Overfull \hbox (21.48906pt too wide) in paragraph at lines 530--543
+ [][] 
+ []
+
+[8
 
 
-]
+] [9]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-ideology-1.png, id=143, 1927.2pt x 963.6pt>
+lore-ideology-1.png, id=149, 1927.2pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-ideology-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-ideology-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-ideology-1.png  used on input line 482.
-(pdftex.def)             Requested size: 617.89288pt x 308.94643pt.
-[9
+unish/report/figures/explore-ideology-1.png  used on input line 549.
+(pdftex.def)             Requested size: 650.41666pt x 325.20831pt.
+[10
 
  </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/ex
-plore-ideology-1.png>] [10
+plore-ideology-1.png>]
+Overfull \hbox (21.48906pt too wide) in paragraph at lines 617--632
+ [][] 
+ []
+
+[11
 
 ]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-wtac-1.png, id=155, 1927.2pt x 963.6pt>
+lore-wtac-1.png, id=161, 1927.2pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-wtac-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-wtac-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-wtac-1.png  used on input line 494.
-(pdftex.def)             Requested size: 617.89288pt x 308.94643pt.
-[11
+unish/report/figures/explore-wtac-1.png  used on input line 638.
+(pdftex.def)             Requested size: 650.41666pt x 325.20831pt.
+[12
 
  </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/ex
-plore-wtac-1.png>] [12
+plore-wtac-1.png>] [13
 
 ]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-women-politics-1.png, id=166, 1927.2pt x 963.6pt>
+lore-women-politics-1.png, id=173, 1927.2pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-women-politics-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-women-politics-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-women-politics-1.png  used on input line 507.
-(pdftex.def)             Requested size: 617.89288pt x 308.94643pt.
-[13
+unish/report/figures/explore-women-politics-1.png  used on input line 690.
+(pdftex.def)             Requested size: 650.41666pt x 325.20831pt.
+[14
 
  </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/ex
-plore-women-politics-1.png>] [14
+plore-women-politics-1.png>] [15
 
 ]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-covid-1.png, id=178, 1927.2pt x 963.6pt>
+lore-covid-1.png, id=184, 1927.2pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-covid-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-covid-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-covid-1.png  used on input line 519.
-(pdftex.def)             Requested size: 617.89288pt x 308.94643pt.
-[15
+unish/report/figures/explore-covid-1.png  used on input line 806.
+(pdftex.def)             Requested size: 650.41666pt x 325.20831pt.
+[16
 
  </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/ex
 plore-covid-1.png>]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-defense-1.png, id=185, 1927.2pt x 963.6pt>
+lore-defense-1.png, id=191, 1927.2pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-defense-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-defense-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-defense-1.png  used on input line 531.
-(pdftex.def)             Requested size: 617.89288pt x 308.94643pt.
-[16
+unish/report/figures/explore-defense-1.png  used on input line 818.
+(pdftex.def)             Requested size: 650.41666pt x 325.20831pt.
+[17
 
 
  </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/ex
 plore-defense-1.png>]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-education-1.png, id=192, 1927.2pt x 963.6pt>
+lore-education-1.png, id=198, 1927.2pt x 963.6pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-education-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-education-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-education-1.png  used on input line 543.
-(pdftex.def)             Requested size: 617.89288pt x 308.94643pt.
-[17
+unish/report/figures/explore-education-1.png  used on input line 830.
+(pdftex.def)             Requested size: 650.41666pt x 325.20831pt.
+[18
 
 
  </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/ex
 plore-education-1.png>]
 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures/exp
-lore-immigration-1.png, id=199, 1927.2pt x 1927.2pt>
+lore-immigration-1.png, id=205, 1927.2pt x 1927.2pt>
 File: /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figure
 s/explore-immigration-1.png Graphic file (type png)
 <use /Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
 /explore-immigration-1.png>
 Package pdftex.def Info: /Users/marikenvandervelden/Dropbox/Papers/compromise-p
-unish/report/figures/explore-immigration-1.png  used on input line 555.
+unish/report/figures/explore-immigration-1.png  used on input line 842.
 (pdftex.def)             Requested size: 469.7421pt x 469.7421pt.
 
-LaTeX Warning: Float too large for page by 18.82025pt on input line 560.
+LaTeX Warning: Float too large for page by 18.82025pt on input line 847.
 
-[18 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
-/explore-immigration-1.png>] [19
+[19 </Users/marikenvandervelden/Dropbox/Papers/compromise-punish/report/figures
+/explore-immigration-1.png>] [20
 
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 604.
-[20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 604.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 891.
+[21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 891.
 (./draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 604.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 604.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 891.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 891.
 Package rerunfilecheck Info: File `draft.out' has not changed.
 (rerunfilecheck)             Checksum: D91182DF27C581967A14B2BB7342248E;1396.
 
@@ -1029,11 +1035,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15644 strings out of 492616
- 232439 string characters out of 6129481
- 384123 words of memory out of 5000000
- 19130 multiletter control sequences out of 15000+600000
- 83403 words of font info for 119 fonts, out of 8000000 for 9000
+ 15667 strings out of 492616
+ 232696 string characters out of 6129481
+ 394378 words of memory out of 5000000
+ 19134 multiletter control sequences out of 15000+600000
+ 84067 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,11n,38p,811b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
@@ -1049,10 +1055,10 @@ dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
 ype1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
 lm/lmri10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri9.p
 fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on draft.pdf (20 pages, 2494583 bytes).
+Output written on draft.pdf (21 pages, 2517899 bytes).
 PDF statistics:
- 293 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 61 named destinations out of 1000 (max. 500000)
+ 299 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
  18566 words of extra memory for PDF output out of 20736 (max. 10000000)
 
