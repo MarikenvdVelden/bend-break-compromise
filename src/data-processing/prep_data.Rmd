@@ -51,7 +51,7 @@ save(d, file = here("data/intermediate/cleaned_data.RData"))
 
 ### Dependent Variable
 ```{r "Dependent Variable", echo=F, fig.width=10, fig.height=8}
-d %>%
+d <- d %>%
   mutate(PT_D1 = round((PT_D1_1 + PT_D1_2 + PT_D1_3 + PT_D1_4 + PT_D1_5 + PT_D1_6)/6, 0),
          PT_E1 = round((PT_E1_1 + PT_E1_2 + PT_E1_3 + PT_E1_4 + PT_E1_5 + PT_E1_6)/6, 0),
          PT_C1 = round((PT_C1_1 + PT_C1_2 + PT_C1_3 + PT_C1_4 + PT_C1_5 + PT_C1_6)/6, 0),
@@ -101,7 +101,10 @@ d %>%
                          PT_E4 = "Education",
                          PT_I4 = "Immigration"),
         check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
-  filter(check == 1) %>%
+  filter(check == 1) 
+  
+
+d %>%
   select(PT1, PT2, PT3, PT4, issue = issue1) %>%
   mutate(PT1 = PT1 * 2) %>%
   #mutate_at(c("PT1", "PT2", "PT3", "PT4"), ~(scale(.) %>% as.vector)) %>%
@@ -116,7 +119,7 @@ d %>%
   summarise(means = mean(value, na.rm=T),
             stdev = sd(value, na.rm=T)) %>%
   mutate(lower = means - (1.56 * stdev),
-         upper = means + (1.56 * stdev)) %>%
+         upper = means + (1.56 * stdev)) %>% 
   ggplot(aes(x = dvs, y = means, colour = issue,
              ymin = lower, ymax = upper, label = issue)) +
   geom_point(position = position_dodge(.5)) + 
@@ -136,74 +139,11 @@ d %>%
 
 ### Treatment Conditions
 ```{r "Independent Variables", echo=F, message=FALSE, warning=FALSE,fig.width=10, fig.height=10}
-
 d %>%
-  mutate(PT_D1 = round((PT_D1_1 + PT_D1_2 + PT_D1_3 + PT_D1_4 + PT_D1_5 + PT_D1_6)/6, 0),
-         PT_E1 = round((PT_E1_1 + PT_E1_2 + PT_E1_3 + PT_E1_4 + PT_E1_5 + PT_E1_6)/6, 0),
-         PT_C1 = round((PT_C1_1 + PT_C1_2 + PT_C1_3 + PT_C1_4 + PT_C1_5 + PT_C1_6)/6, 0),
-         PT_I1 = round((PT_I1_1 + PT_I1_2 + PT_I1_3 + PT_I1_4 + PT_I1_5 + PT_I1_6)/6, 0),
-         PreT5 = round((PreT5_1 + PreT5_2 + PreT5_3 + PreT5_4)/4,0),
-         PreT7 = round((PreT7_1 + PreT7_2 + PreT7_3 + PreT7_4 + PreT7_5 + PreT7_6 + PreT7_7)/7,0)) %>%
-  pivot_longer(cols = c(name_D, name_I, name_E, name_C),
-               values_to = "name",
-               names_to = "issue") %>%
-  drop_na(name) %>%
-  mutate(issue = recode(issue, 
-                        name_C = "COVID_19",
-                        name_D = "Defense",
-                        name_E = "Education",
-                        name_I = "Immigration")) %>%
-  pivot_longer(cols = c(PT_D1, PT_E1, PT_C1, PT_I1),
-               values_to = "PT1",
-               names_to = "issue1") %>%
-  drop_na(PT1) %>%
-  mutate(issue1 = recode(issue1, 
-                        PT_C1 = "COVID_19",
-                        PT_D1 = "Defense",
-                        PT_E1 = "Education",
-                        PT_I1 = "Immigration")) %>%
-  pivot_longer(cols = c(PT_D2, PT_E2, PT_C2, PT_I2),
-               values_to = "PT2",
-               names_to = "issue2") %>%
-  mutate(issue2 = recode(issue2, 
-                        PT_C2 = "COVID_19",
-                        PT_D2 = "Defense",
-                        PT_E2 = "Education",
-                        PT_I2 = "Immigration")) %>%
-  pivot_longer(cols = c(PT_D3, PT_E3, PT_C3, PT_I3),
-               values_to = "PT3",
-               names_to = "issue3") %>%
-  mutate(issue3 = recode(issue3, 
-                         PT_C3 = "COVID_19",
-                         PT_D3 = "Defense",
-                         PT_E3 = "Education",
-                         PT_I3 = "Immigration")) %>%
-  pivot_longer(cols = c(PT_D4, PT_E4, PT_C4, PT_I4),
-               values_to = "PT4",
-               names_to = "issue4") %>%
-  mutate(issue4 = recode(issue4, 
-                         PT_C4 = "COVID_19",
-                         PT_D4 = "Defense",
-                         PT_E4 = "Education",
-                         PT_I4 = "Immigration"),
-        check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
-  filter(check == 1) %>%
-  mutate(gender = recode(name,
-                         `Karel van der Kleijn` = 0,
-                         `Karin van der Kleijn` = 1,
-                         `Rachid Amezian` = 0,
-                         `Rachida Amezian` = 1),
-         immigration = recode(name,
-                              `Karel van der Kleijn` = 0,
-                              `Karin van der Kleijn` = 0,
-                              `Rachid Amezian` = 1,
-                              `Rachida Amezian` = 1),
-         intersection = recode(name,
-                               `Karel van der Kleijn` = 0,
-                               `Karin van der Kleijn` = 0,
-                               `Rachid Amezian` = 0,
-                               `Rachida Amezian` = 1),
-         compromise = if_else(compromis == "geen compromis", "Compromise", "No Compromise")) %>%
+  pivot_longer(cols = c(compromise_D, compromise_I, compromise_E, compromise_C),
+               names_to = "value",
+               values_to = "compromise") %>%
+  mutate(compromise = recode(compromise, `een compromis` = "Compromise", `geen compromis` = "No Compromise")) %>%
   unite("treatment", c("name", "compromise"), sep = "\n ") %>%
   select(treatment, issue) %>%
   group_by(issue, treatment) %>%
@@ -227,56 +167,6 @@ d %>%
 ### Correlations Matrix
 ```{r "Correlations Matrix", echo=F, message=T, warning=T, fig.width=15, fig.height=15}
 d %>%
-  mutate(PT_D1 = round((PT_D1_1 + PT_D1_2 + PT_D1_3 + PT_D1_4 + PT_D1_5 + PT_D1_6)/6, 0),
-         PT_E1 = round((PT_E1_1 + PT_E1_2 + PT_E1_3 + PT_E1_4 + PT_E1_5 + PT_E1_6)/6, 0),
-         PT_C1 = round((PT_C1_1 + PT_C1_2 + PT_C1_3 + PT_C1_4 + PT_C1_5 + PT_C1_6)/6, 0),
-         PT_I1 = round((PT_I1_1 + PT_I1_2 + PT_I1_3 + PT_I1_4 + PT_I1_5 + PT_I1_6)/6, 0),
-         PreT5 = round((PreT5_1 + PreT5_2 + PreT5_3 + PreT5_4)/4,0),
-         PreT7 = round((PreT7_1 + PreT7_2 + PreT7_3 + PreT7_4 + PreT7_5 + PreT7_6 + PreT7_7)/7,0)) %>%
-  pivot_longer(cols = c(name_D, name_I, name_E, name_C),
-               values_to = "name",
-               names_to = "issue") %>%
-  drop_na(name) %>%
-  mutate(issue = recode(issue, 
-                        `name_C` = "COVID_19",
-                        `name_D` = "Defense",
-                        `name_E` = "Education",
-                        `name_I` = "Immigration")) %>%
-  pivot_longer(cols = c(`PT_D1`, `PT_E1`, `PT_C1`, `PT_I1`),
-               values_to = "PT1",
-               names_to = "issue1") %>%
-  drop_na(PT1) %>%
-  mutate(issue1 = recode(issue1, 
-                        `PT_C1` = "COVID_19",
-                        `PT_D1` = "Defense",
-                        `PT_E1` = "Education",
-                        `PT_I1` = "Immigration")) %>%
-  pivot_longer(cols = c(`PT_D2`, `PT_E2`, `PT_C2`, `PT_I2`),
-               values_to = "PT2",
-               names_to = "issue2") %>%
-  mutate(issue2 = recode(issue2, 
-                        `PT_C2` = "COVID_19",
-                        `PT_D2` = "Defense",
-                        `PT_E2` = "Education",
-                        `PT_I2` = "Immigration")) %>%
-  pivot_longer(cols = c(`PT_D3`, `PT_E3`, `PT_C3`, `PT_I3`),
-               values_to = "PT3",
-               names_to = "issue3") %>%
-  mutate(issue3 = recode(issue3, 
-                         `PT_C3` = "COVID_19",
-                         `PT_D3` = "Defense",
-                         `PT_E3` = "Education",
-                         `PT_I3` = "Immigration")) %>%
-  pivot_longer(cols = c(`PT_D4`, `PT_E4`, `PT_C4`, `PT_I4`),
-               values_to = "PT4",
-               names_to = "issue4") %>%
-  mutate(issue4 = recode(issue4, 
-                         `PT_C4` = "COVID_19",
-                         `PT_D4` = "Defense",
-                         `PT_E4` = "Education",
-                         `PT_I4` = "Immigration"),
-        check = if_else(issue == issue1 & issue == issue2 & issue == issue3 & issue == issue4, 1,0)) %>%
-  filter(check == 1) %>%
   select(`Gender` = F1,
          `Age` = F2,
          `Education` = F9,
