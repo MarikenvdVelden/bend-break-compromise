@@ -1,5 +1,5 @@
 df <- d %>%
-  select(name, compromise, F2, F4, F7, F8, PreT2:PreT8,issue)  %>%
+  select(name, compromise, F2, F4, F7, F8, F9, PreT2:PreT8,issue)  %>%
   mutate(compromise = if_else(compromise==1, "Compromise", "No Compromise")) %>%
   mutate_at(c("F2", "F4", "F7", "F8", "PreT2", "PreT3", "PreT4", "PreT5", "PreT6",
               "PreT7_1", "PreT7_2", "PreT7_3", "PreT7_4", "PreT7_5", "PreT7_6",
@@ -11,6 +11,7 @@ df <- d %>%
                        `F4` = "Urbaness",
                        `F7` = "Employment",
                        `F8` = "Income",
+                       `F9` = "Education",
                        `PreT2`  = "Position: Immigration",
                        `PreT3`  = "Position: Defense",
                        `PreT4`  = "Position: Education",

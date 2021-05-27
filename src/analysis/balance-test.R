@@ -81,7 +81,7 @@ df <- df %>%
                                       "50+", "Bij1", "BBB", "Blanco", "CDA",
                                       "ChristenUnie", "D66", "Didn't vote", "Don't know",
                                       "Denk", "Forum for Democracy","GroenLinks", "JA21", 
-                                      "Not eligible", "PvdA", "Animal Rights Party", "PVV", 
+                                      "Not eligible", "Other Party ","PvdA", "Animal Rights Party", "PVV", 
                                       "SGP", "SP", "VOLT","VVD","Employment",
                                       "Income",  "Education: High", "Education: Middle", "Education: Low")),
          difference = Diff.Un,2) %>%

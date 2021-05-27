@@ -1,7 +1,7 @@
 ## H3
 issues <- unique(d$issue)
 for(i in 1:length(issues)){
-  df <- d %>% select(a = intersection, compromise, PT1:PT4, F2, F4, F7, F8, PreT2:PreT8, issue) %>%
+  df <- d %>% select(a = intersection, compromise, PT1:PT4, F2, F4, F7, F8, F9, PreT1:PreT8, issue) %>%
     filter(issue == issues[i]) %>%
     select(-issue)
   if(i==1){

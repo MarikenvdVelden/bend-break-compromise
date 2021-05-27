@@ -173,33 +173,33 @@ I employ the following criteria:
 
 ``` r
 descr <- d %>%
-  summarise(`DV: Trait Evaluation` = round(sum(is.na(PT1))/n(),2),
-            `DV: Favorability` = round(sum(is.na(PT2))/n(),2),
-            `DV: Representation` = round(sum(is.na(PT3))/n(),2),
-            `DV: Career Prospects` = round(sum(is.na(PT4))/n(),2),
-            `Immigration (%)` = round(sum(is.na(PreT1))/n(),2),
-            `Position: Immigration` = round(sum(is.na(PreT2))/n(),2),
-            `Position: Defense` = round(sum(is.na(PreT3))/n(),2),
-            `Position: Education` = round(sum(is.na(PreT4))/n(),2),
-            `Attitude: Women in Politics` = round(sum(is.na(PreT5))/n(),2),
-            `Ideology` = round(sum(is.na(PreT6))/n(),2),
-            `Political Efficacy (1)` = round(sum(is.na(PreT7_1))/n(),2),
-            `Political Efficacy (2)` = round(sum(is.na(PreT7_2))/n(),2),
-            `Political Efficacy (3)` = round(sum(is.na(PreT7_3))/n(),2),
-            `Political Efficacy (4)` = round(sum(is.na(PreT7_4))/n(),2),
-            `Political Efficacy (5)` = round(sum(is.na(PreT7_5))/n(),2),
-            `Political Efficacy (6)` = round(sum(is.na(PreT7_6))/n(),2),
-            `Political Efficacy (7)` = round(sum(is.na(PreT7_7))/n(),2),
-            `Position: COVID-19` = round(sum(is.na(PreT8))/n(),2),
-            `Gender` = round(sum(is.na(F1))/n(),2),
-            `Age` = round(sum(is.na(F2))/n(),2),
-            `Region` = round(sum(is.na(F3))/n(),2),
-            `Urbaness` = round(sum(is.na(F4))/n(),2),
-            `Migration Background` = round(sum(is.na(F5))/n(),2),
-            `Party Preference` = round(sum(is.na(F6))/n(),2),
-            `Employment` = round(sum(is.na(F7))/n(),2),
-            `Income` = round(sum(is.na(F8))/n(),2),
-            `Education` = round(sum(is.na(F9))/n(),2)) %>%
+  summarise(`DV: Trait Evaluation` = round(sum(is.na(PT1))/n(),4),
+            `DV: Favorability` = round(sum(is.na(PT2))/n(),4),
+            `DV: Representation` = round(sum(is.na(PT3))/n(),4),
+            `DV: Career Prospects` = round(sum(is.na(PT4))/n(),4),
+            `Immigration (%)` = round(sum(is.na(PreT1))/n(),4),
+            `Position: Immigration` = round(sum(is.na(PreT2))/n(),4),
+            `Position: Defense` = round(sum(is.na(PreT3))/n(),4),
+            `Position: Education` = round(sum(is.na(PreT4))/n(),4),
+            `Attitude: Women in Politics` = round(sum(is.na(PreT5))/n(),4),
+            `Ideology` = round(sum(is.na(PreT6))/n(),4),
+            `Political Efficacy (1)` = round(sum(is.na(PreT7_1))/n(),4),
+            `Political Efficacy (2)` = round(sum(is.na(PreT7_2))/n(),4),
+            `Political Efficacy (3)` = round(sum(is.na(PreT7_3))/n(),4),
+            `Political Efficacy (4)` = round(sum(is.na(PreT7_4))/n(),4),
+            `Political Efficacy (5)` = round(sum(is.na(PreT7_5))/n(),4),
+            `Political Efficacy (6)` = round(sum(is.na(PreT7_6))/n(),4),
+            `Political Efficacy (7)` = round(sum(is.na(PreT7_7))/n(),4),
+            `Position: COVID-19` = round(sum(is.na(PreT8))/n(),4),
+            `Gender` = round(sum(is.na(F1))/n(),4),
+            `Age` = round(sum(is.na(F2))/n(),4),
+            `Region` = round(sum(is.na(F3))/n(),4),
+            `Urbaness` = round(sum(is.na(F4))/n(),4),
+            `Migration Background` = round(sum(is.na(F5))/n(),4),
+            `Party Preference` = round(sum(is.na(F6))/n(),4),
+            `Employment` = round(sum(is.na(F7))/n(),4),
+            `Income` = round(sum(is.na(F8))/n(),4),
+            `Education` = round(sum(is.na(F9))/n(),4)) %>%
   pivot_longer(cols = `DV: Trait Evaluation`:`Education`,
               names_to = "Variables", values_to = "% Missing Values") %>%
   filter(`% Missing Values` > 0) 
@@ -242,7 +242,7 @@ Urbaness
 
 <td style="text-align:right;">
 
-0.10
+0.0951
 
 </td>
 
@@ -252,29 +252,13 @@ Urbaness
 
 <td style="text-align:left;">
 
-Party Preference
+Migration Background
 
 </td>
 
 <td style="text-align:right;">
 
-0.04
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:left;">
-
-Employment
-
-</td>
-
-<td style="text-align:right;">
-
-0.04
+0.0020
 
 </td>
 
@@ -290,7 +274,23 @@ Income
 
 <td style="text-align:right;">
 
-0.12
+0.0885
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+Education
+
+</td>
+
+<td style="text-align:right;">
+
+0.0033
 
 </td>
 
@@ -300,29 +300,17 @@ Income
 
 </table>
 
-I recode the missing values of the variables `Urbaness`, `Party
-Preference`, `Employment`, and `Income` to the mean value of the
-respective variables – median for `Party Precerence`. For Income, I also
-include a dummy indicating whether the missing value was imputed.
+I recode the missing values of the variables `Urbaness`, `Migration
+Background`, `Income`, and `Education` to the mean value of the
+respective variables.
 
 ``` r
-means <- d %>%
-  summarise(F4 = round(mean(F4, na.rm = T),0),
-            F5 = round(mean(F5, na.rm = T), 0),
-            F6 = max(names(table(F6))),
-            F7 = round(mean(F7, na.rm = T),0),
-            F8 = round(mean(F8, na.rm = T),0),
-            F9 = round(mean(F9, na.rm = T),0))
-
 d <- d %>%
-  mutate(F4 = replace_na(F4, means$F4),
-         F5 = replace_na(F5, means$F5),
-         F6 = replace_na(F6, means$F6),
-         F7 = replace_na(F7, means$F7),
-         missing_F8 = if_else(is.na(F8), 1, 0),
-         F8 = replace_na(F8, means$F8),
-         F9 = replace_na(F9, means$F9))
-rm(means, descr, scales)
+  mutate(F4 = replace_na(F4, round(mean(F4, na.rm = T),0)),
+         F5 = replace_na(F5, round(mean(F5, na.rm = T),0)),
+         F8 = replace_na(F8,round(mean(F8, na.rm = T),0)),
+         F9 = replace_na(F9,round(mean(F9, na.rm = T),0)))
+rm(descr, scales)
 ```
 
 Next, we automatically extract a `.md` file for the online appendix, as
@@ -351,11 +339,11 @@ rm(descr, methodnames, table, fn, table2)
 ## Balance Checks
 
 The figure below shows that the data is unbalanced for the variables:
-`Income`, `Employment`, `Urbaness`, `Age`, `Position: COVID`, `Political
-Efficacy`, `Ideology`, `Attitudes: Women in Politics`, `Position:
-Education`, `Position: Defense`, `Position: Immigration`. As described
-in the Pre-Analysis Plan (p.10), I will add these covariates to the
-analyses as controls.
+`Education`,`Income`, `Employment`, `Urbaness`, `Age`, `Position:
+COVID`, `Political Efficacy`, `Ideology`, `Attitudes: Women in
+Politics`, `Position: Education`, `Position: Defense`, `Position:
+Immigration`, and `Immigration (%)`. As described in the Pre-Analysis
+Plan (p.10), I will add these covariates to the analyses as controls.
 
 ``` r
 source(here("src/analysis/balance-test.R"))

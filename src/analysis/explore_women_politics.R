@@ -1,10 +1,10 @@
 regression_explore <- function(df, a, b, compromise, issue){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
-  indepVarList <- df %>% select(a, b, compromise, F2, F4, F7, F8, 
-                                PreT2:PreT4, PreT6:PreT8, issue)   
+  indepVarList <- df %>% select(a, b, compromise, F2, F4, F7, F8, F9, 
+                                PreT1:PreT4, PreT6:PreT8, issue)   
   allModels <- apply(depVarList,2,function(xl)lmer(xl ~ a * compromise * b +
-                                                     F2 + F4 + F7 + F8 +
+                                                     F2 + F4 + F7 + F8 + F9 + PreT1 +
                                                      PreT2 + PreT3 + PreT4 + 
                                                      PreT6 + PreT7_1 + PreT7_2 +
                                                      PreT7_3 + PreT7_4 + PreT7_5 + 
@@ -36,7 +36,7 @@ regression_explore <- function(df, a, b, compromise, issue){
 }
 
 df <- d %>% select(a = gender, b = PreT5, compromise, 
-                   PT1:PT4, F2, F4, F7, F8, PreT2:PreT4, 
+                   PT1:PT4, F2, F4, F7, F8, F9, PreT1:PreT4, 
                    PreT6:PreT8, issue) 
 e1 <- regression_explore(df, a, b, compromise)
 
@@ -64,7 +64,7 @@ p1e <- e1 %>%
   geom_hline(yintercept = 0, size = .2, linetype = "dashed") 
 
 df <- d %>% select(a = immigration,  b = PreT5, compromise, 
-                   PT1:PT4, F2, F4, F7, F8, PreT2:PreT4, 
+                   PT1:PT4, F2, F4, F7, F8, F9, PreT1:PreT4, 
                    PreT6:PreT8, issue) 
 e2 <- regression_explore(df, a, b, compromise)
 
@@ -92,7 +92,7 @@ p2e <- e2 %>%
   geom_hline(yintercept = 0, size = .2, linetype = "dashed") 
 
 df <- d %>% select(a = intersection, b = PreT5, compromise, 
-                   PT1:PT4, F2, F4, F7, F8, PreT2:PreT4, 
+                   PT1:PT4, F2, F4, F7, F8, F9, PreT1:PreT4, 
                    PreT6:PreT8, issue)  
 e3 <- regression_explore(df, a, b, compromise)
 

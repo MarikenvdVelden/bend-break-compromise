@@ -19,9 +19,9 @@ fig_cols <- as.character(fig_cols[1:8])
 regression <- function(df, a, compromise){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
-  indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, PreT2:PreT8) 
+  indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, F9, PreT1:PreT8) 
   allModels <- apply(depVarList,2,function(xl)lm(xl ~ a * compromise +
-                                                   factor(F2) + F4 + F7 + F8 +
+                                                   factor(F2) + F4 + F7 + F8 + F9 + PreT1 +
                                                    PreT2 + PreT3 + PreT4 + PreT5 +
                                                    PreT6 + PreT7_1 + PreT7_2 +
                                                    PreT7_3 + PreT7_4 + PreT7_5 + 
@@ -54,9 +54,9 @@ regression <- function(df, a, compromise){
 pooled_regression <- function(df, a, compromise, issue){
   
   depVarList <- df %>% select(matches("PT[0-9]"))
-  indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, PreT2:PreT8, issue) 
+  indepVarList <- df %>% select(a, compromise, F2, F4, F7, F8, F9, PreT1:PreT8, issue) 
   allModels <- apply(depVarList,2,function(xl)lmer(xl ~ a * compromise +
-                                                     F2 + F4 + F7 + F8 +
+                                                     F2 + F4 + F7 + F8 + F9 + PreT1 +
                                                      PreT2 + PreT3 + PreT4 + PreT5 +
                                                      PreT6 + PreT7_1 + PreT7_2 +
                                                      PreT7_3 + PreT7_4 + PreT7_5 + 

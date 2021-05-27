@@ -1,5 +1,5 @@
 descr <- d %>%
-  select(-id, -issue, -name, -F6, -missing_F8) %>%
+  select(-id, -issue, -name, -F6) %>%
   mutate(F1 = recode(F1, `999` = 0, `2` = 0),
          F5 = as.numeric(F5)) %>%
   pivot_longer(cols = everything(),
