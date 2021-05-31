@@ -37,7 +37,7 @@ p1 <- h1 %>%
   labs(x = "", y = "Average Marginal Effects of Being a Women Politician",
        title = "Gender Hypothesis") +
   facet_grid(.~compromise) +
-  ylim(c(-.3, .7)) +
+  ylim(c(-.4, .7)) +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5),
         legend.position="none",
